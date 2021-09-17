@@ -74,6 +74,7 @@ const ReactGrandTour: React.FC<Props> = ({
         changeStep(currentIndex - 1);
     }, [currentIndex, changeStep]);
 
+    console.warn('implemented stepInteraction bool prop on steps');
     return (
         <ReactGrandTourContext.Provider
             value={{
@@ -90,7 +91,7 @@ const ReactGrandTour: React.FC<Props> = ({
             {children}
             {open && (
                 <div className="__react-grand-tour__">
-                    <style>{styles()}</style>
+                    <style>{styles()}</style>{' '}
                     <div className="__react-grand-tour__overlay" onClick={close} />
                     <Step
                         {...steps[currentIndex]}

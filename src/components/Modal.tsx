@@ -77,11 +77,12 @@ const Modal = ({
         [allSteps, stepIndex, changeStep, StepButton, StepButtonWrapper],
     );
     const closeButton = useMemo(() => <CloseButton close={close} />, [close, CloseButton]);
+
     return (
         <FadeIn>
             <div className="__react-grand-tour__modal-position">
                 <div
-                    id="__react-grand-tour__modal-container"
+                    className="__react-grand-tour__modal-container"
                     onClick={arrow ? scrollToElement : undefined}
                 >
                     <DialogWrapper

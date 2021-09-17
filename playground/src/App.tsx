@@ -4,6 +4,7 @@ import { createTheme, CssBaseline, StylesProvider, ThemeProvider } from '@materi
 import { ReactGrandTour } from 'react-grand-tour';
 import { Home, SecondExample } from './Pages';
 import AppWrapper from './AppWrapper';
+import { HomeSteps } from './TourSteps';
 
 const App = () => (
     <StylesProvider injectFirst>
@@ -26,14 +27,7 @@ const App = () => (
                 <BrowserRouter>
                     <Switch>
                         <Route path="/" exact>
-                            <ReactGrandTour
-                                steps={[
-                                    {
-                                        selector: '#lib-name',
-                                        content: 'Welcome to React Grand Tour!',
-                                    },
-                                ]}
-                            >
+                            <ReactGrandTour steps={HomeSteps}>
                                 <Home />
                             </ReactGrandTour>
                         </Route>

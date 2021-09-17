@@ -50,6 +50,10 @@ export type ReactGrandTourStep = {
      */
     component?: React.FC<{ step: number }>;
     selector: string;
+
+    /**
+     * Allow users to click on DOM elements within the highlighted area
+     */
     stepInteraction?: boolean;
 };
 

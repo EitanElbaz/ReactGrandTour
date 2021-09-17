@@ -14,13 +14,30 @@ export const styleObjectToCssStyleString = (obj: Record<string, any>) =>
     }, '');
 
 // https://coolors.co/5fad56-f2c14e-f78154-4d9078-b4436c
-const styles = (speed = 0.33, primaryColor = '#f2c14e') =>
+const styles = (speed = 0.5, primaryColor = '#f2c14e') =>
     styleObjectToCssStyleString({
         '.__react-grand-tour__': {
             'z-index': 999995,
             position: 'fixed',
             left: 0,
             top: 0,
+            overlay: {
+                position: 'fixed',
+                top: 0,
+                right: 0,
+                left: 0,
+                bottom: 0,
+                'z-index': 999996,
+            },
+            highlight: {
+                left: 0,
+                right: 0,
+                position: 'fixed',
+                'border-radius': '8px',
+                'box-shadow': '0 0 0 calc(200vh + 200vw) rgba(0, 0, 0, .8)',
+                transition: `transform ${speed}s ease, height ${speed}s ease, width ${speed}s ease`,
+                'z-index': 999997,
+            },
             dot: {
                 cursor: 'pointer',
                 display: 'contents',
@@ -84,14 +101,6 @@ const styles = (speed = 0.33, primaryColor = '#f2c14e') =>
                     color: '#212121',
                 },
             },
-            overlay: {
-                position: 'fixed',
-                top: 0,
-                right: 0,
-                left: 0,
-                bottom: 0,
-                'z-index': 999996,
-            },
             'page-number': {
                 'background-color': primaryColor,
                 color: 'white',
@@ -147,15 +156,6 @@ const styles = (speed = 0.33, primaryColor = '#f2c14e') =>
                 'align-items': 'center',
                 color: 'white',
                 cursor: 'pointer',
-            },
-            highlight: {
-                left: 0,
-                right: 0,
-                position: 'fixed',
-                'border-radius': '8px',
-                'box-shadow': '0 0 0 calc(200vh + 200vw) rgba(0, 0, 0, .8)',
-                transition: `transform ${speed}s ease, height ${speed}s ease, width ${speed}s ease`,
-                'z-index': 999997,
             },
             'fade-in': {
                 transition: `opacity ${speed}s ease`,
