@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "outDir": "typings",
+        "sourceMap": true,
+        "noImplicitAny": false,
+        "esModuleInterop": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "forceConsistentCasingInFileNames": true,
+        "declaration": true,
+        "declarationMap": true,
+        "target": "es6",
+        "strict": true,
+        "preserveConstEnums": true,
+        "lib": ["es2015", "dom"],
+        "types": ["node", "jest"],
+        "typeRoots": ["./node_modules/@types", "./src"],
+        "baseUrl": "./",
+        "paths": {},
+        "strictNullChecks": false,
+        "jsx": "react"
+    },
+    "include": ["src/*", "src/**/*", "test/**/*"],
+    "exclude": ["node_modules", "./build/**/*"]
+}

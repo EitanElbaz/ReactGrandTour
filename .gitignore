@@ -1,0 +1,28 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# build
+/build
+
+#typings
+/typings
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# PHPStorm
+.idea
+
+# testing
+/coverage
+
+# misc
+.DS_Store
+.env
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+/.vscode/
