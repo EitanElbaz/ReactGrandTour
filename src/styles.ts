@@ -13,7 +13,8 @@ export const styleObjectToCssStyleString = (obj: Record<string, any>) =>
         return `${acc}${key}{${props}${props[props.length - 1] != '}' ? '}' : ''}`;
     }, '');
 
-const styles = (speed = 0.33, primaryColor = '#294C60') =>
+// https://coolors.co/5fad56-f2c14e-f78154-4d9078-b4436c
+const styles = (speed = 0.33, primaryColor = '#f2c14e') =>
     styleObjectToCssStyleString({
         '.__react-grand-tour__': {
             'z-index': 999995,

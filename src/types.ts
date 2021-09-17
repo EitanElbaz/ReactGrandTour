@@ -1,3 +1,5 @@
+import React, { ReactNode } from 'react';
+
 export type ReactGrandTourProps = {
     open?: boolean;
     onClose?: () => void;
@@ -10,6 +12,8 @@ export type ReactGrandTourProps = {
 export type ReactGrandTourContextType = {
     steps: ReactGrandTourStep[];
     isOpen: boolean;
+
+    open: () => void;
 
     /**
      * Use this function to open the tour.
@@ -37,7 +41,14 @@ export type ReactGrandTourContextType = {
 };
 
 export type ReactGrandTourStep = {
-    content: ({ step }: { step: number }) => JSX.Element;
+    content: ReactNode;
+    /**
+     * Use the `component` prop if you want to customise the content of the step.
+     *
+     * The value passed into the `content` prop will be passed in the `children` prop
+     * into your custom component
+     */
+    component?: React.FC<{ step: number }>;
     selector: string;
     stepInteraction?: boolean;
 };

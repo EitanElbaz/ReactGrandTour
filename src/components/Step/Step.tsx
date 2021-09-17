@@ -101,9 +101,17 @@ const Step = React.memo(
     },
 );
 
-const ElementFinder = ({ selector, content: Content, stepIndex, ...props }: Props) => {
+const DefaultContentComponent: React.FC = ({ children }) => <>{children}</>;
+
+const ElementFinder = ({
+    selector,
+    content: Content,
+    component: Component = DefaultContentComponent,
+    stepIndex,
+    ...props
+}: Props) => {
     const [failedCount, setFailedCount] = useState(0);
-    const renderedContent = <Content step={stepIndex} />;
+    const renderedContent = <Component step={stepIndex}>{Content}</Component>;
     const element = useMemo(() => $(selector), [selector]);
     if (element == null && failedCount < 25) {
         setTimeout(() => setFailedCount(failedCount + 1), 100);
