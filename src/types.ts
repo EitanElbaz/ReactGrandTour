@@ -1,3 +1,37 @@
+export type ReactGrandTourProps = {
+    open?: boolean;
+    onClose?: () => void;
+    openAt?: number;
+    steps?: ReactGrandTourStep[];
+    scrollIntoViewOptions?: ScrollIntoViewOptions;
+    transitionSpeed?: number;
+};
+
+export type ReactGrandTourContextType = {
+    steps: ReactGrandTourStep[];
+    isOpen: boolean;
+
+    /**
+     * Use this function to open the tour.
+     *
+     * Optionally pass a step to open at. Defaults to 0.
+     *
+     * Optionally pass new steps
+     */
+    /**
+     * Use this function to open the tour.
+     *
+     * @param withSteps - Optional. Override the steps to start the tour with.
+     * @param atStep - Optional. Choose a step to start at. Defaults to 0.
+     */
+    openWith: (atStep?: number, withSteps?: ReactGrandTourStep[]) => void;
+
+    /**
+     * Close the tour
+     */
+    close: () => void;
+};
+
 export type ReactGrandTourStep = {
     content: ({ step }: { step: number }) => JSX.Element;
     selector: string;

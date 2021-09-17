@@ -1,6 +1,6 @@
 import React, { useMemo, useCallback, useState } from 'react';
 import styles from './styles';
-import { ComponentOverrides, ReactGrandTourStep } from './types';
+import { ComponentOverrides, ReactGrandTourProps, ReactGrandTourStep } from './types';
 import {
     Arrow,
     CloseButton,
@@ -12,20 +12,14 @@ import {
     StepButtonWrapper,
     Step,
 } from './components';
+import ReactGrandTourContext from './Context';
 
-type ReactGrandTourProps = Partial<ComponentOverrides> & {
-    open: boolean;
-    onClose: () => void;
-    openAt?: number;
-    steps: ReactGrandTourStep[];
-    scrollIntoViewOptions?: ScrollIntoViewOptions;
-    transitionSpeed?: number;
-};
+type Props = ReactGrandTourProps & Partial<ComponentOverrides>;
 
 const ReactGrandTour = ({
-    open,
+    open: defaultOpen = false,
     onClose,
-    steps,
+    steps: defaultSteps = [],
     openAt = 0,
     scrollIntoViewOptions = { behavior: 'smooth', block: 'center' },
     closeButton = CloseButton,
@@ -36,13 +30,19 @@ const ReactGrandTour = ({
     stepButtonWrapper = StepButtonWrapper,
     arrow = Arrow,
     dialogWrapper = DialogWrapper,
-}: ReactGrandTourProps) => {
+}: Props) => {
+    const [open, setOpen] = useState(defaultOpen);
     const [currentIndex, setCurrentIndex] = useState(openAt);
+    const [steps, setSteps] = useState(defaultSteps);
     const allSteps = useMemo(() => steps.map((_, i) => i), [steps]);
+
     const close = useCallback(() => {
-        onClose();
-        setCurrentIndex(openAt);
-    }, [onClose, openAt]);
+        if (onClose) {
+            onClose();
+        }
+        setOpen(false);
+    }, [onClose, setOpen]);
+
     const changeStep = useCallback(
         (step: number) => {
             if (step >= 0 && step < allSteps.length) {
@@ -51,32 +51,45 @@ const ReactGrandTour = ({
         },
         [allSteps.length],
     );
+    const openTour = useCallback(
+        (atStep = 0, withSteps?: ReactGrandTourStep[]) => {
+            setCurrentIndex(atStep);
+            if (withSteps != null) {
+                setSteps(withSteps);
+            }
+            setOpen(true);
+        },
+        [setOpen, setSteps],
+    );
+
     if (!open) return null;
 
     return (
-        <div className="__react-grand-tour__">
-            <style>{styles()}</style>
-            <div className="__react-grand-tour__overlay" onClick={close} />
-            <Step
-                {...steps[currentIndex]}
-                content={steps[currentIndex].content}
-                selector={steps[currentIndex].selector}
-                stepInteraction={steps[currentIndex].stepInteraction}
-                stepIndex={currentIndex}
-                changeStep={changeStep}
-                allSteps={allSteps}
-                close={close}
-                scrollIntoViewOptions={scrollIntoViewOptions}
-                closeButton={closeButton}
-                currentStepLabel={currentStepLabel}
-                nextStepButton={nextStepButton}
-                previousStepButton={previousStepButton}
-                stepButton={stepButton}
-                stepButtonWrapper={stepButtonWrapper}
-                arrow={arrow}
-                dialogWrapper={dialogWrapper}
-            />
-        </div>
+        <ReactGrandTourContext.Provider value={{ openWith: openTour, close, isOpen: open, steps }}>
+            <div className="__react-grand-tour__">
+                <style>{styles()}</style>
+                <div className="__react-grand-tour__overlay" onClick={close} />
+                <Step
+                    {...steps[currentIndex]}
+                    content={steps[currentIndex].content}
+                    selector={steps[currentIndex].selector}
+                    stepInteraction={steps[currentIndex].stepInteraction}
+                    stepIndex={currentIndex}
+                    changeStep={changeStep}
+                    allSteps={allSteps}
+                    close={close}
+                    scrollIntoViewOptions={scrollIntoViewOptions}
+                    closeButton={closeButton}
+                    currentStepLabel={currentStepLabel}
+                    nextStepButton={nextStepButton}
+                    previousStepButton={previousStepButton}
+                    stepButton={stepButton}
+                    stepButtonWrapper={stepButtonWrapper}
+                    arrow={arrow}
+                    dialogWrapper={dialogWrapper}
+                />
+            </div>
+        </ReactGrandTourContext.Provider>
     );
 };
 
