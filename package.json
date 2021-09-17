@@ -17,7 +17,10 @@
         "url": "https://github.com/EitanElbaz/ReactGrandTour/issues"
     },
     "homepage": "https://github.com/EitanElbaz/ReactGrandTour",
-    "dependencies": {},
+    "dependencies": {
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2"
+    },
     "peerDependencies": {
         "react": "^17.0.2",
         "react-dom": "^17.0.2"

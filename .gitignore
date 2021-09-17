@@ -3,8 +3,12 @@
 # build
 /build
 
-#typings
+# typings
 /typings
+
+# playground
+/playground/node_modules
+/playground/build
 
 # dependencies
 /node_modules
