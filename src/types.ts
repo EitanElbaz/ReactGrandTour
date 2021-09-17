@@ -30,6 +30,10 @@ export type ReactGrandTourContextType = {
      * Close the tour
      */
     close: () => void;
+
+    goToStep: (step: number) => void;
+    goNext: () => void;
+    goBack: () => void;
 };
 
 export type ReactGrandTourStep = {

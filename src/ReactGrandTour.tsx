@@ -62,10 +62,28 @@ const ReactGrandTour = ({
         [setOpen, setSteps],
     );
 
+    const goNext = useCallback(() => {
+        changeStep(currentIndex + 1);
+    }, [currentIndex, changeStep]);
+
+    const goBack = useCallback(() => {
+        changeStep(currentIndex - 1);
+    }, [currentIndex, changeStep]);
+
     if (!open) return null;
 
     return (
-        <ReactGrandTourContext.Provider value={{ openWith: openTour, close, isOpen: open, steps }}>
+        <ReactGrandTourContext.Provider
+            value={{
+                openWith: openTour,
+                close,
+                isOpen: open,
+                steps,
+                goNext,
+                goBack,
+                goToStep: changeStep,
+            }}
+        >
             <div className="__react-grand-tour__">
                 <style>{styles()}</style>
                 <div className="__react-grand-tour__overlay" onClick={close} />
