@@ -3,7 +3,7 @@ import FadeIn from './FadeIn';
 import { ArrowDirection, ComponentOverrides } from '../types';
 import CloseButton from './CloseButton';
 
-export type ModalProps = ComponentOverrides & {
+export type ModalProps = Partial<ComponentOverrides> & {
     arrowDirection: ArrowDirection;
     stepIndex: number;
     changeStep: (index: number) => void;

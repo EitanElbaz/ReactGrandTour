@@ -128,13 +128,17 @@ export type StepButtonWrapperProps = {
 };
 export type ArrowProps = { direction: ArrowDirection };
 export type DialogWrapperProps = {
-    [key in keyof Omit<ComponentOverrides, 'dialogWrapper' | 'stepButton'>]: JSX.Element;
+    [key in keyof Omit<
+        ComponentOverrides,
+        'dialogWrapper' | 'stepButton' | 'contentWrapper'
+    >]: JSX.Element;
 } & {
     content: JSX.Element;
     stepButtonComponent: (props: StepButtonProps) => JSX.Element;
 };
 
 export type ComponentOverrides = {
+    contentWrapper: React.FC;
     closeButton: (props: CloseButtonProps) => JSX.Element;
     currentStepLabel: (props: PropsWithChildren<CurrentStepLabelProps>) => JSX.Element;
     nextStepButton: (props: NextStepButtonProps) => JSX.Element;

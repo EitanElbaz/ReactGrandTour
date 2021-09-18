@@ -34,7 +34,7 @@ const Close: React.FC<CloseButtonProps> = () => (
     <Box height={20} width={20} borderRadius="50%" bgcolor="red" />
 );
 
-const LabelOverride: React.FC<CurrentStepLabelProps> = ({ children }) => (
+const ContentOverride: React.FC = ({ children }) => (
     <Box bgcolor="primary.main" my={2} p={2}>
         {children}
     </Box>
@@ -55,7 +55,7 @@ const CustomExample = () => {
             nextStepButton={Next}
             previousStepButton={Prev}
             closeButton={Close}
-            currentStepLabel={LabelOverride}
+            contentWrapper={ContentOverride}
         >
             <Box
                 display="flex"

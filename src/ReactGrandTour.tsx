@@ -31,6 +31,7 @@ const ReactGrandTour: React.FC<Props> = ({
     stepButtonWrapper = StepButtonWrapper,
     arrow = Arrow,
     dialogWrapper = DialogWrapper,
+    contentWrapper,
 }) => {
     const [open, setOpen] = useState(defaultOpen);
     const [currentIndex, setCurrentIndex] = useState(openAt);
@@ -113,6 +114,7 @@ const ReactGrandTour: React.FC<Props> = ({
                         stepButtonWrapper={stepButtonWrapper}
                         arrow={arrow}
                         dialogWrapper={dialogWrapper}
+                        contentWrapper={contentWrapper}
                     />
                 </div>
             )}

@@ -35,7 +35,7 @@ const Step = React.memo(
         dialogWrapper,
         track = false,
         trackFrequency = 10,
-    }: Props & {
+    }: Omit<Props, 'contentWrapper'> & {
         element: Element;
         anchorElement?: Element;
         renderedContent: any;
@@ -137,19 +137,19 @@ const ElementFinder = ({
     anchorSelector,
     content: Content,
     component: Component = DefaultContentComponent,
+    contentWrapper: ContentWrapper = DefaultContentComponent,
     stepIndex,
-    currentStepLabel: StepLabelOverride,
     ...props
 }: Props) => {
     const [failedCount, setFailedCount] = useState(0);
     const [failedAnchorCount, setFailedAnchorCount] = useState(0);
     const renderedContent = useMemo(
         () => (
-            <StepLabelOverride currentStep={stepIndex} totalSteps={1}>
+            <ContentWrapper>
                 <Component step={stepIndex}>{Content}</Component>
-            </StepLabelOverride>
+            </ContentWrapper>
         ),
-        [Content, stepIndex, Component],
+        [Content, stepIndex, Component, ContentWrapper],
     );
     const element = useMemo(() => document.querySelector(selector), [selector]);
 
@@ -188,7 +188,6 @@ const ElementFinder = ({
             {...{
                 ...props,
                 element: element ?? document.body,
-                currentStepLabel: StepLabelOverride,
                 anchorElement,
                 renderedContent,
                 stepIndex,
