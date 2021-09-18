@@ -1,10 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { createTheme, CssBaseline, StylesProvider, ThemeProvider } from '@material-ui/core';
-import { ReactGrandTour } from 'react-grand-tour';
-import { Home, SecondExample } from './Pages';
-import AppWrapper from './AppWrapper';
-import { HomeSteps } from './TourSteps';
+import { Home, SecondExample } from 'pages';
 
 const App = () => (
     <StylesProvider injectFirst>
@@ -23,20 +20,16 @@ const App = () => (
             })}
         >
             <CssBaseline />
-            <AppWrapper>
-                <BrowserRouter>
-                    <Switch>
-                        <Route path="/" exact>
-                            <ReactGrandTour steps={HomeSteps}>
-                                <Home />
-                            </ReactGrandTour>
-                        </Route>
-                        <Route path="/second-example">
-                            <SecondExample />
-                        </Route>
-                    </Switch>
-                </BrowserRouter>
-            </AppWrapper>
+            <BrowserRouter>
+                <Switch>
+                    <Route path="/" exact>
+                        <Home />
+                    </Route>
+                    <Route path="/second-example">
+                        <SecondExample />
+                    </Route>
+                </Switch>
+            </BrowserRouter>
         </ThemeProvider>
     </StylesProvider>
 );

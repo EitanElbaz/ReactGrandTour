@@ -2,7 +2,10 @@
     "compilerOptions": {
         "baseUrl": "../",
         "paths": {
-            "react-grand-tour": ["./typings"]
+            "react-grand-tour": ["./typings"],
+            "pages": ["./playground/src/pages"],
+            "components": ["./playground/src/components"],
+            "tours": ["./playground/src/tours"]
         },
         "strictNullChecks": false
     }

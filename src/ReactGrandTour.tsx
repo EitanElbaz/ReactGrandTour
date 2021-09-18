@@ -74,7 +74,6 @@ const ReactGrandTour: React.FC<Props> = ({
         changeStep(currentIndex - 1);
     }, [currentIndex, changeStep]);
 
-    console.warn('implemented stepInteraction bool prop on steps');
     return (
         <ReactGrandTourContext.Provider
             value={{
@@ -98,7 +97,7 @@ const ReactGrandTour: React.FC<Props> = ({
                         content={steps[currentIndex].content}
                         component={steps[currentIndex].component}
                         selector={steps[currentIndex].selector}
-                        stepInteraction={steps[currentIndex].stepInteraction}
+                        // stepInteraction={steps[currentIndex].stepInteraction}
                         stepIndex={currentIndex}
                         changeStep={changeStep}
                         allSteps={allSteps}

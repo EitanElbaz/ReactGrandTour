@@ -5,7 +5,7 @@
     "main": "./build/index.js",
     "typings": "./typings/index.d.ts",
     "scripts": {
-        "build": "rm -rf ./build && rm -rf ./typings && npx webpack"
+        "build": "npx webpack"
     },
     "repository": {
         "type": "git",

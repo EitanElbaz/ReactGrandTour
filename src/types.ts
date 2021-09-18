@@ -54,7 +54,7 @@ export type ReactGrandTourStep = {
     /**
      * Allow users to click on DOM elements within the highlighted area
      */
-    stepInteraction?: boolean;
+    // stepInteraction?: boolean;
 };
 
 export type ModalPosition = {
