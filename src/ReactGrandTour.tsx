@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback, useState, PropsWithChildren } from 'react';
+import React, { useMemo, useCallback, useState, PropsWithChildren, useEffect } from 'react';
 import styles from './styles';
 import { ComponentOverrides, ReactGrandTourProps, ReactGrandTourStep } from './types';
 import {
@@ -36,6 +36,8 @@ const ReactGrandTour: React.FC<Props> = ({
     const [currentIndex, setCurrentIndex] = useState(openAt);
     const [steps, setSteps] = useState(defaultSteps);
     const allSteps = useMemo(() => steps.map((_, i) => i), [steps]);
+
+    useEffect(() => setSteps(defaultSteps), [defaultSteps]);
 
     const close = useCallback(() => {
         if (onClose) {
