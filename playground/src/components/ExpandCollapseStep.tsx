@@ -8,11 +8,18 @@ const useStyle = makeStyles(theme => ({
         transition: `height 10ms ${theme.transitions.easing.easeInOut}`,
         width: 100,
     },
-    horizontalOne: {
-        animation: `$horizontalOne 2s ${theme.transitions.easing.sharp}`,
+    horizontal: {
+        animation: `$horizontal 2s ${theme.transitions.easing.sharp}`,
         animationIterationCount: 'infinite',
         transition: `width 10ms ${theme.transitions.easing.easeInOut}`,
         height: 100,
+    },
+    hotVert: {
+        animation: `$hotVert 2s ${theme.transitions.easing.sharp}`,
+        animationIterationCount: 'infinite',
+        transition: `width 10ms ${theme.transitions.easing.easeInOut}`,
+        height: 10,
+        width: 10,
     },
     '@keyframes vertical': {
         '0%': {
@@ -25,7 +32,7 @@ const useStyle = makeStyles(theme => ({
             height: 100,
         },
     },
-    '@keyframes horizontalOne': {
+    '@keyframes horizontal': {
         '0%': {
             width: 100,
         },
@@ -36,36 +43,61 @@ const useStyle = makeStyles(theme => ({
             width: 100,
         },
     },
+    '@keyframes hotVert': {
+        '0%': {
+            height: 10,
+            width: 10,
+        },
+        '50%': {
+            height: 100,
+            width: 100,
+        },
+        '100%': {
+            height: 10,
+            width: 10,
+        },
+    },
 }));
 
 const ExpandCollapseStep: React.FC<{
     verticalId: string;
     horizontalOneId: string;
+    horVertOneId: string;
     containerId?: string;
-}> = ({ verticalId, horizontalOneId, containerId }) => {
-    const { vertical, horizontalOne } = useStyle();
+}> = ({ verticalId, horizontalOneId, horVertOneId, containerId }) => {
+    const { vertical, horizontal, hotVert } = useStyle();
     return (
-        <Box id={containerId} bgcolor="primary.main" height={200} p={2}>
+        <Box id={containerId} bgcolor="primary.main" p={2}>
             <Grid container spacing={2}>
                 <Grid item xs={12} md={4} lg={3}>
-                    <Box
-                        id={verticalId}
-                        className={vertical}
-                        bgcolor="secondary.main"
-                        height={50}
-                        width={50}
-                        borderRadius={8}
-                    />
+                    <Box height={100} display="flex" justifyContent="center">
+                        <Box
+                            id={verticalId}
+                            className={vertical}
+                            bgcolor="secondary.main"
+                            borderRadius={8}
+                        />
+                    </Box>
                 </Grid>
                 <Grid item xs={12} md={4} lg={3}>
-                    <Box
-                        id={horizontalOneId}
-                        className={horizontalOne}
-                        bgcolor="secondary.main"
-                        height={50}
-                        width={50}
-                        borderRadius={8}
-                    />
+                    <Box display="flex" justifyContent="center">
+                        <Box
+                            id={horizontalOneId}
+                            className={horizontal}
+                            bgcolor="secondary.main"
+                            borderRadius={8}
+                        />
+                    </Box>
+                </Grid>
+                <Grid item xs={12} md={4} lg={3}>
+                    <Box display="flex" justifyContent="center">
+                        <Box
+                            id={horVertOneId}
+                            className={hotVert}
+                            bgcolor="secondary.main"
+                            borderRadius={8}
+                        />
+                    </Box>
                 </Grid>
             </Grid>
         </Box>
