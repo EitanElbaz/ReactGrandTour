@@ -1,4 +1,4 @@
 export const Routes = {
-    home: '/',
-    custom: '/custom',
+    home: '/ReactGrandTour',
+    custom: '/ReactGrandTour/custom',
 };
