@@ -28,7 +28,7 @@ const StepPositioner: React.FC<{
                             height: `${position.height}px`,
                         },
                         '-content': {
-                            padding: `24px ${position.width / 11}px`,
+                            padding: `24px ${position.width / 12}px`,
                         },
                     },
                     highlight: {

@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Grid, Typography } from '@material-ui/core';
 import DirectionsBusIcon from '@material-ui/icons/DirectionsBus';
 import { ReactGrandTour } from 'react-grand-tour';
-import { MovingSquareStep, OpenTourButton } from 'components';
+import { ExpandCollapseStep, MovingSquareStep, OpenTourAtStep, OpenTourButton } from 'components';
 import { HomeStepIds, HomeSteps } from 'tours';
 
 const Home = () => {
@@ -67,6 +67,23 @@ const Home = () => {
                                     <MovingSquareStep
                                         boxId={HomeStepIds.four}
                                         containerId={HomeStepIds.fourContainer}
+                                    />
+                                </Grid>
+                            </Grid>
+                        </Box>
+                    </Box>
+                    <Box width="100%" px={20} mt={8}>
+                        <Box bgcolor="primary.main">
+                            <Grid container spacing={2}>
+                                <Grid item xs={12}>
+                                    <Typography variant="h4" align="center" color="secondary">
+                                        Anchor modal to the container <OpenTourAtStep step={4} />
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <ExpandCollapseStep
+                                        verticalId={HomeStepIds.five}
+                                        containerId={HomeStepIds.fiveContainer}
                                     />
                                 </Grid>
                             </Grid>
