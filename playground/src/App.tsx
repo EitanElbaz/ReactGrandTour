@@ -23,11 +23,11 @@ const App = () => (
             <CssBaseline />
             <BrowserRouter>
                 <Switch>
-                    <Route path={Routes.home} exact>
-                        <Home />
-                    </Route>
                     <Route path={Routes.custom}>
                         <CustomExample />
+                    </Route>
+                    <Route path={Routes.home}>
+                        <Home />
                     </Route>
                 </Switch>
             </BrowserRouter>

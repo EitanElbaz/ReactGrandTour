@@ -54,16 +54,6 @@ const Hero = () => (
                 </Grid>
                 <Grid item>
                     <Switch>
-                        <Route path={Routes.home} exact>
-                            <Button
-                                variant="outlined"
-                                color="primary"
-                                component={RouterLink}
-                                to={Routes.custom}
-                            >
-                                Custom Components Example
-                            </Button>
-                        </Route>
                         <Route path={Routes.custom}>
                             <Button
                                 variant="outlined"
@@ -72,6 +62,16 @@ const Hero = () => (
                                 to={Routes.home}
                             >
                                 Default Components
+                            </Button>
+                        </Route>
+                        <Route path={Routes.home}>
+                            <Button
+                                variant="outlined"
+                                color="primary"
+                                component={RouterLink}
+                                to={Routes.custom}
+                            >
+                                Custom Components Example
                             </Button>
                         </Route>
                     </Switch>

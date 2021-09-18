@@ -1,8 +1,6 @@
 const tsp = require('tsconfig-paths-webpack-plugin');
 const { aliasDangerous } = require('react-app-rewire-alias/lib/aliasDangerous');
 
-const generatedPathsFileName = 'generatedPaths.json';
-
 const aliasMap = {
     'react-grand-tour': '../src',
 };
