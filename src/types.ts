@@ -112,7 +112,12 @@ export type PreviousStepButtonProps = {
     goBack: () => void;
     skipTo: (step: number) => void;
 };
-export type StepButtonProps = { currentStep: number; step: number; goToStep: () => void };
+export type StepButtonProps = {
+    currentStep: number;
+    step: number;
+    goToStep: () => void;
+    active: boolean;
+};
 export type StepButtonWrapperProps = {
     stepButtons: JSX.Element[];
     currentStep: number;

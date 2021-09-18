@@ -3,8 +3,8 @@ import { Box, Button, Grid, Typography } from '@material-ui/core';
 import { HomeStepIds } from 'tours';
 import DirectionsBusIcon from '@material-ui/icons/DirectionsBus';
 import { Link as RouterLink, Route, Switch } from 'react-router-dom';
-import { OpenTourButton } from './index';
 import { Routes } from 'routes';
+import OpenTourButton from './OpenTourButton';
 
 const Hero = () => (
     <>
@@ -30,6 +30,21 @@ const Hero = () => (
                 Grand Tour
             </Typography>
         </Box>
+
+        <Switch>
+            <Route path={Routes.custom}>
+                <Box display="flex">
+                    <Box mr={2}>
+                        <Typography variant="h3" color="secondary">
+                            Custom
+                        </Typography>
+                    </Box>
+                    <Typography variant="h3" color="primary">
+                        Components
+                    </Typography>
+                </Box>
+            </Route>
+        </Switch>
         <Box mb={5} mt={2}>
             <Grid container spacing={2}>
                 <Grid item>

@@ -6,7 +6,7 @@
             "pages": ["./playground/src/pages"],
             "components": ["./playground/src/components"],
             "tours": ["./playground/src/tours"],
-            "routes": ["./playground/src/routes"]
+            "routes": ["./playground/src/routes.ts"]
         },
         "strictNullChecks": false
     }

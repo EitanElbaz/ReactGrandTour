@@ -65,6 +65,7 @@ const Modal = ({
                     <StepButton
                         key={x}
                         currentStep={stepIndex}
+                        active={stepIndex === x}
                         step={index}
                         goToStep={() => changeStep(index)}
                     />
