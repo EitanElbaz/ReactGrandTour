@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "baseUrl": "../",
+        "paths": {
+            "react-grand-tour": ["./typings"],
+            "pages": ["./playground/src/pages"],
+            "components": ["./playground/src/components"],
+            "tours": ["./playground/src/tours"],
+            "routes": ["./playground/src/routes.ts"]
+        },
+        "strictNullChecks": false
+    }
+}

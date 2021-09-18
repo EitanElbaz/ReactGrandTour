@@ -1,0 +1,166 @@
+{
+    "name": "react-grand-tour",
+    "version": "0.0.1",
+    "description": "",
+    "main": "./build/index.js",
+    "typings": "./typings/index.d.ts",
+    "scripts": {
+        "build": "npx webpack",
+        "doctoc": "doctoc README.md"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com:EitanElbaz/ReactGrandTour.git"
+    },
+    "author": "Eitan Elbaz",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/EitanElbaz/ReactGrandTour/issues"
+    },
+    "homepage": "https://github.com/EitanElbaz/ReactGrandTour",
+    "dependencies": {
+    },
+    "peerDependencies": {
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2"
+    },
+    "devDependencies": {
+        "eslint-config-airbnb": "^18.0.1",
+        "eslint-config-airbnb-typescript": "^10.0.0",
+        "eslint-config-prettier": "^6.10.0",
+        "eslint-config-react-app": "^6.0.0",
+        "eslint-import-resolver-typescript": "^2.3.0",
+        "eslint-import-resolver-webpack": "^0.12.1",
+        "eslint-plugin-import": "^2.20.1",
+        "eslint-plugin-jest": "^24.3.6",
+        "eslint-plugin-jest-dom": "^3.2.3",
+        "eslint-plugin-json": "^2.1.0",
+        "eslint-plugin-jsx-a11y": "^6.2.3",
+        "eslint-plugin-prettier": "^3.1.2",
+        "eslint-plugin-promise": "^4.2.1",
+        "eslint-plugin-react": "^7.18.3",
+        "eslint-plugin-react-hooks": "^4.1.2",
+        "eslint-plugin-testing-library": "^3.9.1",
+        "eslint-plugin-unused-imports": "^0.1.3",
+        "eslint-plugin-flowtype": "^5.2.0",
+        "ts-loader": "^7.0.1",
+        "tsconfig-paths-webpack-plugin": "^3.2.0",
+        "typescript": "^4.2.2",
+        "webpack": "^5.38.1",
+        "webpack-bundle-analyzer": "^4.4.0",
+        "webpack-cli": "^4.7.0",
+        "clean-webpack-plugin": "^3.0.0",
+        "source-map-loader": "^0.2.4",
+        "jest": "^25.4.0",
+        "@types/jest": "^25.2.1",
+        "@types/react": "^17.0.0",
+        "@types/react-dom": "^17.0.0",
+        "prettier": "^2.0.4"
+    },
+    "lint-staged": {
+        "src/**/!(*d.){js,jsx,ts,tsx,json,css,scss,md}": [
+            "prettier --write"
+        ]
+    },
+    "eslintConfig": {
+        "ignorePatterns": [
+            "**/*.d.ts"
+        ],
+        "globals": {
+            "JSX": true
+        },
+        "extends": [
+            "eslint:recommended",
+            "plugin:jest/recommended",
+            "react-app",
+            "react-app/jest",
+            "airbnb-typescript",
+            "airbnb/hooks",
+            "plugin:@typescript-eslint/recommended",
+            "plugin:promise/recommended",
+            "prettier",
+            "prettier/react",
+            "prettier/@typescript-eslint"
+        ],
+        "env": {
+            "jest/globals": true
+        },
+        "parser": "@typescript-eslint/parser",
+        "parserOptions": {
+            "ecmaVersion": 7,
+            "project": "./tsconfig.json",
+            "projectFolderIgnoreList": [
+                "./typings/**/*",
+                "./src/typings/**/*",
+                "**/typings/**"
+            ]
+        },
+        "plugins": [
+            "@typescript-eslint",
+            "import",
+            "unused-imports",
+            "prettier",
+            "promise",
+            "testing-library",
+            "jest-dom"
+        ],
+        "rules": {
+            "prettier/prettier": [
+                "error",
+                {
+                    "endOfLine": "auto"
+                }
+            ],
+            "react/jsx-props-no-spreading": 0,
+            "react/prop-types": 0,
+            "react/require-default-props": 0,
+            "import/no-duplicates": 0,
+            "import/prefer-default-export": 0,
+            "prefer-destructuring": 0,
+            "react/destructuring-assignment": 0,
+            "@typescript-eslint/no-explicit-any": 0,
+            "@typescript-eslint/no-use-before-define": 0,
+            "eqeqeq": 0,
+            "import/no-extraneous-dependencies": [
+                "error",
+                {
+                    "devDependencies": true
+                }
+            ],
+            "@typescript-eslint/explicit-function-return-type": 0,
+            "@typescript-eslint/explicit-module-boundary-types": 0,
+            "no-unused-vars": "off",
+            "@typescript-eslint/no-unused-vars": 0,
+            "unused-imports/no-unused-imports": 2,
+            "no-nested-ternary": 0,
+            "@typescript-eslint/no-shadow": 0,
+            "@typescript-eslint/no-redeclare": 0,
+            "@typescript-eslint/no-loop-func": 0,
+            "jsx-a11y/click-events-have-key-events": 0,
+            "jsx-a11y/no-static-element-interactions": 0,
+            "arrow-parens": [
+                "error",
+                "as-needed",
+                {
+                    "requireForBlockBody": false
+                }
+            ],
+            "import/extensions": [
+                "error",
+                "ignorePackages",
+                {
+                    "js": "never",
+                    "jsx": "never",
+                    "ts": "never",
+                    "tsx": "never"
+                }
+            ]
+        },
+        "settings": {
+            "import/resolver": {
+                "typescript": {},
+                "node": {}
+            }
+        }
+    }
+}
