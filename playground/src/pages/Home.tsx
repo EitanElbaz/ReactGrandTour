@@ -46,7 +46,7 @@ const Home = () => {
                             <Grid container spacing={2}>
                                 <Grid item xs={12}>
                                     <Typography variant="h4" align="center" color="secondary">
-                                        Track a fast moving object
+                                        Track a fast moving object <OpenTourAtStep step={2} />
                                     </Typography>
                                 </Grid>
                                 <Grid item xs={12}>
@@ -60,7 +60,7 @@ const Home = () => {
                             <Grid container spacing={2}>
                                 <Grid item xs={12}>
                                     <Typography variant="h4" align="center" color="secondary">
-                                        Anchor modal to the container
+                                        Anchor modal to the container <OpenTourAtStep step={3} />
                                     </Typography>
                                 </Grid>
                                 <Grid item xs={12}>
@@ -82,8 +82,9 @@ const Home = () => {
                                 </Grid>
                                 <Grid item xs={12}>
                                     <ExpandCollapseStep
-                                        verticalId={HomeStepIds.five}
-                                        containerId={HomeStepIds.fiveContainer}
+                                        verticalId={HomeStepIds.verticalOne}
+                                        horizontalOneId={HomeStepIds.horizontalOne}
+                                        containerId={HomeStepIds.expandCollapseContainer}
                                     />
                                 </Grid>
                             </Grid>
