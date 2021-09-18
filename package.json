@@ -13,7 +13,7 @@
         "url": "git+ssh://git@github.com:EitanElbaz/ReactGrandTour.git"
     },
     "author": "Eitan Elbaz",
-    "license": "ISC",
+    "license": "MIT",
     "bugs": {
         "url": "https://github.com/EitanElbaz/ReactGrandTour/issues"
     },
