@@ -6,10 +6,20 @@ const alignHorizontally = (
     bottomMargin: number,
 ): ModalPosition => {
     if (topMargin > bottomMargin) {
+        if (bottomMargin < 0) {
+            // this happens when the highlighted element is near the bottom of the page
+            // need to make sure the modal goes above it instead of displaying within
+            // the element's boundaries
+            return {
+                ...currentPosition,
+                top: topMargin + bottomMargin - currentPosition.height / 2,
+            };
+        }
         // align bottom of modal to the bottom of the element
         // doing this because the top margin is larger than bottom margin so giving modal room to get larger
         return { ...currentPosition, top: topMargin, bottom: currentPosition.bottom + 10 };
     }
+
     // align top of modal to the top of the element
     return { ...currentPosition, top: topMargin };
 };
