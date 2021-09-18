@@ -13,9 +13,6 @@ type Props = Partial<ReactGrandTourStep> &
         allSteps: number[];
         close: () => void;
         scrollIntoViewOptions: ScrollIntoViewOptions;
-        element: Element;
-        anchorElement?: Element;
-        renderedContent: any;
     };
 
 const Step = React.memo(
@@ -38,7 +35,11 @@ const Step = React.memo(
         dialogWrapper,
         track = false,
         trackFrequency = 10,
-    }: Props) => {
+    }: Props & {
+        element: Element;
+        anchorElement?: Element;
+        renderedContent: any;
+    }) => {
         const [boundaries, setBoundaries] = useState(() => element.getBoundingClientRect());
         const [anchorBoundaries, setAnchorBoundaries] = useState(() =>
             (anchorElement ?? element).getBoundingClientRect(),
