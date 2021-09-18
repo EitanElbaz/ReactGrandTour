@@ -1,2 +1,2 @@
 export { default as Home } from './Home';
-export { default as SecondExample } from './SecondExample';
+export { default as CustomExample } from './CustomExample';

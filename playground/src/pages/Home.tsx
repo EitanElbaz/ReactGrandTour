@@ -2,7 +2,13 @@ import React from 'react';
 import { Box, Grid, Typography } from '@material-ui/core';
 import DirectionsBusIcon from '@material-ui/icons/DirectionsBus';
 import { ReactGrandTour } from 'react-grand-tour';
-import { ExpandCollapseStep, MovingSquareStep, OpenTourAtStep, OpenTourButton } from 'components';
+import {
+    ExpandCollapseStep,
+    Hero,
+    MovingSquareStep,
+    OpenTourAtStep,
+    OpenTourButton,
+} from 'components';
 import { HomeStepIds, HomeSteps } from 'tours';
 
 const Home = () => {
@@ -16,31 +22,7 @@ const Home = () => {
                     flexDirection="column"
                     py={8}
                 >
-                    <Box
-                        id={HomeStepIds.two}
-                        fontSize={200}
-                        borderRadius="50%"
-                        bgcolor="primary.main"
-                        color="white"
-                        p={3}
-                    >
-                        <Box height={200} borderRadius="50%" bgcolor="secondary.main" p={1}>
-                            <DirectionsBusIcon fontSize="inherit" />
-                        </Box>
-                    </Box>
-                    <Box id={HomeStepIds.one} mt={2} display="flex">
-                        <Box mr={2}>
-                            <Typography variant="h3" color="primary">
-                                React
-                            </Typography>
-                        </Box>
-                        <Typography variant="h3" color="secondary">
-                            Grand Tour
-                        </Typography>
-                    </Box>
-                    <Box mb={5}>
-                        <OpenTourButton>Start Tour</OpenTourButton>
-                    </Box>
+                    <Hero />
                     <Box width="100%" px={10}>
                         <Box bgcolor="primary.main">
                             <Grid container spacing={2}>

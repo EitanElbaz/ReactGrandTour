@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { createTheme, CssBaseline, StylesProvider, ThemeProvider } from '@material-ui/core';
-import { Home, SecondExample } from 'pages';
+import { Home, CustomExample } from 'pages';
+import { Routes } from 'routes';
 
 const App = () => (
     <StylesProvider injectFirst>
@@ -22,11 +23,11 @@ const App = () => (
             <CssBaseline />
             <BrowserRouter>
                 <Switch>
-                    <Route path="/" exact>
+                    <Route path={Routes.home} exact>
                         <Home />
                     </Route>
-                    <Route path="/second-example">
-                        <SecondExample />
+                    <Route path={Routes.custom}>
+                        <CustomExample />
                     </Route>
                 </Switch>
             </BrowserRouter>
