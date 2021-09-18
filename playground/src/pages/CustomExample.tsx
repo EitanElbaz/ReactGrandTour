@@ -1,7 +1,6 @@
 import React from 'react';
 import {
     CloseButtonProps,
-    CurrentStepLabelProps,
     NextStepButtonProps,
     PreviousStepButtonProps,
     ReactGrandTour,
@@ -10,7 +9,7 @@ import {
 import { HomeStepIds, HomeSteps } from 'tours';
 import { Box, Button, IconButton } from '@material-ui/core';
 import { Hero, KitchenSink } from 'components';
-import { Star, ArrowRight, ArrowLeft } from '@material-ui/icons';
+import { ArrowLeft, ArrowRight, Star } from '@material-ui/icons';
 
 const StepButton: React.FC<StepButtonProps> = ({ goToStep, active }) => (
     <IconButton onClick={goToStep} size="small" color={active ? 'primary' : undefined}>
