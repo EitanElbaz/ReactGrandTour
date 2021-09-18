@@ -20,7 +20,7 @@
 yarn add react-grand-tour
 
 // npm
-npm install react-grand-tour
+npm install -S react-grand-tour
 ```
 
 ## Why
