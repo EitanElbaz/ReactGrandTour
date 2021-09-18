@@ -40,11 +40,9 @@ const StepPositioner: React.FC<{
                         })`,
                     },
                     'highlight-anchor': {
-                        transform: `translate(${anchorBoundaries.left - 10}px, ${
-                            anchorBoundaries.top - 10
-                        }px)`,
-                        height: `${anchorBoundaries.height + 20}px`,
-                        width: `${anchorBoundaries.width + 20}px`,
+                        transform: `translate(${anchorBoundaries.left}px, ${anchorBoundaries.top}px)`,
+                        height: `${anchorBoundaries.height}px`,
+                        width: `${anchorBoundaries.width}px`,
                         'box-shadow': '0 0 0 calc(200vh + 200vw) rgba(0, 0, 0, .3)',
                     },
                 },
