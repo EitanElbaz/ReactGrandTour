@@ -32,7 +32,12 @@ Use ReactGrandTour to give  your users a quick tour around your application. Hig
 
 ## Demo
 
-insert demo link here
+[Demo](https://eitanelbaz.github.io/ReactGrandTour)
+
+You can also override the custom components which make up the touring overlay.
+[Custom Components Demo.](https://eitanelbaz.github.io/ReactGrandTour)
+
+
 
 ## Example
 
