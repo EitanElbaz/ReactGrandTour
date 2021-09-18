@@ -3,7 +3,6 @@ import { DialogWrapperProps } from '../types';
 
 const DialogWrapper = ({
     arrow,
-    currentStepLabel,
     closeButton,
     content,
     previousStepButton,
@@ -13,7 +12,6 @@ const DialogWrapper = ({
     <div className="__react-grand-tour__modal">
         <div className="__react-grand-tour__modal-content">
             {arrow}
-            {currentStepLabel}
             {closeButton}
             {content}
             <div className="__react-grand-tour__page-selector">

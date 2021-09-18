@@ -20,31 +20,33 @@ const Hero = () => (
                 <DirectionsBusIcon fontSize="inherit" />
             </Box>
         </Box>
-        <Box id={HomeStepIds.one} mt={2} display="flex">
-            <Box mr={2}>
-                <Typography variant="h3" color="primary">
-                    React
-                </Typography>
-            </Box>
-            <Typography variant="h3" color="secondary">
-                Grand Tour
-            </Typography>
-        </Box>
-
-        <Switch>
-            <Route path={Routes.custom}>
-                <Box display="flex">
-                    <Box mr={2}>
-                        <Typography variant="h3" color="secondary">
-                            Custom
-                        </Typography>
-                    </Box>
+        <Box id={HomeStepIds.customOne}>
+            <Box id={HomeStepIds.one} mt={2} display="flex">
+                <Box mr={2}>
                     <Typography variant="h3" color="primary">
-                        Components
+                        React
                     </Typography>
                 </Box>
-            </Route>
-        </Switch>
+                <Typography variant="h3" color="secondary">
+                    Grand Tour
+                </Typography>
+            </Box>
+
+            <Switch>
+                <Route path={Routes.custom}>
+                    <Box display="flex">
+                        <Box mr={2}>
+                            <Typography variant="h3" color="secondary">
+                                Custom
+                            </Typography>
+                        </Box>
+                        <Typography variant="h3" color="primary">
+                            Components
+                        </Typography>
+                    </Box>
+                </Route>
+            </Switch>
+        </Box>
         <Box mb={5} mt={2}>
             <Grid container spacing={2}>
                 <Grid item>

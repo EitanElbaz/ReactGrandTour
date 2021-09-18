@@ -1,6 +1,7 @@
 import { ReactGrandTourStep } from 'react-grand-tour';
 
 export const HomeStepIds = {
+    customOne: 'home-one-custom',
     one: 'home-one',
     two: 'home-two',
     three: 'home-three',

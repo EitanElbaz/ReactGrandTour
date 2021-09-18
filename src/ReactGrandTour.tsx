@@ -3,7 +3,6 @@ import styles from './styles';
 import { ComponentOverrides, ReactGrandTourProps, ReactGrandTourStep } from './types';
 import {
     Arrow,
-    CloseButton,
     CurrentStepLabel,
     DialogWrapper,
     NextStepButton,
@@ -11,6 +10,7 @@ import {
     StepButton,
     StepButtonWrapper,
     Step,
+    Close,
 } from './components';
 import ReactGrandTourContext from './Context';
 
@@ -23,7 +23,7 @@ const ReactGrandTour: React.FC<Props> = ({
     steps: defaultSteps = [],
     openAt = 0,
     scrollIntoViewOptions = { behavior: 'smooth', block: 'center' },
-    closeButton = CloseButton,
+    closeButton = Close,
     currentStepLabel = CurrentStepLabel,
     nextStepButton = NextStepButton,
     previousStepButton = PreviousStepButton,

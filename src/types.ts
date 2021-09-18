@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { PropsWithChildren, ReactNode } from 'react';
 
 export type ReactGrandTourProps = {
     open?: boolean;
@@ -136,7 +136,7 @@ export type DialogWrapperProps = {
 
 export type ComponentOverrides = {
     closeButton: (props: CloseButtonProps) => JSX.Element;
-    currentStepLabel: (props: CurrentStepLabelProps) => JSX.Element;
+    currentStepLabel: (props: PropsWithChildren<CurrentStepLabelProps>) => JSX.Element;
     nextStepButton: (props: NextStepButtonProps) => JSX.Element;
     previousStepButton: (props: PreviousStepButtonProps) => JSX.Element;
     stepButton: (props: StepButtonProps) => JSX.Element;

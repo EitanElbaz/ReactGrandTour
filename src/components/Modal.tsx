@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import FadeIn from './FadeIn';
 import { ArrowDirection, ComponentOverrides } from '../types';
+import CloseButton from './CloseButton';
 
 export type ModalProps = ComponentOverrides & {
     arrowDirection: ArrowDirection;
@@ -22,7 +23,7 @@ const Modal = ({
     renderedContent: content,
     scrollToElement,
     arrow: Arrow,
-    closeButton: CloseButton,
+    closeButton: CloseButtonOverride,
     currentStepLabel: CurrentStepLabel,
     dialogWrapper: DialogWrapper,
     nextStepButton: NextStepButton,
@@ -79,7 +80,14 @@ const Modal = ({
         ),
         [allSteps, stepIndex, changeStep, StepButton, StepButtonWrapper],
     );
-    const closeButton = useMemo(() => <CloseButton close={close} />, [close, CloseButton]);
+    const closeButton = useMemo(
+        () => (
+            <CloseButton close={close}>
+                <CloseButtonOverride close={close} />
+            </CloseButton>
+        ),
+        [close, CloseButtonOverride],
+    );
 
     return (
         <FadeIn>

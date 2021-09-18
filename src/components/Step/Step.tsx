@@ -138,12 +138,21 @@ const ElementFinder = ({
     content: Content,
     component: Component = DefaultContentComponent,
     stepIndex,
+    currentStepLabel: StepLabelOverride,
     ...props
 }: Props) => {
     const [failedCount, setFailedCount] = useState(0);
     const [failedAnchorCount, setFailedAnchorCount] = useState(0);
-    const renderedContent = <Component step={stepIndex}>{Content}</Component>;
+    const renderedContent = useMemo(
+        () => (
+            <StepLabelOverride currentStep={stepIndex} totalSteps={1}>
+                <Component step={stepIndex}>{Content}</Component>
+            </StepLabelOverride>
+        ),
+        [Content, stepIndex, Component],
+    );
     const element = useMemo(() => document.querySelector(selector), [selector]);
+
     if (element == null && failedCount < 25) {
         setTimeout(() => setFailedCount(failedCount + 1), 100);
     }
@@ -179,6 +188,7 @@ const ElementFinder = ({
             {...{
                 ...props,
                 element: element ?? document.body,
+                currentStepLabel: StepLabelOverride,
                 anchorElement,
                 renderedContent,
                 stepIndex,

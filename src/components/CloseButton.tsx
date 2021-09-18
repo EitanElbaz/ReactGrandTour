@@ -1,8 +1,7 @@
 import React from 'react';
-import { Close } from './Icons';
 import { CloseButtonProps } from '../types';
 
-const CloseButton = ({ close }: CloseButtonProps) => (
+const CloseButton: React.FC<CloseButtonProps> = ({ close, children }) => (
     <button
         type="button"
         onClick={event => {
@@ -11,8 +10,8 @@ const CloseButton = ({ close }: CloseButtonProps) => (
         }}
         className="__react-grand-tour__close-button"
     >
-        <Close />
+        {children}
     </button>
 );
 
-export default React.memo(CloseButton);
+export default CloseButton;
