@@ -30,6 +30,8 @@ Some applications can get really complicated a feature rich, making them hard fo
 
 Use ReactGrandTour to give  your users a quick tour around your application. Highlighting core features and screen regions along the way.
 
+> Disclaimer. Only thoroughly tested in Chromium based browsers so far.
+
 ## Demo
 
 [Demo](https://eitanelbaz.github.io/ReactGrandTour)
