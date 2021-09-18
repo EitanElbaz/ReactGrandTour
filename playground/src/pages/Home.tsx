@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Typography } from '@material-ui/core';
 import DirectionsBusIcon from '@material-ui/icons/DirectionsBus';
 import { ReactGrandTour } from 'react-grand-tour';
-import { OpenTourButton } from 'components';
+import { MovingSquareStep, OpenTourButton } from 'components';
 import { HomeStepIds, HomeSteps } from 'tours';
 
 const Home = () => {
@@ -41,6 +41,7 @@ const Home = () => {
                     <Box>
                         <OpenTourButton>Start Tour</OpenTourButton>
                     </Box>
+                    <MovingSquareStep />
                 </Box>
             </ReactGrandTour>
         </>
