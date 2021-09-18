@@ -3,7 +3,7 @@ import { getModalPosition } from '../../lib';
 import { styleObjectToCssStyleString } from '../../styles';
 
 const StepPositioner = ({ boundaries }: { boundaries: DOMRect }) => {
-    const modalContainer = document.querySelector(`#__react-grand-tour__modal-container`);
+    const modalContainer = document.querySelector(`.__react-grand-tour__modal-container`);
     const position = getModalPosition(boundaries, modalContainer?.clientHeight ?? 0);
     return (
         <style>

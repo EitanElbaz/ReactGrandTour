@@ -1,9 +1,13 @@
 import React from 'react';
 import FadeIn from './FadeIn';
 
-const Highlight = () => (
+const Highlight: React.FC<{ track: boolean }> = ({ track }) => (
     <FadeIn>
-        <div className="__react-grand-tour__highlight" />
+        <div
+            className={`__react-grand-tour__highlight ${
+                track && '__react-grand-tour__highlight-track'
+            }`}
+        />
     </FadeIn>
 );
 

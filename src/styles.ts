@@ -38,6 +38,9 @@ const styles = (speed = 0.5, primaryColor = '#f2c14e') =>
                 transition: `transform ${speed}s ease, height ${speed}s ease, width ${speed}s ease`,
                 'z-index': 999997,
             },
+            'highlight-track': {
+                transition: 'all 0ms',
+            },
             dot: {
                 cursor: 'pointer',
                 display: 'contents',

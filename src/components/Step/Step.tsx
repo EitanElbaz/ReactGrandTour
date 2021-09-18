@@ -6,8 +6,6 @@ import Modal from '../Modal';
 import { getArrowDirection } from '../../lib';
 import StepPositioner from './StepPostioner';
 
-const $ = (query: string) => document.querySelector(query);
-
 type Props = Partial<ReactGrandTourStep> &
     ComponentOverrides & {
         stepIndex: number;
@@ -34,6 +32,8 @@ const Step = React.memo(
         stepButtonWrapper,
         arrow,
         dialogWrapper,
+        track = false,
+        trackFrequency = 10,
     }: Props & { element: Element; renderedContent: any }) => {
         const [boundaries, setBoundaries] = useState(() => element.getBoundingClientRect());
         const adjustBoundaries = useCallback(
@@ -60,23 +60,38 @@ const Step = React.memo(
             window.addEventListener('scroll', adjustBoundaries);
             window.addEventListener('keydown', keyDownEventHandler);
 
-            const interval = setInterval(() => window.dispatchEvent(new Event('resize')), 250);
+            // if not tracking we want to give the GUI some time to adjust to the element's final size
+            const interval =
+                !track && setInterval(() => window.dispatchEvent(new Event('resize')), 250);
 
             const timeout = setTimeout(() => clearInterval(interval), 3000);
+
+            const trackInterval =
+                track &&
+                setInterval(() => window.dispatchEvent(new Event('resize')), trackFrequency);
+
             return () => {
                 clearInterval(interval);
                 clearTimeout(timeout);
+                clearTimeout(trackInterval);
                 window.removeEventListener('resize', adjustBoundaries);
                 window.removeEventListener('scroll', adjustBoundaries);
                 window.removeEventListener('keydown', keyDownEventHandler);
             };
-        }, [adjustBoundaries, element, keyDownEventHandler, scrollToElement]);
+        }, [
+            adjustBoundaries,
+            element,
+            keyDownEventHandler,
+            scrollToElement,
+            track,
+            trackFrequency,
+        ]);
 
         const arrowDirection = useMemo(() => getArrowDirection(boundaries), [boundaries]);
         return (
             <>
                 <StepPositioner boundaries={boundaries} />
-                <Highlight />
+                <Highlight track={track} />
                 <Modal
                     scrollToElement={scrollToElement}
                     arrowDirection={arrowDirection}
@@ -112,7 +127,7 @@ const ElementFinder = ({
 }: Props) => {
     const [failedCount, setFailedCount] = useState(0);
     const renderedContent = <Component step={stepIndex}>{Content}</Component>;
-    const element = useMemo(() => $(selector), [selector]);
+    const element = useMemo(() => document.querySelector(selector), [selector]);
     if (element == null && failedCount < 25) {
         setTimeout(() => setFailedCount(failedCount + 1), 100);
     }
