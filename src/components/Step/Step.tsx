@@ -93,6 +93,7 @@ const Step = React.memo(
                 <StepPositioner boundaries={boundaries} />
                 <Highlight track={track} />
                 <Modal
+                    track={track}
                     scrollToElement={scrollToElement}
                     arrowDirection={arrowDirection}
                     renderedContent={renderedContent}

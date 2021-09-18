@@ -131,6 +131,9 @@ const styles = (speed = 0.5, primaryColor = '#f2c14e') =>
                     'min-height': '48px',
                     'z-index': 999999,
                 },
+                '-position-track': {
+                    transition: 'all 100ms',
+                },
                 '-content': {
                     overflow: 'hidden',
                     height: '100%',

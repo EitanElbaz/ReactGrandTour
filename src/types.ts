@@ -66,6 +66,8 @@ export type ReactGrandTourStep = {
     /**
      * Highlight area position update frequency in ms.
      *
+     * Less frequent (higher number) tracking is better for performance.
+     *
      * Default 10.
      */
     trackFrequency?: number;

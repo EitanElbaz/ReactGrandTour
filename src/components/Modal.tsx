@@ -10,6 +10,7 @@ export type ModalProps = ComponentOverrides & {
     close: () => void;
     renderedContent: any;
     scrollToElement: () => void;
+    track: boolean;
 };
 
 const Modal = ({
@@ -28,6 +29,7 @@ const Modal = ({
     previousStepButton: PreviousStepButton,
     stepButtonWrapper: StepButtonWrapper,
     stepButton: StepButton,
+    track,
 }: ModalProps) => {
     const arrow = useMemo(() => <Arrow direction={arrowDirection} />, [Arrow, arrowDirection]);
     const currentStepLabel = useMemo(
@@ -80,7 +82,11 @@ const Modal = ({
 
     return (
         <FadeIn>
-            <div className="__react-grand-tour__modal-position">
+            <div
+                className={`__react-grand-tour__modal-position ${
+                    track && '__react-grand-tour__modal-position-track'
+                }`}
+            >
                 <div
                     className="__react-grand-tour__modal-container"
                     onClick={arrow ? scrollToElement : undefined}

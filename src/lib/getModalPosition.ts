@@ -8,7 +8,7 @@ const alignHorizontally = (
     if (topMargin > bottomMargin) {
         // align bottom of modal to the bottom of the element
         // doing this because the top margin is larger than bottom margin so giving modal room to get larger
-        return { ...currentPosition, bottom: currentPosition.bottom + 10 };
+        return { ...currentPosition, top: topMargin, bottom: currentPosition.bottom + 10 };
     }
     // align top of modal to the top of the element
     return { ...currentPosition, top: topMargin };
@@ -81,6 +81,7 @@ const getModalPosition = (
         result.top = top + height / 3;
         result.left = left + 10 + width / 2 - result.width / 2;
     }
+
     // make sticky on the page so it doesn't scroll out of view
     if (result.top < 10) result.top = 10;
     if (result.bottom > window.innerHeight) result.bottom = window.innerHeight - 30;
