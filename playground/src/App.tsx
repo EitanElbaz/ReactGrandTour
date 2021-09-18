@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { createTheme, CssBaseline, StylesProvider, ThemeProvider } from '@material-ui/core';
+import { Box, createTheme, CssBaseline, StylesProvider, ThemeProvider } from '@material-ui/core';
 import { Home, CustomExample } from 'pages';
 import { Routes } from 'routes';
 
@@ -22,6 +22,17 @@ const App = () => (
         >
             <CssBaseline />
             <BrowserRouter>
+                <Box textAlign="center" mt={3}>
+                    <a
+                        className="github-button"
+                        href="https://github.com/EitanElbaz/ReactGrandTour"
+                        data-size="large"
+                        data-show-count="true"
+                        aria-label="Star EitanElbaz/ReactGrandTour on GitHub"
+                    >
+                        Star
+                    </a>
+                </Box>
                 <Switch>
                     <Route path={Routes.custom}>
                         <CustomExample />
