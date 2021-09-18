@@ -4,7 +4,8 @@ export const HomeStepIds = {
     one: 'home-one',
     two: 'home-two',
     three: 'home-three',
-    threeContainer: 'home-three-container',
+    four: 'home-four',
+    fourContainer: 'home-four-container',
 };
 
 export const HomeSteps: ReactGrandTourStep[] = [
@@ -19,6 +20,13 @@ export const HomeSteps: ReactGrandTourStep[] = [
     {
         selector: `#${HomeStepIds.three}`,
         content: 'The highlighted area will track moving objects',
+        track: true,
+    },
+    {
+        selector: `#${HomeStepIds.four}`,
+        anchorSelector: `#${HomeStepIds.fourContainer}`,
+        content:
+            'The highlighted area will track moving objects, but the modal stays anchored to its container.',
         track: true,
     },
 ];

@@ -55,6 +55,23 @@ const Home = () => {
                             </Grid>
                         </Box>
                     </Box>
+                    <Box width="100%" px={20} mt={8}>
+                        <Box bgcolor="primary.main">
+                            <Grid container spacing={2}>
+                                <Grid item xs={12}>
+                                    <Typography variant="h4" align="center" color="secondary">
+                                        Anchor modal to the container
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <MovingSquareStep
+                                        boxId={HomeStepIds.four}
+                                        containerId={HomeStepIds.fourContainer}
+                                    />
+                                </Grid>
+                            </Grid>
+                        </Box>
+                    </Box>
                 </Box>
             </ReactGrandTour>
         </>
