@@ -7,18 +7,16 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-  - [Why](#why)
-- [🤔](#)
-  - [Demo](#demo)
-  - [Examples](#examples)
+- [Why](#why)
+- [Demo](#demo)
+- [Examples](#examples)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Why
 Some applications can get really complicated a feature rich, making them hard for new users to pick up and use effectively.
 
-**If only there was a way of making that process easier**
-# 🤔
+**If only there was a way of making that process easier 🤔**
 
 Use ReactGrandTour to give  your users a quick tour around your application. Highlighting core features and screen regions along the way. 
 
