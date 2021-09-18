@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography } from '@material-ui/core';
+import { Box, Grid, Typography } from '@material-ui/core';
 import DirectionsBusIcon from '@material-ui/icons/DirectionsBus';
 import { ReactGrandTour } from 'react-grand-tour';
 import { MovingSquareStep, OpenTourButton } from 'components';
@@ -38,10 +38,23 @@ const Home = () => {
                             Grand Tour
                         </Typography>
                     </Box>
-                    <Box>
+                    <Box mb={5}>
                         <OpenTourButton>Start Tour</OpenTourButton>
                     </Box>
-                    <MovingSquareStep />
+                    <Box width="100%" px={20}>
+                        <Box bgcolor="primary.main">
+                            <Grid container spacing={2}>
+                                <Grid item xs={12}>
+                                    <Typography variant="h4" align="center" color="secondary">
+                                        Track a fast moving object
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <MovingSquareStep boxId={HomeStepIds.three} />
+                                </Grid>
+                            </Grid>
+                        </Box>
+                    </Box>
                 </Box>
             </ReactGrandTour>
         </>

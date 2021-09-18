@@ -3,7 +3,8 @@ import { ReactGrandTourStep } from 'react-grand-tour';
 export const HomeStepIds = {
     one: 'home-one',
     two: 'home-two',
-    movingBox: 'moving-box',
+    three: 'home-three',
+    threeContainer: 'home-three-container',
 };
 
 export const HomeSteps: ReactGrandTourStep[] = [
@@ -16,7 +17,7 @@ export const HomeSteps: ReactGrandTourStep[] = [
         content: 'And this is a cool logo.',
     },
     {
-        selector: `#${HomeStepIds.movingBox}`,
+        selector: `#${HomeStepIds.three}`,
         content: 'The highlighted area will track moving objects',
         track: true,
     },

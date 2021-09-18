@@ -1,52 +1,52 @@
 import React from 'react';
 import { Box, makeStyles } from '@material-ui/core';
-import { HomeStepIds } from 'tours';
 
 const useStyle = makeStyles(theme => ({
     movingBox: {
         position: 'absolute',
-        animation: `$move 10s ${theme.transitions.easing.sharp}`,
+        animation: `$move 5s ${theme.transitions.easing.sharp}`,
         animationIterationCount: 'infinite',
-        transition: `left 500ms ${theme.transitions.easing.sharp}, top 2500ms ${theme.transitions.easing.sharp}`,
+        transition: `left 100ms ${theme.transitions.easing.easeInOut}, top 100ms ${theme.transitions.easing.easeInOut}`,
     },
     '@keyframes move': {
         '0%': {
-            top: 10,
-            left: 10,
+            top: 20,
+            left: 20,
         },
-        '25%': {
-            top: 'calc(100% - 60px)',
-            left: 10,
+        '15%': {
+            top: 'calc(100% - 70px)',
+            left: 20,
         },
         '50%': {
-            top: 'calc(100% - 60px)',
-            left: 'calc(100% - 60px)',
+            top: 'calc(100% - 70px)',
+            left: 'calc(100% - 70px)',
         },
-        '75%': {
-            top: 10,
-            left: 'calc(100% - 60px)',
+        '65%': {
+            top: 20,
+            left: 'calc(100% - 70px)',
         },
         '100%': {
-            top: 10,
-            left: 10,
+            top: 20,
+            left: 20,
         },
     },
 }));
 
-const MovingSquareStep = () => {
+const MovingSquareStep: React.FC<{ boxId: string; containerId?: string }> = ({
+    boxId,
+    containerId,
+}) => {
     const { movingBox } = useStyle();
     return (
-        <Box my={4} px={20} width="100%">
-            <Box bgcolor="primary.main" height={200} position="relative">
-                <Box
-                    id={HomeStepIds.movingBox}
-                    className={movingBox}
-                    bgcolor="secondary.main"
-                    height={50}
-                    width={50}
-                    borderRadius={8}
-                />
-            </Box>
+        <Box id={containerId} bgcolor="primary.main" height={200} position="relative">
+            <Box
+                id={boxId}
+                className={movingBox}
+                bgcolor="secondary.main"
+                height={50}
+                width={50}
+                borderRadius={8}
+            />
         </Box>
     );
 };
