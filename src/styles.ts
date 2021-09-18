@@ -17,7 +17,7 @@ export const styleObjectToCssStyleString = (obj: Record<string, any>) =>
 const styles = (speed = 0.5, primaryColor = '#f2c14e') =>
     styleObjectToCssStyleString({
         '.__react-grand-tour__': {
-            'z-index': 999995,
+            'z-index': 999994,
             position: 'fixed',
             left: 0,
             top: 0,
@@ -27,16 +27,19 @@ const styles = (speed = 0.5, primaryColor = '#f2c14e') =>
                 right: 0,
                 left: 0,
                 bottom: 0,
-                'z-index': 999996,
+                'z-index': 999995,
             },
             highlight: {
                 left: 0,
                 right: 0,
                 position: 'fixed',
                 'border-radius': '8px',
-                'box-shadow': '0 0 0 calc(200vh + 200vw) rgba(0, 0, 0, .8)',
                 transition: `transform ${speed}s ease, height ${speed}s ease, width ${speed}s ease`,
                 'z-index': 999997,
+            },
+            'highlight-anchor': {
+                'z-index': 999996,
+                transition: 'all 0s',
             },
             'highlight-track': {
                 transition: 'all 0ms',

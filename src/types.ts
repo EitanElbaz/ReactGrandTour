@@ -49,7 +49,21 @@ export type ReactGrandTourStep = {
      * into your custom component
      */
     component?: React.FC<{ step: number }>;
+
+    /**
+     * The CSS selector for the DOM element which is the focus of the step.
+     */
     selector: string;
+
+    /**
+     * Optional.
+     *
+     * The CSS selector for the DOM element you want to anchor the modal to.
+     *
+     * This is useful when a step is for a DOM element which moves around or changes
+     * size frequently.
+     */
+    anchorSelector?: string;
 
     /**
      * Allow users to click on DOM elements within the highlighted area

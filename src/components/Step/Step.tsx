@@ -13,11 +13,15 @@ type Props = Partial<ReactGrandTourStep> &
         allSteps: number[];
         close: () => void;
         scrollIntoViewOptions: ScrollIntoViewOptions;
+        element: Element;
+        anchorElement?: Element;
+        renderedContent: any;
     };
 
 const Step = React.memo(
     ({
         element,
+        anchorElement,
         stepIndex,
         changeStep,
         allSteps,
@@ -34,12 +38,15 @@ const Step = React.memo(
         dialogWrapper,
         track = false,
         trackFrequency = 10,
-    }: Props & { element: Element; renderedContent: any }) => {
+    }: Props) => {
         const [boundaries, setBoundaries] = useState(() => element.getBoundingClientRect());
-        const adjustBoundaries = useCallback(
-            () => setBoundaries(element.getBoundingClientRect()),
-            [element],
+        const [anchorBoundaries, setAnchorBoundaries] = useState(() =>
+            (anchorElement ?? element).getBoundingClientRect(),
         );
+        const adjustBoundaries = useCallback(() => {
+            setBoundaries(element.getBoundingClientRect());
+            setAnchorBoundaries((anchorElement ?? element).getBoundingClientRect());
+        }, [element, anchorElement]);
         const scrollToElement = useCallback(() => {
             element.scrollIntoView(scrollIntoViewOptions);
             adjustBoundaries();
@@ -81,6 +88,7 @@ const Step = React.memo(
         }, [
             adjustBoundaries,
             element,
+            anchorElement,
             keyDownEventHandler,
             scrollToElement,
             track,
@@ -90,8 +98,12 @@ const Step = React.memo(
         const arrowDirection = useMemo(() => getArrowDirection(boundaries), [boundaries]);
         return (
             <>
-                <StepPositioner boundaries={boundaries} />
-                <Highlight track={track} />
+                <StepPositioner
+                    boundaries={boundaries}
+                    anchorBoundaries={anchorBoundaries}
+                    differentAnchor={anchorElement != null}
+                />
+                <Highlight track={track} anchorHighlight={anchorElement != null} />
                 <Modal
                     track={track}
                     scrollToElement={scrollToElement}
@@ -121,28 +133,56 @@ const DefaultContentComponent: React.FC = ({ children }) => <>{children}</>;
 
 const ElementFinder = ({
     selector,
+    anchorSelector,
     content: Content,
     component: Component = DefaultContentComponent,
     stepIndex,
     ...props
 }: Props) => {
     const [failedCount, setFailedCount] = useState(0);
+    const [failedAnchorCount, setFailedAnchorCount] = useState(0);
     const renderedContent = <Component step={stepIndex}>{Content}</Component>;
     const element = useMemo(() => document.querySelector(selector), [selector]);
     if (element == null && failedCount < 25) {
         setTimeout(() => setFailedCount(failedCount + 1), 100);
     }
+    const anchorElement = useMemo(
+        () => (anchorSelector ? document.querySelector(anchorSelector) : null),
+        [anchorSelector],
+    );
+    if (anchorSelector != null && anchorElement == null && failedAnchorCount < 25) {
+        setTimeout(() => setFailedAnchorCount(failedAnchorCount + 1), 100);
+    }
     if (failedCount > 0) {
         setFailedCount(0);
     }
-    if (!process.env.NODE_ENV || (process.env.NODE_ENV === 'development' && failedCount == 25)) {
-        // eslint-disable-next-line no-console
-        console.warn(
-            `--- React Grand Tour: Failed to find element using selector '${selector}'. There is probably a bug causing the element not to be added to the page. ---`,
-        );
+    if (failedAnchorCount > 0) {
+        setFailedAnchorCount(0);
+    }
+    if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+        if (failedCount == 25) {
+            // eslint-disable-next-line no-console
+            console.warn(
+                `--- React Grand Tour: Failed to find element using selector '${selector}'. There is probably a bug causing the element not to be added to the page. ---`,
+            );
+        }
+        if (failedAnchorCount == 25) {
+            // eslint-disable-next-line no-console
+            console.warn(
+                `--- React Grand Tour: Failed to find anchor element using selector '${anchorSelector}'. There is probably a bug causing the anchor element not to be added to the page. ---`,
+            );
+        }
     }
     return (
-        <Step {...{ ...props, element: element ?? document.body, renderedContent, stepIndex }} />
+        <Step
+            {...{
+                ...props,
+                element: element ?? document.body,
+                anchorElement,
+                renderedContent,
+                stepIndex,
+            }}
+        />
     );
 };
 

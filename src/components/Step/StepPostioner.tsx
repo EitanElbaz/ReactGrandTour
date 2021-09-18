@@ -2,9 +2,13 @@ import React from 'react';
 import { getModalPosition } from '../../lib';
 import { styleObjectToCssStyleString } from '../../styles';
 
-const StepPositioner = ({ boundaries }: { boundaries: DOMRect }) => {
+const StepPositioner: React.FC<{
+    boundaries: DOMRect;
+    anchorBoundaries: DOMRect;
+    differentAnchor: boolean;
+}> = ({ boundaries, anchorBoundaries, differentAnchor }) => {
     const modalContainer = document.querySelector('.__react-grand-tour__modal-container');
-    const position = getModalPosition(boundaries, modalContainer?.clientHeight ?? 0);
+    const position = getModalPosition(anchorBoundaries, modalContainer?.clientHeight ?? 0);
     return (
         <style>
             {styleObjectToCssStyleString({
@@ -31,6 +35,17 @@ const StepPositioner = ({ boundaries }: { boundaries: DOMRect }) => {
                         transform: `translate(${boundaries.left - 10}px, ${boundaries.top - 10}px)`,
                         height: `${boundaries.height + 20}px`,
                         width: `${boundaries.width + 20}px`,
+                        'box-shadow': `0 0 0 calc(200vh + 200vw) rgba(0, 0, 0, ${
+                            differentAnchor ? '.58' : '.7'
+                        })`,
+                    },
+                    'highlight-anchor': {
+                        transform: `translate(${anchorBoundaries.left - 10}px, ${
+                            anchorBoundaries.top - 10
+                        }px)`,
+                        height: `${anchorBoundaries.height + 20}px`,
+                        width: `${anchorBoundaries.width + 20}px`,
+                        'box-shadow': '0 0 0 calc(200vh + 200vw) rgba(0, 0, 0, .3)',
                     },
                 },
             })}
