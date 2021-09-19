@@ -6,3 +6,4 @@ export { default as Hero } from './Hero';
 export { default as KitchenSink } from './KitchenSink';
 export { default as WideTable } from './WideTable';
 export { default as GitHubBtn } from './GitHubBtn';
+export { default as CodeBlock } from './CodeBlock';
