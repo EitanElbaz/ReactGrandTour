@@ -31,6 +31,8 @@ Some applications can get really complicated a feature rich, making them hard fo
 Use ReactGrandTour to give  your users a quick tour around your application. Highlighting core features and screen regions along the way.
 
 > Disclaimer. Safari does not support smooth scrolling to dom elements yet, so scrolling happens immediately. Other browsers which do support smooth scrolling to dom elements gently scroll between each step. 
+> 
+> Modals which track fast moving objects have also been slowed down in Safari because it cannot handle rapidly repositioning dom elements smoothly.
 
 ## Demo
 
