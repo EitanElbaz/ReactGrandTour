@@ -1,4 +1,7 @@
+import React from 'react';
 import { ReactGrandTourStep } from 'react-grand-tour';
+import { Box } from '@material-ui/core';
+import GitHubBtn from 'components/GitHubBtn';
 
 export const HomeStepIds = {
     customOne: 'home-one-custom',
@@ -15,16 +18,57 @@ export const HomeStepIds = {
     verticalTwo: 'home-vertical-two',
     horizontalTwo: 'home-horizontal-two',
     horVertTwo: 'home-hotvert-two',
+    bye: 'home-bye',
 };
 
+const Bye: React.FC = () => (
+    <Box p={2}>
+        <Box mb={1}>And that&apos;s it. I hope you liked the tour.</Box>
+        <Box mb={1}>
+            If you have any suggestions or find any bugs please do open an issue on GitHub.
+        </Box>
+        <Box mb={1}>While you&apos;re at it, drop me a star.</Box>
+        <Box textAlign="center">
+            <GitHubBtn />
+        </Box>
+    </Box>
+);
+
+// test
+// const Hello: React.FC = () => (
+//     <Box p={2}>
+//         <Box mb={1}>The React Grand Tour modal is full customisable.</Box>
+//         <Box mb={1}>
+//             You can supply component overrides to the <CodeBlock>{'<ReactGrandTour/>'}</CodeBlock>
+//         </Box>
+//         <Box mb={1}>
+//             Like this:{' '}
+//             <Box>
+//                 <CodeBlock multiLine>
+//                     {`<ReactGrandTour
+//   closeButton={CloseBtn}
+// />
+// `}
+//                 </CodeBlock>
+//             </Box>
+//         </Box>
+//     </Box>
+// );
+
 export const HomeSteps: ReactGrandTourStep[] = [
+    // {
+    //     selector: `#${HomeStepIds.one}`,
+    //     content: 'Welcome to React Grand Tour!',
+    //     component: Hello,
+    // },
     {
         selector: `#${HomeStepIds.one}`,
         content: 'Welcome to React Grand Tour!',
     },
     {
         selector: `#${HomeStepIds.two}`,
-        content: 'And this is a cool logo.',
+        content:
+            "And this is a cool logo. Try scrolling down the page. You'll see an arrow appear. You can click anywhere in this modal to be taken back to the highlighted area.",
     },
     {
         selector: `#${HomeStepIds.three}`,
@@ -72,5 +116,22 @@ export const HomeSteps: ReactGrandTourStep[] = [
         anchorSelector: `#${HomeStepIds.expandCollapseContainerTwo}`,
         content: 'And when they change in both directions.',
         track: true,
+    },
+    {
+        selector: `#row-1-col-1`,
+        content: 'I can even handle really wide scrolling content.',
+    },
+    {
+        selector: `#row-4-col-20`,
+        content: 'Just like that 😏',
+    },
+    {
+        selector: `#row-1-col-1`,
+        content: 'And that 😱',
+    },
+    {
+        selector: `#${HomeStepIds.bye}`,
+        content: '',
+        component: Bye,
     },
 ];

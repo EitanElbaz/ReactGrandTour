@@ -61,7 +61,8 @@ const CustomExample = () => {
                 alignItems="center"
                 justifyContent="center"
                 flexDirection="column"
-                py={8}
+                pt={2}
+                pb={8}
             >
                 <Hero />
 
