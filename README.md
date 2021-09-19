@@ -100,7 +100,7 @@ The [Playground](https://github.com/EitanElbaz/ReactGrandTour/tree/main/playgrou
 
 Got an object which moves around frequently or changes size? No problem.
 
-```typescript jsx
+```jsx
 <ReactGrandTour
     steps={[
         {
@@ -128,7 +128,7 @@ Got an object which moves around frequently or changes size? No problem.
 
 Want to highlight an element while anchoring the modal to its parent? No problem.
 
-```typescript jsx
+```jsx
 <ReactGrandTour
     steps={[
         {
