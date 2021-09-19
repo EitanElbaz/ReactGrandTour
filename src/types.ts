@@ -71,14 +71,14 @@ export type ReactGrandTourStep = {
     // stepInteraction?: boolean;
 
     /**
-     * Use if the highlighted object moves often. The highlighted area will continue moving with the object.
+     * Use if the highlighted object moves often. The highlighted area and modal will continue moving with the object.
      *
      * Also useful for objects which can change size often like Accordion UIs.
      */
     track?: boolean;
 
     /**
-     * Highlight area position update frequency in ms.
+     * Highlight area + modal position update frequency in ms.
      *
      * Less frequent (higher number) tracking is better for performance.
      *
