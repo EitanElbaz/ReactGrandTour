@@ -87,4 +87,9 @@ const App = () => {
 
 ## Advanced Usage
 
+You can override every part of the modal in React Grand Tour by passing in your own components.
+
+<details>
+<summary>Override Props Annotation</summary>
 ![Custom Components Annotation](https://github.com/EitanElbaz/ReactGrandTour/blob/feature/readme_updates/public/customise_step_annotated.png)
+</details>
