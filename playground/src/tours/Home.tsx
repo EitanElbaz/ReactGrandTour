@@ -1,6 +1,6 @@
 import React from 'react';
 import { ReactGrandTourStep } from 'react-grand-tour';
-import { Box, Typography } from '@material-ui/core';
+import { Box } from '@material-ui/core';
 import { GitHubBtn } from 'components';
 
 export const HomeStepIds = {
