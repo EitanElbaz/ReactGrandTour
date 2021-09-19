@@ -7,9 +7,11 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
+- [Install](#install)
 - [Why](#why)
 - [Demo](#demo)
-- [Examples](#examples)
+- [Example](#example)
+- [Advanced Usage](#advanced-usage)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -82,3 +84,7 @@ const App = () => {
 }
 
 ```
+
+## Advanced Usage
+
+![Custom Components Annotation](https://github.com/EitanElbaz/ReactGrandTour/blob/feature/readme_updates/public/customise_step_annotated.png)
