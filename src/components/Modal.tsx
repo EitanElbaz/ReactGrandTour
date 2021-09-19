@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import FadeIn from './FadeIn';
 import { ArrowDirection, ComponentOverrides } from '../types';
 import CloseButton from './CloseButton';
+import { isSafari } from '../lib';
 
 export type ModalProps = Partial<ComponentOverrides> & {
     arrowDirection: ArrowDirection;
@@ -93,7 +94,7 @@ const Modal = ({
         <FadeIn>
             <div
                 className={`__react-grand-tour__modal-position ${
-                    track && '__react-grand-tour__modal-position-track'
+                    track && !isSafari ? '__react-grand-tour__modal-position-track' : ''
                 }`}
             >
                 <div
