@@ -4,77 +4,66 @@ import { HomeStepIds } from 'tours';
 import ExpandCollapseStep from './ExpandCollapseStep';
 import MovingSquareStep from './MovingSquareStep';
 import OpenTourAtStep from './OpenTourAtStep';
+import WideTable from './WideTable';
+
+const Section: React.FC<{ title: string; openAtStep: number }> = ({
+    title,
+    openAtStep,
+    children,
+}) => (
+    <Box bgcolor="primary.main">
+        <Grid container spacing={2}>
+            <Grid item xs={12}>
+                <Typography variant="h4" align="center" color="secondary">
+                    {title} <OpenTourAtStep step={openAtStep} />
+                </Typography>
+            </Grid>
+            <Grid item xs={12}>
+                {children}
+            </Grid>
+        </Grid>
+    </Box>
+);
 
 const KitchenSink = () => (
     <>
         <Box width="100%" px={10}>
-            <Box bgcolor="primary.main">
-                <Grid container spacing={2}>
-                    <Grid item xs={12}>
-                        <Typography variant="h4" align="center" color="secondary">
-                            Track a fast moving object <OpenTourAtStep step={2} />
-                        </Typography>
-                    </Grid>
-                    <Grid item xs={12}>
-                        <MovingSquareStep boxId={HomeStepIds.three} />
-                    </Grid>
-                </Grid>
-            </Box>
+            <Section title="Track a fast moving object" openAtStep={2}>
+                <MovingSquareStep boxId={HomeStepIds.three} />
+            </Section>
         </Box>
         <Box width="100%" px={10} mt={8}>
-            <Box bgcolor="primary.main">
-                <Grid container spacing={2}>
-                    <Grid item xs={12}>
-                        <Typography variant="h4" align="center" color="secondary">
-                            Anchor modal to the container <OpenTourAtStep step={3} />
-                        </Typography>
-                    </Grid>
-                    <Grid item xs={12}>
-                        <MovingSquareStep
-                            boxId={HomeStepIds.four}
-                            containerId={HomeStepIds.fourContainer}
-                        />
-                    </Grid>
-                </Grid>
-            </Box>
+            <Section title="Anchor modal to the container" openAtStep={3}>
+                <MovingSquareStep
+                    boxId={HomeStepIds.four}
+                    containerId={HomeStepIds.fourContainer}
+                />
+            </Section>
         </Box>
         <Box width="100%" px={10} mt={8}>
-            <Box bgcolor="primary.main">
-                <Grid container spacing={2}>
-                    <Grid item xs={12}>
-                        <Typography variant="h4" align="center" color="secondary">
-                            Track a morphing object <OpenTourAtStep step={4} />
-                        </Typography>
-                    </Grid>
-                    <Grid item xs={12}>
-                        <ExpandCollapseStep
-                            verticalId={HomeStepIds.verticalOne}
-                            horizontalOneId={HomeStepIds.horizontalOne}
-                            horVertOneId={HomeStepIds.horVertOne}
-                            containerId={HomeStepIds.expandCollapseContainer}
-                        />
-                    </Grid>
-                </Grid>
-            </Box>
+            <Section title="Track a morphing object" openAtStep={4}>
+                <ExpandCollapseStep
+                    verticalId={HomeStepIds.verticalOne}
+                    horizontalOneId={HomeStepIds.horizontalOne}
+                    horVertOneId={HomeStepIds.horVertOne}
+                    containerId={HomeStepIds.expandCollapseContainer}
+                />
+            </Section>
         </Box>
         <Box width="100%" px={10} mt={8}>
-            <Box bgcolor="primary.main">
-                <Grid container spacing={2}>
-                    <Grid item xs={12}>
-                        <Typography variant="h4" align="center" color="secondary">
-                            Anchor Modal To the container <OpenTourAtStep step={7} />
-                        </Typography>
-                    </Grid>
-                    <Grid item xs={12}>
-                        <ExpandCollapseStep
-                            verticalId={HomeStepIds.verticalTwo}
-                            horizontalOneId={HomeStepIds.horizontalTwo}
-                            horVertOneId={HomeStepIds.horVertTwo}
-                            containerId={HomeStepIds.expandCollapseContainerTwo}
-                        />
-                    </Grid>
-                </Grid>
-            </Box>
+            <Section title="Anchor Modal To the container" openAtStep={7}>
+                <ExpandCollapseStep
+                    verticalId={HomeStepIds.verticalTwo}
+                    horizontalOneId={HomeStepIds.horizontalTwo}
+                    horVertOneId={HomeStepIds.horVertTwo}
+                    containerId={HomeStepIds.expandCollapseContainerTwo}
+                />
+            </Section>
+        </Box>
+        <Box width="100%" px={10} mt={8}>
+            <Section title="Wide horizontally scrolling content" openAtStep={10}>
+                <WideTable />
+            </Section>
         </Box>
     </>
 );

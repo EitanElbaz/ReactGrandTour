@@ -4,3 +4,5 @@ export { default as MovingSquareStep } from './MovingSquareStep';
 export { default as ExpandCollapseStep } from './ExpandCollapseStep';
 export { default as Hero } from './Hero';
 export { default as KitchenSink } from './KitchenSink';
+export { default as WideTable } from './WideTable';
+export { default as GitHubBtn } from './GitHubBtn';
