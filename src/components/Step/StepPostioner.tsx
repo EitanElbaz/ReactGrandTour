@@ -1,5 +1,6 @@
 import React from 'react';
-import { getModalPosition } from '../../lib';
+import useThrottle from 'react-use/esm/useThrottle';
+import { getModalPosition, isSafari } from '../../lib';
 import { styleObjectToCssStyleString } from '../../styles';
 
 const StepPositioner: React.FC<{
@@ -8,7 +9,9 @@ const StepPositioner: React.FC<{
     differentAnchor: boolean;
 }> = ({ boundaries, anchorBoundaries, differentAnchor }) => {
     const modalContainer = document.querySelector('.__react-grand-tour__modal-container');
-    const position = getModalPosition(anchorBoundaries, modalContainer?.clientHeight ?? 0);
+    const modalPos = getModalPosition(anchorBoundaries, modalContainer?.clientHeight ?? 0);
+    const position = useThrottle(modalPos, isSafari ? 450 : 50);
+
     return (
         <style>
             {styleObjectToCssStyleString({

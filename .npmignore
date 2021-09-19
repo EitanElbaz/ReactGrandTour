@@ -3,5 +3,4 @@ src
 jest*
 coverage
 yarn.lock
-typings
 playground
