@@ -34,7 +34,33 @@ const Bye: React.FC = () => (
     </Box>
 );
 
+// test
+// const Hello: React.FC = () => (
+//     <Box p={2}>
+//         <Box mb={1}>The React Grand Tour modal is full customisable.</Box>
+//         <Box mb={1}>
+//             You can supply component overrides to the <CodeBlock>{'<ReactGrandTour/>'}</CodeBlock>
+//         </Box>
+//         <Box mb={1}>
+//             Like this:{' '}
+//             <Box>
+//                 <CodeBlock multiLine>
+//                     {`<ReactGrandTour
+//   closeButton={CloseBtn}
+// />
+// `}
+//                 </CodeBlock>
+//             </Box>
+//         </Box>
+//     </Box>
+// );
+
 export const HomeSteps: ReactGrandTourStep[] = [
+    // {
+    //     selector: `#${HomeStepIds.one}`,
+    //     content: 'Welcome to React Grand Tour!',
+    //     component: Hello,
+    // },
     {
         selector: `#${HomeStepIds.one}`,
         content: 'Welcome to React Grand Tour!',
