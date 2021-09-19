@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.js": "/ReactGrandTour/static/js/main.4b4a56c5.chunk.js",
-    "main.js.map": "/ReactGrandTour/static/js/main.4b4a56c5.chunk.js.map",
+    "main.js": "/ReactGrandTour/static/js/main.ac321e41.chunk.js",
+    "main.js.map": "/ReactGrandTour/static/js/main.ac321e41.chunk.js.map",
     "runtime-main.js": "/ReactGrandTour/static/js/runtime-main.844eecd2.js",
     "runtime-main.js.map": "/ReactGrandTour/static/js/runtime-main.844eecd2.js.map",
-    "static/js/2.2e677109.chunk.js": "/ReactGrandTour/static/js/2.2e677109.chunk.js",
-    "static/js/2.2e677109.chunk.js.map": "/ReactGrandTour/static/js/2.2e677109.chunk.js.map",
+    "static/js/2.0af9c716.chunk.js": "/ReactGrandTour/static/js/2.0af9c716.chunk.js",
+    "static/js/2.0af9c716.chunk.js.map": "/ReactGrandTour/static/js/2.0af9c716.chunk.js.map",
     "index.html": "/ReactGrandTour/index.html",
-    "static/js/2.2e677109.chunk.js.LICENSE.txt": "/ReactGrandTour/static/js/2.2e677109.chunk.js.LICENSE.txt"
+    "static/js/2.0af9c716.chunk.js.LICENSE.txt": "/ReactGrandTour/static/js/2.0af9c716.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.844eecd2.js",
-    "static/js/2.2e677109.chunk.js",
-    "static/js/main.4b4a56c5.chunk.js"
+    "static/js/2.0af9c716.chunk.js",
+    "static/js/main.ac321e41.chunk.js"
   ]
 }
