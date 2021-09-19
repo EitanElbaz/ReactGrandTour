@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Box, createTheme, CssBaseline, StylesProvider, ThemeProvider } from '@material-ui/core';
-import { Home, CustomExample } from 'pages';
+import { CustomExample, Home } from 'pages';
 import { Routes } from 'routes';
 import { GitHubBtn } from 'components';
 

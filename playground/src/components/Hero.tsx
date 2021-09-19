@@ -4,6 +4,7 @@ import { HomeStepIds } from 'tours';
 import DirectionsBusIcon from '@material-ui/icons/DirectionsBus';
 import { Link as RouterLink, Route, Switch } from 'react-router-dom';
 import { Routes } from 'routes';
+import { CodeBlock } from 'components';
 import OpenTourButton from './OpenTourButton';
 
 const Hero = () => (
@@ -26,6 +27,13 @@ const Hero = () => (
                 <Box height={200} borderRadius="50%" bgcolor="secondary.main" p={1}>
                     <DirectionsBusIcon fontSize="inherit" />
                 </Box>
+            </Box>
+            <Box>
+                <CodeBlock multiLine>{`# yarn
+yarn add react-grand-tour
+
+# npm
+npm install -S react-grand-tour`}</CodeBlock>
             </Box>
             <Box id={HomeStepIds.customOne}>
                 <Box id={HomeStepIds.one} mt={2} display="flex">
