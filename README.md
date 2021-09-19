@@ -154,3 +154,21 @@ The [Custom Components Demo](https://eitanelbaz.github.io/ReactGrandTour) shows 
 ![Custom Components Annotation](https://github.com/EitanElbaz/ReactGrandTour/blob/feature/readme_updates/public/customise_step_annotated.png)
 
 </details>
+
+```jsx
+// Close.tsx
+const Close = () => (<div>X</div>);
+
+// index.tsx
+<ReactGrandTour
+    steps={[
+        {
+            selector: '#my-step-id',
+            content: 'Some Content',
+        },
+    ]}
+    closeButton={Close}
+>
+    <App/>
+</ReactGrandTour>
+```
