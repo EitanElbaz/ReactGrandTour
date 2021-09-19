@@ -1,7 +1,7 @@
 import React from 'react';
 import { ReactGrandTourStep } from 'react-grand-tour';
 import { Box } from '@material-ui/core';
-import { GitHubBtn } from 'components';
+import GitHubBtn from 'components/GitHubBtn';
 
 export const HomeStepIds = {
     customOne: 'home-one-custom',
