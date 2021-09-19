@@ -9,43 +9,51 @@ import OpenTourButton from './OpenTourButton';
 const Hero = () => (
     <>
         <Box
-            id={HomeStepIds.two}
-            fontSize={200}
-            borderRadius="50%"
-            bgcolor="primary.main"
-            color="white"
-            p={3}
+            id={HomeStepIds.bye}
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            flexDirection="column"
         >
-            <Box height={200} borderRadius="50%" bgcolor="secondary.main" p={1}>
-                <DirectionsBusIcon fontSize="inherit" />
-            </Box>
-        </Box>
-        <Box id={HomeStepIds.customOne}>
-            <Box id={HomeStepIds.one} mt={2} display="flex">
-                <Box mr={2}>
-                    <Typography variant="h3" color="primary">
-                        React
-                    </Typography>
+            <Box
+                id={HomeStepIds.two}
+                fontSize={200}
+                borderRadius="50%"
+                bgcolor="primary.main"
+                color="white"
+                p={3}
+            >
+                <Box height={200} borderRadius="50%" bgcolor="secondary.main" p={1}>
+                    <DirectionsBusIcon fontSize="inherit" />
                 </Box>
-                <Typography variant="h3" color="secondary">
-                    Grand Tour
-                </Typography>
             </Box>
-
-            <Switch>
-                <Route path={Routes.custom}>
-                    <Box display="flex">
-                        <Box mr={2}>
-                            <Typography variant="h3" color="secondary">
-                                Custom
-                            </Typography>
-                        </Box>
+            <Box id={HomeStepIds.customOne}>
+                <Box id={HomeStepIds.one} mt={2} display="flex">
+                    <Box mr={2}>
                         <Typography variant="h3" color="primary">
-                            Components
+                            React
                         </Typography>
                     </Box>
-                </Route>
-            </Switch>
+                    <Typography variant="h3" color="secondary">
+                        Grand Tour
+                    </Typography>
+                </Box>
+
+                <Switch>
+                    <Route path={Routes.custom}>
+                        <Box display="flex">
+                            <Box mr={2}>
+                                <Typography variant="h3" color="secondary">
+                                    Custom
+                                </Typography>
+                            </Box>
+                            <Typography variant="h3" color="primary">
+                                Components
+                            </Typography>
+                        </Box>
+                    </Route>
+                </Switch>
+            </Box>
         </Box>
         <Box mb={5} mt={2}>
             <Grid container spacing={2}>
