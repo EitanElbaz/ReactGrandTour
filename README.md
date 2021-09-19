@@ -155,6 +155,8 @@ The [Custom Components Demo](https://eitanelbaz.github.io/ReactGrandTour) shows 
 
 </details>
 
+You can find more ComponentOverrideProps and their types [here](https://github.com/EitanElbaz/ReactGrandTour/blob/main/src/types.ts#L140).
+
 ```jsx
 // Close.tsx
 const Close = () => (<div>X</div>);
