@@ -39,37 +39,34 @@ const ContentOverride: React.FC = ({ children }) => (
     </Box>
 );
 
-const CustomExample = () => {
-    return (
-        <ReactGrandTour
-            steps={[
-                {
-                    content:
-                        'Welcome to React Grand Tour! (With weird custom component overrides)!!!',
-                    selector: `#${HomeStepIds.customOne}`,
-                },
-                ...HomeSteps.slice(1),
-            ]}
-            stepButton={StepButton}
-            nextStepButton={Next}
-            previousStepButton={Prev}
-            closeButton={Close}
-            contentWrapper={ContentOverride}
+const CustomExample = () => (
+    <ReactGrandTour
+        steps={[
+            {
+                content: 'Welcome to React Grand Tour! (With weird custom component overrides)!!!',
+                selector: `#${HomeStepIds.customOne}`,
+            },
+            ...HomeSteps.slice(1),
+        ]}
+        stepButton={StepButton}
+        nextStepButton={Next}
+        previousStepButton={Prev}
+        closeButton={Close}
+        contentWrapper={ContentOverride}
+    >
+        <Box
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            flexDirection="column"
+            pt={2}
+            pb={8}
         >
-            <Box
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-                flexDirection="column"
-                pt={2}
-                pb={8}
-            >
-                <Hero />
+            <Hero />
 
-                <KitchenSink />
-            </Box>
-        </ReactGrandTour>
-    );
-};
+            <KitchenSink />
+        </Box>
+    </ReactGrandTour>
+);
 
 export default CustomExample;
