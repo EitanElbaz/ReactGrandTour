@@ -35,20 +35,17 @@ const useStyle = makeStyles(theme => ({
 const MovingSquareStep: React.FC<{ boxId: string; containerId?: string }> = ({
     boxId,
     containerId,
-}) => {
-    const { movingBox } = useStyle();
-    return (
-        <Box id={containerId} bgcolor="primary.main" height={200} position="relative">
-            <Box
-                id={boxId}
-                className={movingBox}
-                bgcolor="secondary.main"
-                height={50}
-                width={50}
-                borderRadius={8}
-            />
-        </Box>
-    );
-};
+}) => (
+    <Box id={containerId} bgcolor="primary.main" height={200} position="relative">
+        <Box
+            id={boxId}
+            className={useStyle().movingBox}
+            bgcolor="secondary.main"
+            height={50}
+            width={50}
+            borderRadius={8}
+        />
+    </Box>
+);
 
 export default MovingSquareStep;
