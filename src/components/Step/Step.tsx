@@ -1,6 +1,6 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import { useCallback } from 'react';
-import { ComponentOverrides, ReactGrandTourStep } from '../../types';
+import { ComponentOverrides, ReactGrandTourProps, ReactGrandTourStep } from '../../types';
 import Highlight from '../Highlight';
 import Modal from '../Modal';
 import { getArrowDirection } from '../../lib';
@@ -11,7 +11,7 @@ type Props = Partial<ReactGrandTourStep> &
         stepIndex: number;
         changeStep: (index: number) => void;
         allSteps: number[];
-        close: () => void;
+        close: ReactGrandTourProps['onClose'];
         scrollIntoViewOptions: ScrollIntoViewOptions;
     };
 

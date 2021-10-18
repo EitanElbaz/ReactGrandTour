@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import FadeIn from './FadeIn';
-import { ArrowDirection, ComponentOverrides } from '../types';
+import { ArrowDirection, ComponentOverrides, ReactGrandTourProps } from '../types';
 import CloseButton from './CloseButton';
 import { isSafari } from '../lib';
 
@@ -9,7 +9,7 @@ export type ModalProps = Partial<ComponentOverrides> & {
     stepIndex: number;
     changeStep: (index: number) => void;
     allSteps: number[];
-    close: () => void;
+    close: ReactGrandTourProps['onClose'];
     renderedContent: any;
     scrollToElement: () => void;
     track: boolean;
