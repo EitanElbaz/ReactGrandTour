@@ -8,7 +8,7 @@
         "node": ">=14.0.0 <15.0.0"
     },
     "scripts": {
-        "start": "cd .. && npm run build && cd ./playground && react-app-rewired start",
+        "start": "cd .. && yarn && yarn build && cd ./playground && yarn && react-app-rewired start",
         "build": "react-app-rewired build",
         "predeploy": "yarn build",
         "deploy": "gh-pages -d build"

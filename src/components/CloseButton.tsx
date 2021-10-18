@@ -6,7 +6,7 @@ const CloseButton: React.FC<CloseButtonProps> = ({ close, children }) => (
         type="button"
         onClick={event => {
             event.stopPropagation();
-            close();
+            close('close-btn');
         }}
         className="__react-grand-tour__close-button"
     >

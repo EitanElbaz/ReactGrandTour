@@ -1,6 +1,11 @@
 import React, { useMemo, useCallback, useState, PropsWithChildren, useEffect } from 'react';
 import styles from './styles';
-import { ComponentOverrides, ReactGrandTourProps, ReactGrandTourStep } from './types';
+import {
+    ComponentOverrides,
+    ReactGrandTourCloseReason,
+    ReactGrandTourProps,
+    ReactGrandTourStep,
+} from './types';
 import {
     Arrow,
     CurrentStepLabel,
@@ -20,6 +25,7 @@ const ReactGrandTour: React.FC<Props> = ({
     children,
     open: defaultOpen = false,
     onClose,
+    onOpen,
     steps: defaultSteps = [],
     openAt = 0,
     scrollIntoViewOptions = { behavior: 'smooth', block: 'center' },
@@ -38,15 +44,26 @@ const ReactGrandTour: React.FC<Props> = ({
     const [steps, setSteps] = useState(defaultSteps);
     const allSteps = useMemo(() => steps.map((_, i) => i), [steps]);
 
+    useEffect(() => setOpen(defaultOpen), [defaultOpen]);
     useEffect(() => setSteps(defaultSteps), [defaultSteps]);
-
-    const close = useCallback(() => {
-        if (onClose) {
-            onClose();
+    useEffect(() => {
+        if (onOpen && open) {
+            onOpen();
         }
-        setOpen(false);
-        setSteps(defaultSteps);
-    }, [onClose, setOpen, setSteps, defaultSteps]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [open]);
+
+    const close = useCallback(
+        (reason: ReactGrandTourCloseReason) => {
+            if (onClose) {
+                onClose(reason);
+            } else {
+                setOpen(false);
+            }
+            setSteps(defaultSteps);
+        },
+        [onClose, setOpen, setSteps, defaultSteps],
+    );
 
     const changeStep = useCallback(
         (step: number) => {
@@ -77,6 +94,26 @@ const ReactGrandTour: React.FC<Props> = ({
         changeStep(currentIndex - 1);
     }, [currentIndex, changeStep]);
 
+    const onBackdropClosed = useCallback(() => {
+        close('backdrop');
+    }, [close]);
+
+    const onKeyUp = useCallback(
+        (e: KeyboardEvent) => {
+            if (open && e.key === 'Escape') {
+                close('escape');
+            }
+        },
+        [open, close],
+    );
+
+    useEffect(() => {
+        window.addEventListener('keyup', onKeyUp);
+        return () => {
+            window.removeEventListener('keyup', onKeyUp);
+        };
+    }, [onKeyUp]);
+
     return (
         <ReactGrandTourContext.Provider
             value={{
@@ -94,7 +131,7 @@ const ReactGrandTour: React.FC<Props> = ({
             {open && (
                 <div className="__react-grand-tour__">
                     <style>{styles()}</style>{' '}
-                    <div className="__react-grand-tour__overlay" onClick={close} />
+                    <div className="__react-grand-tour__overlay" onClick={onBackdropClosed} />
                     <Step
                         {...steps[currentIndex]}
                         content={steps[currentIndex].content}
