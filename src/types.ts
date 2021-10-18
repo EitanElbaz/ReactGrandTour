@@ -2,12 +2,15 @@ import React, { PropsWithChildren, ReactNode } from 'react';
 
 export type ReactGrandTourProps = {
     open?: boolean;
-    onClose?: () => void;
+    onOpen?: () => void;
+    onClose?: (reason: ReactGrandTourCloseReason) => void;
     openAt?: number;
     steps?: ReactGrandTourStep[];
     scrollIntoViewOptions?: ScrollIntoViewOptions;
     transitionSpeed?: number;
 };
+
+export type ReactGrandTourCloseReason = 'backdrop' | 'close-btn' | 'escape';
 
 export type ReactGrandTourContextType = {
     steps: ReactGrandTourStep[];
@@ -33,7 +36,7 @@ export type ReactGrandTourContextType = {
     /**
      * Close the tour
      */
-    close: () => void;
+    close: ReactGrandTourProps['onClose'];
 
     goToStep: (step: number) => void;
     goNext: () => void;
@@ -98,7 +101,7 @@ export type ModalPosition = {
 
 export type ArrowDirection = 'up' | 'left' | 'down' | 'right' | null;
 
-export type CloseButtonProps = { close: () => void };
+export type CloseButtonProps = { close: ReactGrandTourProps['onClose'] };
 export type CurrentStepLabelProps = { currentStep: number; totalSteps: number };
 export type NextStepButtonProps = {
     currentStep: number;
