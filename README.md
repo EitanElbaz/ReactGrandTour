@@ -149,7 +149,7 @@ To achieve the look you desire you don't have to override the CSS classes or pro
 
 In this example we update the primary color and close button colors:
 
-```tsx
+```jsx
     <ReactGrandTour
         steps={HomeSteps}
         stylingOverrides={{
