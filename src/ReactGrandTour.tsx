@@ -16,6 +16,7 @@ import {
     StepButtonWrapper,
     Step,
     Close,
+    EmptyClose,
 } from './components';
 import ReactGrandTourContext from './Context';
 
@@ -158,7 +159,7 @@ const ReactGrandTour: React.FC<Props> = ({
                         allSteps={allSteps}
                         close={close}
                         scrollIntoViewOptions={scrollIntoViewOptions}
-                        closeButton={closeButton}
+                        closeButton={disableCloseBtn ? EmptyClose : closeButton}
                         currentStepLabel={currentStepLabel}
                         nextStepButton={nextStepButton}
                         previousStepButton={previousStepButton}
