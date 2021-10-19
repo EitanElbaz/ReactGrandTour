@@ -42,6 +42,7 @@ const ReactGrandTour: React.FC<Props> = ({
     disableCloseOnEscape = false,
     disableCloseBtn = false,
     disableCloseOnBackdropClick = false,
+    stylingOverrides = {},
 }) => {
     const [open, setOpen] = useState(defaultOpen);
     const [currentIndex, setCurrentIndex] = useState(openAt);
@@ -146,7 +147,7 @@ const ReactGrandTour: React.FC<Props> = ({
             {children}
             {open && (
                 <div className="__react-grand-tour__">
-                    <style>{styles()}</style>{' '}
+                    <style>{styles(stylingOverrides)}</style>{' '}
                     <div className="__react-grand-tour__overlay" onClick={onBackdropClosed} />
                     <Step
                         {...steps[currentIndex]}

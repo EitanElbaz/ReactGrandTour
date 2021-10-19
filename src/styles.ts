@@ -1,3 +1,5 @@
+import { ReactGrandTourStylingOverrides } from './types';
+
 const getProps = (obj: Record<string, any>, selector: string) =>
     Object.entries(obj).reduce(
         (acc, [key, val]) =>
@@ -14,7 +16,19 @@ export const styleObjectToCssStyleString = (obj: Record<string, any>) =>
     }, '');
 
 // https://coolors.co/5fad56-f2c14e-f78154-4d9078-b4436c
-const styles = (speed = 0.5, primaryColor = '#f2c14e') =>
+const styles = ({
+    animationSpeed = 0.5,
+    primaryColor = '#f2c14e',
+    dotBackgroundColor = 'inherit',
+    dotBorderColor = '#757575',
+    dotHoverBackgroundColor = '#757575',
+    chevronButtonColor = '#757575',
+    chevronButtonHoverColor = '#212121',
+    chevronButtonDisabledColor = '#e0e0e0',
+    closeButtonColor = '#757575',
+    closeButtonHoverColor = '#212121',
+    modalBackgroundColor = '#fff',
+}: ReactGrandTourStylingOverrides) =>
     styleObjectToCssStyleString({
         '.__react-grand-tour__': {
             'z-index': 999994,
@@ -34,7 +48,7 @@ const styles = (speed = 0.5, primaryColor = '#f2c14e') =>
                 right: 0,
                 position: 'fixed',
                 'border-radius': '8px',
-                transition: `transform ${speed}s ease, height ${speed}s ease, width ${speed}s ease`,
+                transition: `transform ${animationSpeed}s ease, height ${animationSpeed}s ease, width ${animationSpeed}s ease`,
                 'z-index': 999997,
             },
             'highlight-anchor': {
@@ -52,14 +66,14 @@ const styles = (speed = 0.5, primaryColor = '#f2c14e') =>
                 ' div': {
                     width: '10px',
                     height: '10px',
-                    'background-color': 'inherit',
-                    border: '1px solid #757575',
+                    'background-color': dotBackgroundColor,
+                    border: `1px solid ${dotBorderColor}`,
                     'border-radius': '50%',
                     'margin-right': '7px',
                     overflow: 'hidden',
                 },
                 ':hover div': {
-                    'background-color': '#757575',
+                    'background-color': dotHoverBackgroundColor,
                 },
                 '-selected': {
                     ' div': {
@@ -75,14 +89,14 @@ const styles = (speed = 0.5, primaryColor = '#f2c14e') =>
             'chevron-button': {
                 'background-color': 'inherit',
                 border: 'none',
-                color: '#757575',
+                color: chevronButtonColor,
                 cursor: 'pointer',
                 ':disabled': {
-                    color: '#e0e0e0',
+                    color: chevronButtonDisabledColor,
                     cursor: 'default',
                 },
                 ':enabled:hover': {
-                    color: '#212121',
+                    color: chevronButtonHoverColor,
                 },
             },
             'page-selector': {
@@ -98,13 +112,13 @@ const styles = (speed = 0.5, primaryColor = '#f2c14e') =>
             'close-button': {
                 'background-color': 'transparent',
                 border: 'none',
-                color: '#757575',
+                color: closeButtonColor,
                 cursor: 'pointer',
                 position: 'absolute',
                 top: '12px',
                 right: '15px',
                 ':hover': {
-                    color: '#212121',
+                    color: closeButtonHoverColor,
                 },
             },
             'page-number': {
@@ -122,11 +136,11 @@ const styles = (speed = 0.5, primaryColor = '#f2c14e') =>
                 top: '-10px',
             },
             modal: {
-                'background-color': '#fff',
+                'background-color': modalBackgroundColor,
                 'border-radius': '8px',
                 'box-shadow': 'rgb(0 0 0 / 30%) 0px 0.5em 3em',
                 '-position': {
-                    transition: `transform ${speed}s ease, height ${speed}s ease, width ${speed}s ease`,
+                    transition: `transform ${animationSpeed}s ease, height ${animationSpeed}s ease, width ${animationSpeed}s ease`,
                     left: 0,
                     top: 0,
                     position: 'fixed',
@@ -167,7 +181,7 @@ const styles = (speed = 0.5, primaryColor = '#f2c14e') =>
                 cursor: 'pointer',
             },
             'fade-in': {
-                transition: `opacity ${speed}s ease`,
+                transition: `opacity ${animationSpeed}s ease`,
                 opacity: 0,
                 'z-index': 999997,
                 '-init': {
