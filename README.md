@@ -151,7 +151,7 @@ In this example we update the primary color and close button colors:
 
 ```jsx
     <ReactGrandTour
-        steps={HomeSteps}
+        steps={Steps}
         stylingOverrides={{
             primaryColor: 'red',
             closeButtonColor: 'yellow',
