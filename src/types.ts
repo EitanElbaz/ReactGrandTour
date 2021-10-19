@@ -11,6 +11,25 @@ export type ReactGrandTourProps = {
     disableCloseOnEscape?: boolean;
     disableCloseBtn?: boolean;
     disableCloseOnBackdropClick?: boolean;
+    stylingOverrides?: ReactGrandTourStylingOverrides;
+};
+
+export type ReactGrandTourStylingOverrides = {
+    primaryColor?: string;
+    animationSpeed?: number;
+
+    dotBackgroundColor?: string;
+    dotBorderColor?: string;
+    dotHoverBackgroundColor?: string;
+
+    chevronButtonColor?: string;
+    chevronButtonHoverColor?: string;
+    chevronButtonDisabledColor?: string;
+
+    closeButtonColor?: string;
+    closeButtonHoverColor?: string;
+
+    modalBackgroundColor?: string;
 };
 
 export type ReactGrandTourCloseReason = 'backdrop' | 'close-btn' | 'escape';
