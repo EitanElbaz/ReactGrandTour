@@ -38,6 +38,9 @@ const ReactGrandTour: React.FC<Props> = ({
     arrow = Arrow,
     dialogWrapper = DialogWrapper,
     contentWrapper,
+    disableCloseOnEscape = false,
+    disableCloseBtn = false,
+    disableCloseOnBackdropClick = false,
 }) => {
     const [open, setOpen] = useState(defaultOpen);
     const [currentIndex, setCurrentIndex] = useState(openAt);
@@ -55,6 +58,10 @@ const ReactGrandTour: React.FC<Props> = ({
 
     const close = useCallback(
         (reason: ReactGrandTourCloseReason) => {
+            if (reason === 'close-btn' && disableCloseBtn) return;
+            if (reason === 'escape' && disableCloseOnEscape) return;
+            if (reason === 'backdrop' && disableCloseOnBackdropClick) return;
+
             if (onClose) {
                 onClose(reason);
             } else {
@@ -62,7 +69,15 @@ const ReactGrandTour: React.FC<Props> = ({
             }
             setSteps(defaultSteps);
         },
-        [onClose, setOpen, setSteps, defaultSteps],
+        [
+            onClose,
+            setOpen,
+            setSteps,
+            defaultSteps,
+            disableCloseBtn,
+            disableCloseOnEscape,
+            disableCloseOnBackdropClick,
+        ],
     );
 
     const changeStep = useCallback(
