@@ -14,6 +14,7 @@
 - [Advanced Usage](#advanced-usage)
   - [Fast Moving Objects](#fast-moving-objects)
   - [Modal Anchoring](#modal-anchoring)
+  - [Style overriding](#style-overriding)
   - [Overriding With Custom Components](#overriding-with-custom-components)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
