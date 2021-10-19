@@ -14,7 +14,7 @@
 - [Advanced Usage](#advanced-usage)
   - [Fast Moving Objects](#fast-moving-objects)
   - [Modal Anchoring](#modal-anchoring)
-  - [Style overriding](#style-overriding)
+  - [Style Overrides](#style-overrides)
   - [Overriding With Custom Components](#overriding-with-custom-components)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -143,7 +143,7 @@ Want to highlight an element while anchoring the modal to its parent? No problem
 </ReactGrandTour>
 ```
 
-### Style overriding
+### Style Overrides
 
 To achieve the look you desire you don't have to override the CSS classes or provide custom components. You can also override a lot of colors using the `stylingOverrides` prop.
 
