@@ -142,6 +142,43 @@ Want to highlight an element while anchoring the modal to its parent? No problem
 </ReactGrandTour>
 ```
 
+### Style overriding
+
+To achieve the look you desire you don't have to override the CSS classes or provide custom components. You can also override a lot of colors using the `stylingOverrides` prop.
+
+In this example we update the primary color and close button colors:
+
+```tsx
+    <ReactGrandTour
+        steps={HomeSteps}
+        stylingOverrides={{
+            primaryColor: 'red',
+            closeButtonColor: 'yellow',
+            closeButtonHoverColor: 'red',
+        }}
+    >
+```
+
+**All Possible Overrides:** 
+```typescript
+export type ReactGrandTourStylingOverrides = {
+    primaryColor?: string;
+    animationSpeed?: number;
+
+    dotBackgroundColor?: string;
+    dotBorderColor?: string;
+    dotHoverBackgroundColor?: string;
+
+    chevronButtonColor?: string;
+    chevronButtonHoverColor?: string;
+    chevronButtonDisabledColor?: string;
+
+    closeButtonColor?: string;
+    closeButtonHoverColor?: string;
+
+    modalBackgroundColor?: string;
+}
+```
 
 ### Overriding With Custom Components
 You can override every part of the modal in React Grand Tour by passing in your own components.
