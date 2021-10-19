@@ -8,6 +8,9 @@ export type ReactGrandTourProps = {
     steps?: ReactGrandTourStep[];
     scrollIntoViewOptions?: ScrollIntoViewOptions;
     transitionSpeed?: number;
+    disableCloseOnEscape?: boolean;
+    disableCloseBtn?: boolean;
+    disableCloseOnBackdropClick?: boolean;
 };
 
 export type ReactGrandTourCloseReason = 'backdrop' | 'close-btn' | 'escape';

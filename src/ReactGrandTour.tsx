@@ -16,6 +16,7 @@ import {
     StepButtonWrapper,
     Step,
     Close,
+    EmptyClose,
 } from './components';
 import ReactGrandTourContext from './Context';
 
@@ -38,6 +39,9 @@ const ReactGrandTour: React.FC<Props> = ({
     arrow = Arrow,
     dialogWrapper = DialogWrapper,
     contentWrapper,
+    disableCloseOnEscape = false,
+    disableCloseBtn = false,
+    disableCloseOnBackdropClick = false,
 }) => {
     const [open, setOpen] = useState(defaultOpen);
     const [currentIndex, setCurrentIndex] = useState(openAt);
@@ -55,6 +59,10 @@ const ReactGrandTour: React.FC<Props> = ({
 
     const close = useCallback(
         (reason: ReactGrandTourCloseReason) => {
+            if (reason === 'close-btn' && disableCloseBtn) return;
+            if (reason === 'escape' && disableCloseOnEscape) return;
+            if (reason === 'backdrop' && disableCloseOnBackdropClick) return;
+
             if (onClose) {
                 onClose(reason);
             } else {
@@ -62,7 +70,15 @@ const ReactGrandTour: React.FC<Props> = ({
             }
             setSteps(defaultSteps);
         },
-        [onClose, setOpen, setSteps, defaultSteps],
+        [
+            onClose,
+            setOpen,
+            setSteps,
+            defaultSteps,
+            disableCloseBtn,
+            disableCloseOnEscape,
+            disableCloseOnBackdropClick,
+        ],
     );
 
     const changeStep = useCallback(
@@ -143,7 +159,7 @@ const ReactGrandTour: React.FC<Props> = ({
                         allSteps={allSteps}
                         close={close}
                         scrollIntoViewOptions={scrollIntoViewOptions}
-                        closeButton={closeButton}
+                        closeButton={disableCloseBtn ? EmptyClose : closeButton}
                         currentStepLabel={currentStepLabel}
                         nextStepButton={nextStepButton}
                         previousStepButton={previousStepButton}
