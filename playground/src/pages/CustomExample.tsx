@@ -8,7 +8,8 @@ import {
 } from 'react-grand-tour';
 import { HomeStepIds, HomeSteps } from 'tours';
 import { Box, Button, IconButton } from '@material-ui/core';
-import { Hero, KitchenSink } from 'components';
+import KitchenSink from 'components/KitchenSink';
+import Hero from 'components/Hero';
 import { ArrowLeft, ArrowRight, Star } from '@material-ui/icons';
 
 const StepButton: React.FC<StepButtonProps> = ({ goToStep, active }) => (
