@@ -12,6 +12,7 @@ export type ReactGrandTourProps = {
     disableCloseBtn?: boolean;
     disableCloseOnBackdropClick?: boolean;
     stylingOverrides?: ReactGrandTourStylingOverrides;
+    keyboardShortcuts?: ReactGrandTourShortcuts;
 };
 
 export type ReactGrandTourStylingOverrides = {
@@ -30,6 +31,33 @@ export type ReactGrandTourStylingOverrides = {
     closeButtonHoverColor?: string;
 
     modalBackgroundColor?: string;
+};
+
+/**
+ * See article below for key names
+ * https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key
+ */
+export type ReactGrandTourShortcuts = {
+    /**
+     * Default: "Escape"
+     *
+     * Shortcut for closing the tour.
+     */
+    closeModal?: string[];
+
+    /**
+     *  Default: "ArrowRight"
+     *
+     *  Shortcut for going to the next step.
+     */
+    nextStep?: string[];
+
+    /**
+     *  Default: "ArrowLeft"
+     *
+     *  Shortcut for going to the previous step.
+     */
+    prevStep?: string[];
 };
 
 export type ReactGrandTourCloseReason = 'backdrop' | 'close-btn' | 'escape';

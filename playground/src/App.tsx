@@ -1,9 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Box, createTheme, CssBaseline, StylesProvider, ThemeProvider } from '@material-ui/core';
-import { CustomExample, Home } from 'pages';
 import { Routes } from 'routes';
-import { GitHubBtn } from 'components';
+import Home from './pages/Home';
+import CustomExample from './pages/CustomExample';
+import GitHubBtn from './components/GitHubBtn';
 
 const App = () => (
     <StylesProvider injectFirst>

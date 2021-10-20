@@ -52,21 +52,10 @@ const Step = React.memo(
             element.scrollIntoView(scrollIntoViewOptions);
             adjustBoundaries();
         }, [adjustBoundaries, element, scrollIntoViewOptions]);
-        const keyDownEventHandler = useCallback(
-            (event: KeyboardEvent) => {
-                if (event.code === 'ArrowLeft' && stepIndex !== 0) {
-                    changeStep(stepIndex - 1);
-                } else if (event.code === 'ArrowRight' && stepIndex !== allSteps.length - 1) {
-                    changeStep(stepIndex + 1);
-                }
-            },
-            [stepIndex, changeStep, allSteps],
-        );
         useEffect(() => {
             scrollToElement();
             window.addEventListener('resize', adjustBoundaries);
             window.addEventListener('scroll', adjustBoundaries);
-            window.addEventListener('keydown', keyDownEventHandler);
 
             // if not tracking we want to give the GUI some time to adjust to the element's final size
             const interval =
@@ -84,17 +73,8 @@ const Step = React.memo(
                 clearTimeout(trackInterval);
                 window.removeEventListener('resize', adjustBoundaries);
                 window.removeEventListener('scroll', adjustBoundaries);
-                window.removeEventListener('keydown', keyDownEventHandler);
             };
-        }, [
-            adjustBoundaries,
-            element,
-            anchorElement,
-            keyDownEventHandler,
-            scrollToElement,
-            track,
-            trackFrequency,
-        ]);
+        }, [adjustBoundaries, element, anchorElement, scrollToElement, track, trackFrequency]);
 
         const arrowDirection = useMemo(() => getArrowDirection(boundaries), [boundaries]);
         return (
