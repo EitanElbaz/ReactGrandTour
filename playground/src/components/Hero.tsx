@@ -4,7 +4,7 @@ import { HomeStepIds } from 'tours';
 import DirectionsBusIcon from '@material-ui/icons/DirectionsBus';
 import { Link as RouterLink, Route, Switch } from 'react-router-dom';
 import { Routes } from 'routes';
-import { CodeBlock } from 'components';
+import CodeBlock from 'components/CodeBlock';
 import OpenTourButton from './OpenTourButton';
 
 const Hero = () => (
