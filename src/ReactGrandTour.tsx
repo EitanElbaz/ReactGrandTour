@@ -22,6 +22,12 @@ import ReactGrandTourContext from './Context';
 
 type Props = PropsWithChildren<ReactGrandTourProps & Partial<ComponentOverrides>>;
 
+const defaultShortcuts = {
+    closeModal: ['Escape'],
+    nextStep: ['ArrowRight'],
+    prevStep: ['ArrowLeft'],
+};
+
 const ReactGrandTour: React.FC<Props> = ({
     children,
     open: defaultOpen = false,
@@ -43,11 +49,16 @@ const ReactGrandTour: React.FC<Props> = ({
     disableCloseBtn = false,
     disableCloseOnBackdropClick = false,
     stylingOverrides = {},
+    keyboardShortcuts,
 }) => {
     const [open, setOpen] = useState(defaultOpen);
     const [currentIndex, setCurrentIndex] = useState(openAt);
     const [steps, setSteps] = useState(defaultSteps);
     const allSteps = useMemo(() => steps.map((_, i) => i), [steps]);
+    const memoisedShortcuts = useMemo(
+        () => ({ ...defaultShortcuts, ...keyboardShortcuts }),
+        [keyboardShortcuts],
+    );
 
     useEffect(() => setOpen(defaultOpen), [defaultOpen]);
     useEffect(() => setSteps(defaultSteps), [defaultSteps]);
@@ -104,6 +115,7 @@ const ReactGrandTour: React.FC<Props> = ({
     const openSimple = useCallback(() => openTour(), [openTour]);
 
     const goNext = useCallback(() => {
+        console.log('aaa');
         changeStep(currentIndex + 1);
     }, [currentIndex, changeStep]);
 
@@ -117,11 +129,23 @@ const ReactGrandTour: React.FC<Props> = ({
 
     const onKeyUp = useCallback(
         (e: KeyboardEvent) => {
-            if (open && e.key === 'Escape') {
+            const shouldEscape = memoisedShortcuts?.closeModal?.indexOf(e.key) !== -1;
+            if (open && shouldEscape) {
                 close('escape');
+                return;
+            }
+            const shouldGoNext = memoisedShortcuts?.nextStep?.indexOf(e.key) !== -1;
+            if (open && shouldGoNext) {
+                goNext();
+                return;
+            }
+            const shouldGoPrev = memoisedShortcuts?.prevStep?.indexOf(e.key) !== -1;
+            if (open && shouldGoPrev) {
+                goBack();
+                return;
             }
         },
-        [open, close],
+        [open, close, goNext, goBack, memoisedShortcuts],
     );
 
     useEffect(() => {
