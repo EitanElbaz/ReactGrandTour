@@ -115,7 +115,6 @@ const ReactGrandTour: React.FC<Props> = ({
     const openSimple = useCallback(() => openTour(), [openTour]);
 
     const goNext = useCallback(() => {
-        console.log('aaa');
         changeStep(currentIndex + 1);
     }, [currentIndex, changeStep]);
 
