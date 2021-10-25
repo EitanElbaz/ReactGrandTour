@@ -33,6 +33,7 @@ const ReactGrandTour: React.FC<Props> = ({
     open: defaultOpen = false,
     onClose,
     onOpen,
+    onStepChange,
     steps: defaultSteps = [],
     openAt = 0,
     scrollIntoViewOptions = { behavior: 'smooth', block: 'center' },
@@ -95,11 +96,23 @@ const ReactGrandTour: React.FC<Props> = ({
 
     const changeStep = useCallback(
         (step: number) => {
-            if (step >= 0 && step < allSteps.length) {
-                setCurrentIndex(step);
+            if (steps) {
+                const currentStep = Number(currentIndex);
+                if (step >= 0 && step < steps.length) {
+                    setCurrentIndex(step);
+                    if (onStepChange) {
+                        onStepChange({
+                            fromStepIndex: currentStep,
+                            toStepIndex: step,
+                            totalSteps: steps.length,
+                            fromStep: steps[currentStep],
+                            toStep: steps[step],
+                        });
+                    }
+                }
             }
         },
-        [allSteps.length],
+        [steps, onStepChange, currentIndex],
     );
     const openTour = useCallback(
         (atStep = 0, withSteps?: ReactGrandTourStep[]) => {
