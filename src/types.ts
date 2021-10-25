@@ -4,6 +4,7 @@ export type ReactGrandTourProps = {
     open?: boolean;
     onOpen?: () => void;
     onClose?: (reason: ReactGrandTourCloseReason) => void;
+    onStepChange?: (props: OnStepChangeProps) => void;
     openAt?: number;
     steps?: ReactGrandTourStep[];
     scrollIntoViewOptions?: ScrollIntoViewOptions;
@@ -58,6 +59,15 @@ export type ReactGrandTourShortcuts = {
      *  Shortcut for going to the previous step.
      */
     prevStep?: string[];
+};
+
+export type OnStepChangeProps = {
+    fromStepIndex: number;
+    toStepIndex: number;
+    totalSteps: number;
+
+    fromStep: ReactGrandTourStep;
+    toStep: ReactGrandTourStep;
 };
 
 export type ReactGrandTourCloseReason = 'backdrop' | 'close-btn' | 'escape';
