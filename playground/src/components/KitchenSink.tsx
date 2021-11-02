@@ -94,7 +94,21 @@ const KitchenSink = () => (
                                 alignItems="center"
                                 justifyContent="center"
                             >
-                                <Typography color="primary">Prefer Right</Typography>
+                                <Typography color="primary">Prefer Left</Typography>
+                            </Box>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Box
+                                width={200}
+                                height={80}
+                                bgcolor="secondary.main"
+                                id={HomeStepIds.prefTop}
+                                borderRadius={8}
+                                display="flex"
+                                alignItems="center"
+                                justifyContent="center"
+                            >
+                                <Typography color="primary">Prefer Top</Typography>
                             </Box>
                         </Grid>
                     </Grid>
