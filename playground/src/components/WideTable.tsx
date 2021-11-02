@@ -18,7 +18,8 @@ const WideTable = () => (
                     {Array(50)
                         .fill(undefined)
                         .map((val, i) => (
-                            <TableCell>
+                            // eslint-disable-next-line react/no-array-index-key
+                            <TableCell key={i}>
                                 <Typography noWrap variant="subtitle1">
                                     Header {i + 1}
                                 </Typography>
