@@ -24,6 +24,8 @@ const alignHorizontally = (
     return { ...currentPosition, top: topMargin };
 };
 
+const modalPadding = 20;
+
 const alignVeritcally = (
     currentPosition: ModalPosition,
     leftMargin: number,
@@ -46,6 +48,23 @@ const alignVeritcally = (
     return { ...currentPosition, left: left - 10 };
 };
 
+const getPreferredPosition = (
+    preferredPosition: ReactGrandTourStep['preferredModalPosition'],
+    spaceTop: boolean,
+    spaceRight: boolean,
+    spaceBottom: boolean,
+    spaceLeft: boolean,
+): ReactGrandTourStep['preferredModalPosition'] => {
+    if (preferredPosition === 'auto') return preferredPosition;
+
+    if (preferredPosition === 'top' && !spaceTop) return 'auto';
+    if (preferredPosition === 'right' && !spaceRight) return 'auto';
+    if (preferredPosition === 'bottom' && !spaceBottom) return 'auto';
+    if (preferredPosition === 'left' && !spaceLeft) return 'auto';
+
+    return preferredPosition;
+};
+
 const getModalPosition = (
     { top, left, right, width, height, bottom }: DOMRect,
     modalHeight: number,
@@ -65,14 +84,26 @@ const getModalPosition = (
 
     let positionDecided = false;
 
+    const hasSpaceRight = rightMargin >= result.width + modalPadding;
+    const hasSpaceLeft = leftMargin >= result.width + modalPadding;
+    const hasSpaceTop = topMargin > modalHeight;
+    const hasSpaceBottom = bottomMargin > modalHeight;
+    const feasiblePreferredPosition = getPreferredPosition(
+        preferredPosition,
+        hasSpaceTop,
+        hasSpaceRight,
+        hasSpaceBottom,
+        hasSpaceLeft,
+    );
+
     // place Modal to right side if there is enough space
     if (
         !positionDecided &&
-        rightMargin >= result.width + 20 &&
-        (preferredPosition === 'auto' || preferredPosition === 'right')
+        hasSpaceRight &&
+        (feasiblePreferredPosition === 'auto' || feasiblePreferredPosition === 'right')
     ) {
         // Set modals left border to align alongside element right border with 10px gap
-        result.left = left + width + 20;
+        result.left = left + width + modalPadding;
         result = alignHorizontally(result, topMargin, bottomMargin);
         positionDecided = true;
     }
@@ -80,11 +111,11 @@ const getModalPosition = (
     if (
         // leftMargin > rightMargin &&
         !positionDecided &&
-        leftMargin >= result.width + 20 &&
-        (preferredPosition === 'auto' || preferredPosition === 'left')
+        hasSpaceLeft &&
+        (feasiblePreferredPosition === 'auto' || feasiblePreferredPosition === 'left')
     ) {
         // set modals right border to align alongside element left border with 10px gap
-        result.right = docWidth - left + 20;
+        result.right = docWidth - left + modalPadding;
         result = alignHorizontally(result, topMargin, bottomMargin);
         positionDecided = true;
     }
@@ -92,22 +123,22 @@ const getModalPosition = (
     if (
         // topMargin > bottomMargin &&
         !positionDecided &&
-        topMargin > modalHeight &&
-        (preferredPosition === 'auto' || preferredPosition === 'top')
+        hasSpaceTop &&
+        (feasiblePreferredPosition === 'auto' || feasiblePreferredPosition === 'top')
     ) {
         // align bottom of modal with top of element being tracked
-        result.bottom = top - 20;
+        result.bottom = top - modalPadding;
         result = alignVeritcally(result, leftMargin, rightMargin, left, right, width, docWidth);
         positionDecided = true;
     }
     // place modal under element if there is enough room
     if (
         !positionDecided &&
-        bottomMargin > modalHeight &&
-        (preferredPosition === 'auto' || preferredPosition === 'bottom')
+        hasSpaceBottom &&
+        (feasiblePreferredPosition === 'auto' || feasiblePreferredPosition === 'bottom')
     ) {
         // align top of modal with bottom of element being tracked
-        result.top = top + height + 20;
+        result.top = top + height + modalPadding;
         result = alignVeritcally(result, leftMargin, rightMargin, left, right, width, docWidth);
         positionDecided = true;
     }
