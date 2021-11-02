@@ -31,7 +31,8 @@ const WideTable = () => (
                 {Array(5)
                     .fill(undefined)
                     .map((rval, ri) => (
-                        <TableRow id={`row-${ri}`}>
+                        // eslint-disable-next-line react/no-array-index-key
+                        <TableRow key={ri} id={`row-${ri}`}>
                             {Array(50)
                                 .fill(undefined)
                                 .map((cval, ci) => (
