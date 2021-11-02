@@ -75,7 +75,6 @@ const getModalPosition = (
         result.left = left + width + 20;
         result = alignHorizontally(result, topMargin, bottomMargin);
         positionDecided = true;
-        console.log('right');
     }
     // place modal on left side if there is more space on the left than the right and enough space to fit the modal
     if (
@@ -85,8 +84,6 @@ const getModalPosition = (
         (preferredPosition === 'auto' || preferredPosition === 'left')
     ) {
         // set modals right border to align alongside element left border with 10px gap
-
-        console.log('left');
         result.right = docWidth - left + 20;
         result = alignHorizontally(result, topMargin, bottomMargin);
         positionDecided = true;
@@ -101,7 +98,7 @@ const getModalPosition = (
         // align bottom of modal with top of element being tracked
         result.bottom = top - 20;
         result = alignVeritcally(result, leftMargin, rightMargin, left, right, width, docWidth);
-        console.log('top');
+        positionDecided = true;
     }
     // place modal under element if there is enough room
     if (
@@ -112,7 +109,7 @@ const getModalPosition = (
         // align top of modal with bottom of element being tracked
         result.top = top + height + 20;
         result = alignVeritcally(result, leftMargin, rightMargin, left, right, width, docWidth);
-        console.log('bottom');
+        positionDecided = true;
     }
 
     // if modal doesnt fit anywhere put modal in the middle of the tracked element
