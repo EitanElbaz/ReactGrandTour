@@ -107,7 +107,7 @@ const getModalPosition = (
         result = alignHorizontally(result, topMargin, bottomMargin);
         positionDecided = true;
     }
-    // place modal on left side if there is more space on the left than the right and enough space to fit the modal
+    // place modal on left side if there is enough space to fit the modal
     if (
         // leftMargin > rightMargin &&
         !positionDecided &&
@@ -119,7 +119,7 @@ const getModalPosition = (
         result = alignHorizontally(result, topMargin, bottomMargin);
         positionDecided = true;
     }
-    // place modal above element if top margin is larger than bottom margin and there is enough room
+    // place modal above element if there is enough room
     if (
         // topMargin > bottomMargin &&
         !positionDecided &&
