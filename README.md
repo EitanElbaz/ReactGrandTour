@@ -118,6 +118,14 @@ Got an object which moves around frequently or changes size? No problem.
              *
              */
             trackFrequency: 10,
+
+
+            /**
+             * If set, will position the modal in the position indicated, if there is space.
+             *
+             * Default: auto
+             */
+            preferredModalPosition?: 'auto' | 'top' | 'right' | 'bottom' | 'left',
         },
     ]}
 >

@@ -65,6 +65,56 @@ const KitchenSink = () => (
                 <WideTable />
             </Section>
         </Box>
+        <Box width="100%" px={10} mt={8}>
+            <Section title="Preferred Positioning" openAtStep={13}>
+                <Box px={2}>
+                    <Grid container spacing={2}>
+                        <Grid item xs={12}>
+                            <Box
+                                width={200}
+                                height={80}
+                                bgcolor="secondary.main"
+                                id={HomeStepIds.prefRight}
+                                borderRadius={8}
+                                display="flex"
+                                alignItems="center"
+                                justifyContent="center"
+                            >
+                                <Typography color="primary">Prefer Right</Typography>
+                            </Box>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Box
+                                width={200}
+                                height={80}
+                                bgcolor="secondary.main"
+                                id={HomeStepIds.prefLeft}
+                                borderRadius={8}
+                                display="flex"
+                                alignItems="center"
+                                justifyContent="center"
+                            >
+                                <Typography color="primary">Prefer Left</Typography>
+                            </Box>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Box
+                                width={200}
+                                height={80}
+                                bgcolor="secondary.main"
+                                id={HomeStepIds.prefTop}
+                                borderRadius={8}
+                                display="flex"
+                                alignItems="center"
+                                justifyContent="center"
+                            >
+                                <Typography color="primary">Prefer Top</Typography>
+                            </Box>
+                        </Grid>
+                    </Grid>
+                </Box>
+            </Section>
+        </Box>
     </>
 );
 
