@@ -1,4 +1,4 @@
-import { ModalPosition } from '../types';
+import { ModalPosition, ReactGrandTourStep } from '../types';
 
 const alignHorizontally = (
     currentPosition: ModalPosition,
@@ -24,6 +24,8 @@ const alignHorizontally = (
     return { ...currentPosition, top: topMargin };
 };
 
+const modalPadding = 20;
+
 const alignVeritcally = (
     currentPosition: ModalPosition,
     leftMargin: number,
@@ -46,9 +48,27 @@ const alignVeritcally = (
     return { ...currentPosition, left: left - 10 };
 };
 
+const getPreferredPosition = (
+    preferredPosition: ReactGrandTourStep['preferredModalPosition'],
+    spaceTop: boolean,
+    spaceRight: boolean,
+    spaceBottom: boolean,
+    spaceLeft: boolean,
+): ReactGrandTourStep['preferredModalPosition'] => {
+    if (preferredPosition === 'auto') return preferredPosition;
+
+    if (preferredPosition === 'top' && !spaceTop) return 'auto';
+    if (preferredPosition === 'right' && !spaceRight) return 'auto';
+    if (preferredPosition === 'bottom' && !spaceBottom) return 'auto';
+    if (preferredPosition === 'left' && !spaceLeft) return 'auto';
+
+    return preferredPosition;
+};
+
 const getModalPosition = (
     { top, left, right, width, height, bottom }: DOMRect,
     modalHeight: number,
+    preferredPosition: ReactGrandTourStep['preferredModalPosition'],
 ): ModalPosition => {
     let result: ModalPosition = {};
     const { clientWidth: docWidth, clientHeight: docHeight } = document.documentElement;
@@ -62,32 +82,69 @@ const getModalPosition = (
     result.width = docWidth < 350 ? docWidth - 20 : 330;
     result.height = modalHeight;
 
-    // place modal on left side if there is more space on the left than the right and enough space to fit the modal
-    if (leftMargin > rightMargin && leftMargin >= result.width + 20) {
-        // set modals right border to align alongside element left border with 10px gap
-        result.right = docWidth - left + 20;
-        result = alignHorizontally(result, topMargin, bottomMargin);
-    }
+    let positionDecided = false;
+
+    const hasSpaceRight = rightMargin >= result.width + modalPadding;
+    const hasSpaceLeft = leftMargin >= result.width + modalPadding;
+    const hasSpaceTop = topMargin > modalHeight;
+    const hasSpaceBottom = bottomMargin > modalHeight;
+    const feasiblePreferredPosition = getPreferredPosition(
+        preferredPosition,
+        hasSpaceTop,
+        hasSpaceRight,
+        hasSpaceBottom,
+        hasSpaceLeft,
+    );
+
     // place Modal to right side if there is enough space
-    else if (rightMargin >= result.width + 20) {
+    if (
+        !positionDecided &&
+        hasSpaceRight &&
+        (feasiblePreferredPosition === 'auto' || feasiblePreferredPosition === 'right')
+    ) {
         // Set modals left border to align alongside element right border with 10px gap
-        result.left = left + width + 20;
+        result.left = left + width + modalPadding;
         result = alignHorizontally(result, topMargin, bottomMargin);
+        positionDecided = true;
     }
-    // place modal above element if top margin is larger than bottom margin and there is enough room
-    else if (topMargin > bottomMargin && topMargin > modalHeight) {
+    // place modal on left side if there is enough space to fit the modal
+    if (
+        // leftMargin > rightMargin &&
+        !positionDecided &&
+        hasSpaceLeft &&
+        (feasiblePreferredPosition === 'auto' || feasiblePreferredPosition === 'left')
+    ) {
+        // set modals right border to align alongside element left border with 10px gap
+        result.right = docWidth - left + modalPadding;
+        result = alignHorizontally(result, topMargin, bottomMargin);
+        positionDecided = true;
+    }
+    // place modal above element if there is enough room
+    if (
+        // topMargin > bottomMargin &&
+        !positionDecided &&
+        hasSpaceTop &&
+        (feasiblePreferredPosition === 'auto' || feasiblePreferredPosition === 'top')
+    ) {
         // align bottom of modal with top of element being tracked
-        result.bottom = top - 20;
+        result.bottom = top - modalPadding;
         result = alignVeritcally(result, leftMargin, rightMargin, left, right, width, docWidth);
+        positionDecided = true;
     }
     // place modal under element if there is enough room
-    else if (bottomMargin > modalHeight) {
+    if (
+        !positionDecided &&
+        hasSpaceBottom &&
+        (feasiblePreferredPosition === 'auto' || feasiblePreferredPosition === 'bottom')
+    ) {
         // align top of modal with bottom of element being tracked
-        result.top = top + height + 20;
+        result.top = top + height + modalPadding;
         result = alignVeritcally(result, leftMargin, rightMargin, left, right, width, docWidth);
+        positionDecided = true;
     }
+
     // if modal doesnt fit anywhere put modal in the middle of the tracked element
-    else {
+    if (!positionDecided) {
         result.top = top + height / 3;
         result.left = left + 10 + width / 2 - result.width / 2;
     }

@@ -35,6 +35,7 @@ const Step = React.memo(
         dialogWrapper,
         track = false,
         trackFrequency = 10,
+        preferredModalPosition = 'auto',
     }: Omit<Props, 'contentWrapper'> & {
         element: Element;
         anchorElement?: Element;
@@ -83,6 +84,7 @@ const Step = React.memo(
                     boundaries={boundaries}
                     anchorBoundaries={anchorBoundaries}
                     differentAnchor={anchorElement != null}
+                    preferredPosition={preferredModalPosition}
                 />
                 <Highlight track={track} anchorHighlight={anchorElement != null} />
                 <Modal

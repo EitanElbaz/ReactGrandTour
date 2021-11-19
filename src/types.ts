@@ -148,6 +148,13 @@ export type ReactGrandTourStep = {
      * Default 10.
      */
     trackFrequency?: number;
+
+    /**
+     * If set, will position the modal in the position indicated, if there is space.
+     *
+     * Default: auto
+     */
+    preferredModalPosition?: 'auto' | 'top' | 'right' | 'bottom' | 'left';
 };
 
 export type ModalPosition = {

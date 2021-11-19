@@ -18,6 +18,9 @@ export const HomeStepIds = {
     verticalTwo: 'home-vertical-two',
     horizontalTwo: 'home-horizontal-two',
     horVertTwo: 'home-hotvert-two',
+    prefRight: 'preferRight',
+    prefLeft: 'preferLeft',
+    prefTop: 'preferTop',
     bye: 'home-bye',
 };
 
@@ -64,6 +67,7 @@ export const HomeSteps: ReactGrandTourStep[] = [
     {
         selector: `#${HomeStepIds.one}`,
         content: 'Welcome to React Grand Tour!',
+        preferredModalPosition: 'bottom',
     },
     {
         selector: `#${HomeStepIds.two}`,
@@ -74,6 +78,7 @@ export const HomeSteps: ReactGrandTourStep[] = [
         selector: `#${HomeStepIds.three}`,
         content: 'The highlighted area will track moving objects',
         track: true,
+        preferredModalPosition: 'right',
     },
     {
         selector: `#${HomeStepIds.four}`,
@@ -128,6 +133,21 @@ export const HomeSteps: ReactGrandTourStep[] = [
     {
         selector: `#row-1-col-1`,
         content: 'And that 😱',
+    },
+    {
+        selector: `#${HomeStepIds.prefRight}`,
+        content: 'I prefer to position this modal on the right',
+        preferredModalPosition: 'right',
+    },
+    {
+        selector: `#${HomeStepIds.prefLeft}`,
+        content: "I prefer to position this modal on the left, but there isn't enough space 😞",
+        preferredModalPosition: 'left',
+    },
+    {
+        selector: `#${HomeStepIds.prefTop}`,
+        content: 'I prefer to position this modal on top',
+        preferredModalPosition: 'top',
     },
     {
         selector: `#${HomeStepIds.bye}`,

@@ -2,14 +2,20 @@ import React from 'react';
 import useThrottle from 'react-use/esm/useThrottle';
 import { getModalPosition, isSafari } from '../../lib';
 import { styleObjectToCssStyleString } from '../../styles';
+import { ReactGrandTourStep } from '../../types';
 
 const StepPositioner: React.FC<{
     boundaries: DOMRect;
     anchorBoundaries: DOMRect;
     differentAnchor: boolean;
-}> = ({ boundaries, anchorBoundaries, differentAnchor }) => {
+    preferredPosition: ReactGrandTourStep['preferredModalPosition'];
+}> = ({ boundaries, anchorBoundaries, differentAnchor, preferredPosition }) => {
     const modalContainer = document.querySelector('.__react-grand-tour__modal-container');
-    const modalPos = getModalPosition(anchorBoundaries, modalContainer?.clientHeight ?? 0);
+    const modalPos = getModalPosition(
+        anchorBoundaries,
+        modalContainer?.clientHeight ?? 0,
+        preferredPosition,
+    );
     const position = useThrottle(modalPos, isSafari ? 450 : 50);
 
     return (
