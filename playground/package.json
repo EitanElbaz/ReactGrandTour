@@ -1,7 +1,7 @@
 {
     "name": "react-grand-tour-playground",
     "homepage": "https://eitanelbaz.github.io/ReactGrandTour",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "private": true,
     "config-overrides-path": "./config-overrides",
     "engines": {
