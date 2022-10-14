@@ -1,25 +1,30 @@
 {
     "compilerOptions": {
-        "outDir": "typings",
-        "sourceMap": true,
-        "noImplicitAny": false,
+        "target": "ESNext",
+        "lib": ["DOM", "DOM.Iterable", "ESNext"],
+        "types": ["vite/client", "node"],
+        "allowJs": false,
+        "skipLibCheck": true,
         "esModuleInterop": true,
-        "module": "commonjs",
-        "moduleResolution": "node",
-        "forceConsistentCasingInFileNames": true,
-        "declaration": true,
-        "declarationMap": true,
-        "target": "es6",
+        "allowSyntheticDefaultImports": true,
+        "noImplicitAny": false,
         "strict": true,
-        "preserveConstEnums": true,
-        "lib": ["es2015", "dom"],
-        "types": ["node"],
-        "typeRoots": ["./node_modules/@types", "./src"],
-        "baseUrl": "./",
-        "paths": {},
+        "forceConsistentCasingInFileNames": true,
+        "module": "ESNext",
+        "moduleResolution": "Node",
+        "resolveJsonModule": true,
+        "isolatedModules": true,
         "strictNullChecks": false,
-        "jsx": "react"
+        "noEmit": true,
+        "jsx": "preserve",
+        "baseUrl": "./",
+        "paths": {
+            "~/*": ["src/*"]
+        }
     },
-    "include": ["src/*", "src/**/*", "test/**/*"],
-    "exclude": ["node_modules", "./build/**/*"]
+    "typeRoots": ["./node_modules/@types", "./src"],
+    "include": [
+        "./src",
+    ],
+    "exclude": ["node_modules", "tests"]
 }
