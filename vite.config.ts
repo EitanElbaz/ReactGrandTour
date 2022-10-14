@@ -2,16 +2,9 @@ import { defineConfig } from 'vite';
 import typescript from '@rollup/plugin-typescript';
 import path from 'path';
 import { typescriptPaths } from 'rollup-plugin-typescript-paths';
-import { viteExternalsPlugin } from 'vite-plugin-externals';
 
 export default defineConfig({
-    plugins: [
-        viteExternalsPlugin({
-            // don't bundle these in the output. Let the app which hosts this provide the package.
-            react: 'React',
-            'react-dom': 'ReactDOM',
-        }),
-    ],
+    plugins: [],
     resolve: {
         alias: [
             {
@@ -21,7 +14,7 @@ export default defineConfig({
         ],
     },
     esbuild: {
-        minify: true,
+        // minify: true,
     },
     build: {
         manifest: true,
@@ -33,7 +26,7 @@ export default defineConfig({
             formats: ['es', 'cjs'],
         },
         rollupOptions: {
-            external: [],
+            external: ['react', 'react-dom'],
             plugins: [
                 typescriptPaths({
                     preserveExtensions: true,
