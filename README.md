@@ -2,7 +2,7 @@
 
 > Super lightweight, super customisable high performance application touring library.
 > 
-> Show your users are your applications with ease.
+> Show your users around your applications with ease.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
