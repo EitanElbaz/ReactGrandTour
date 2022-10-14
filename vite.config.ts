@@ -14,7 +14,7 @@ export default defineConfig({
         ],
     },
     esbuild: {
-        // minify: true,
+        minify: true,
     },
     build: {
         manifest: true,
