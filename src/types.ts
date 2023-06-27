@@ -29,8 +29,9 @@ export type ReactGrandTourStylingOverrides = {
     animationSpeed?: number;
 
     dotBackgroundColor?: string;
-    dotBorderColor?: string;
+    dotBorder?: string;
     dotHoverBackgroundColor?: string;
+    dotHoverBorder?: string;
 
     chevronButtonColor?: string;
     chevronButtonHoverColor?: string;
