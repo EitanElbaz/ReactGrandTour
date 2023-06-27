@@ -57,9 +57,10 @@ const Modal = ({
                 goNext={() => changeStep(stepIndex + 1)}
                 skipTo={changeStep}
                 totalSteps={allSteps.length}
+                close={close}
             />
         ),
-        [stepIndex, changeStep, allSteps.length, NextStepButton],
+        [stepIndex, changeStep, allSteps.length, NextStepButton, close],
     );
     const previousStepButton = useMemo(
         () => (
@@ -68,9 +69,10 @@ const Modal = ({
                 goBack={() => changeStep(stepIndex - 1)}
                 skipTo={changeStep}
                 totalSteps={allSteps.length}
+                close={close}
             />
         ),
-        [stepIndex, changeStep, allSteps.length, PreviousStepButton],
+        [stepIndex, changeStep, allSteps.length, PreviousStepButton, close],
     );
     const stepButtonWrapper = useMemo(
         () => (

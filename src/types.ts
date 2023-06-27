@@ -3,7 +3,7 @@ import React, { PropsWithChildren, ReactNode } from 'react';
 export type ReactGrandTourProps = ComponentVisibility & {
     open?: boolean;
     onOpen?: () => void;
-    onClose?: (reason: ReactGrandTourCloseReason) => void;
+    onClose?: (reason?: ReactGrandTourCloseReason) => void;
     onStepChange?: (props: OnStepChangeProps) => void;
     openAt?: number;
     steps?: ReactGrandTourStep[];
@@ -189,12 +189,14 @@ export type NextStepButtonProps = {
     totalSteps: number;
     goNext: () => void;
     skipTo: (step: number) => void;
+    close: () => void;
 };
 export type PreviousStepButtonProps = {
     currentStep: number;
     totalSteps: number;
     goBack: () => void;
     skipTo: (step: number) => void;
+    close: () => void;
 };
 export type StepButtonProps = {
     currentStep: number;
