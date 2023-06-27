@@ -2,6 +2,7 @@ import React, { useMemo, useCallback, useState, PropsWithChildren, useEffect } f
 import styles from './styles';
 import {
     ComponentOverrides,
+    ComponentVisibility,
     ReactGrandTourCloseReason,
     ReactGrandTourProps,
     ReactGrandTourStep,
@@ -28,6 +29,9 @@ const defaultShortcuts = {
     prevStep: ['ArrowLeft'],
 };
 
+const emptyStyles = {};
+const emptyVisibility = {};
+
 const ReactGrandTour: React.FC<Props> = ({
     children,
     open: defaultOpen = false,
@@ -49,8 +53,13 @@ const ReactGrandTour: React.FC<Props> = ({
     disableCloseOnEscape = false,
     disableCloseBtn = false,
     disableCloseOnBackdropClick = false,
-    stylingOverrides = {},
+    stylingOverrides = emptyStyles,
     keyboardShortcuts,
+    hideCloseButton,
+    hideCurrentStepLabel,
+    hideNextStepButton,
+    hidePreviousStepButton,
+    hideStepButtons,
 }) => {
     const [open, setOpen] = useState(defaultOpen);
     const [currentIndex, setCurrentIndex] = useState(openAt);
@@ -167,6 +176,7 @@ const ReactGrandTour: React.FC<Props> = ({
         };
     }, [onKeyUp]);
 
+    console.log(steps[currentIndex]);
     return (
         <ReactGrandTourContext.Provider
             value={{
@@ -186,6 +196,11 @@ const ReactGrandTour: React.FC<Props> = ({
                     <style>{styles(stylingOverrides)}</style>{' '}
                     <div className="__react-grand-tour__overlay" onClick={onBackdropClosed} />
                     <Step
+                        hideCloseButton={hideCloseButton}
+                        hideCurrentStepLabel={hideCurrentStepLabel}
+                        hideNextStepButton={hideNextStepButton}
+                        hidePreviousStepButton={hidePreviousStepButton}
+                        hideStepButtons={hideStepButtons}
                         {...steps[currentIndex]}
                         content={steps[currentIndex].content}
                         component={steps[currentIndex].component}

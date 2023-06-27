@@ -1,9 +1,9 @@
 import React, { PropsWithChildren, ReactNode } from 'react';
 
-export type ReactGrandTourProps = {
+export type ReactGrandTourProps = ComponentVisibility & {
     open?: boolean;
     onOpen?: () => void;
-    onClose?: (reason: ReactGrandTourCloseReason) => void;
+    onClose?: (reason?: ReactGrandTourCloseReason) => void;
     onStepChange?: (props: OnStepChangeProps) => void;
     openAt?: number;
     steps?: ReactGrandTourStep[];
@@ -16,13 +16,22 @@ export type ReactGrandTourProps = {
     keyboardShortcuts?: ReactGrandTourShortcuts;
 };
 
+export type ComponentVisibility = {
+    hideCloseButton?: boolean;
+    hideCurrentStepLabel?: boolean;
+    hideNextStepButton?: boolean;
+    hidePreviousStepButton?: boolean;
+    hideStepButtons?: boolean;
+};
+
 export type ReactGrandTourStylingOverrides = {
     primaryColor?: string;
     animationSpeed?: number;
 
     dotBackgroundColor?: string;
-    dotBorderColor?: string;
+    dotBorder?: string;
     dotHoverBackgroundColor?: string;
+    dotHoverBorder?: string;
 
     chevronButtonColor?: string;
     chevronButtonHoverColor?: string;
@@ -103,7 +112,7 @@ export type ReactGrandTourContextType = {
     goBack: () => void;
 };
 
-export type ReactGrandTourStep = {
+export type ReactGrandTourStep = ComponentVisibility & {
     content: ReactNode;
     /**
      * Use the `component` prop if you want to customise the content of the step.
@@ -155,6 +164,11 @@ export type ReactGrandTourStep = {
      * Default: auto
      */
     preferredModalPosition?: 'auto' | 'top' | 'right' | 'bottom' | 'left';
+
+    /**
+     * Hide the see through highlight box which focuses on the current step element
+     */
+    hideStepElementHighlight?: boolean;
 };
 
 export type ModalPosition = {
@@ -175,12 +189,14 @@ export type NextStepButtonProps = {
     totalSteps: number;
     goNext: () => void;
     skipTo: (step: number) => void;
+    close: () => void;
 };
 export type PreviousStepButtonProps = {
     currentStep: number;
     totalSteps: number;
     goBack: () => void;
     skipTo: (step: number) => void;
+    close: () => void;
 };
 export type StepButtonProps = {
     currentStep: number;
@@ -197,7 +213,7 @@ export type StepButtonWrapperProps = {
     skipTo: (step: number) => void;
 };
 export type ArrowProps = { direction: ArrowDirection };
-export type DialogWrapperProps = {
+export type DialogWrapperProps = ComponentVisibility & {
     [key in keyof Omit<
         ComponentOverrides,
         'dialogWrapper' | 'stepButton' | 'contentWrapper'

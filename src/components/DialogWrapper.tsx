@@ -9,17 +9,23 @@ const DialogWrapper = ({
     previousStepButton,
     stepButtonWrapper,
     nextStepButton,
+
+    hideCloseButton,
+    hideCurrentStepLabel,
+    hideNextStepButton,
+    hidePreviousStepButton,
+    hideStepButtons,
 }: DialogWrapperProps) => (
     <div className="__react-grand-tour__modal">
         <div className="__react-grand-tour__modal-content">
             {arrow}
-            {currentStepLabel}
-            {closeButton}
+            {!hideCurrentStepLabel && currentStepLabel}
+            {!hideCloseButton && closeButton}
             {content}
             <div className="__react-grand-tour__page-selector">
-                {previousStepButton}
-                {stepButtonWrapper}
-                {nextStepButton}
+                {!hidePreviousStepButton && previousStepButton}
+                {!hideStepButtons && stepButtonWrapper}
+                {!hideNextStepButton && nextStepButton}
             </div>
         </div>
     </div>

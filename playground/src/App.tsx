@@ -5,6 +5,7 @@ import { Routes } from 'routes';
 import Home from './pages/Home';
 import CustomExample from './pages/CustomExample';
 import GitHubBtn from './components/GitHubBtn';
+import HiddenComponents from './pages/HiddenComponents';
 
 const App = () => (
     <StylesProvider injectFirst>
@@ -30,6 +31,9 @@ const App = () => (
                 <Switch>
                     <Route path={Routes.custom}>
                         <CustomExample />
+                    </Route>
+                    <Route path={Routes.hiddenComponents}>
+                        <HiddenComponents />
                     </Route>
                     <Route path={Routes.home}>
                         <Home />

@@ -1,19 +1,25 @@
 import React, { useMemo } from 'react';
 import FadeIn from './FadeIn';
-import { ArrowDirection, ComponentOverrides, ReactGrandTourProps } from '../types';
+import {
+    ArrowDirection,
+    ComponentOverrides,
+    ComponentVisibility,
+    ReactGrandTourProps,
+} from '../types';
 import CloseButton from './CloseButton';
 import { isSafari } from '../lib';
 
-export type ModalProps = Partial<ComponentOverrides> & {
-    arrowDirection: ArrowDirection;
-    stepIndex: number;
-    changeStep: (index: number) => void;
-    allSteps: number[];
-    close: ReactGrandTourProps['onClose'];
-    renderedContent: any;
-    scrollToElement: () => void;
-    track: boolean;
-};
+export type ModalProps = Partial<ComponentOverrides> &
+    ComponentVisibility & {
+        arrowDirection: ArrowDirection;
+        stepIndex: number;
+        changeStep: (index: number) => void;
+        allSteps: number[];
+        close: ReactGrandTourProps['onClose'];
+        renderedContent: any;
+        scrollToElement: () => void;
+        track: boolean;
+    };
 
 const Modal = ({
     arrowDirection,
@@ -32,6 +38,12 @@ const Modal = ({
     stepButtonWrapper: StepButtonWrapper,
     stepButton: StepButton,
     track,
+
+    hideCloseButton,
+    hideCurrentStepLabel,
+    hideNextStepButton,
+    hidePreviousStepButton,
+    hideStepButtons,
 }: ModalProps) => {
     const arrow = useMemo(() => <Arrow direction={arrowDirection} />, [Arrow, arrowDirection]);
     const currentStepLabel = useMemo(
@@ -45,9 +57,10 @@ const Modal = ({
                 goNext={() => changeStep(stepIndex + 1)}
                 skipTo={changeStep}
                 totalSteps={allSteps.length}
+                close={close}
             />
         ),
-        [stepIndex, changeStep, allSteps.length, NextStepButton],
+        [stepIndex, changeStep, allSteps.length, NextStepButton, close],
     );
     const previousStepButton = useMemo(
         () => (
@@ -56,9 +69,10 @@ const Modal = ({
                 goBack={() => changeStep(stepIndex - 1)}
                 skipTo={changeStep}
                 totalSteps={allSteps.length}
+                close={close}
             />
         ),
-        [stepIndex, changeStep, allSteps.length, PreviousStepButton],
+        [stepIndex, changeStep, allSteps.length, PreviousStepButton, close],
     );
     const stepButtonWrapper = useMemo(
         () => (
@@ -114,6 +128,12 @@ const Modal = ({
                             stepButtonWrapper,
                             stepIndex,
                             stepButtonComponent: StepButton,
+
+                            hideCloseButton,
+                            hideCurrentStepLabel,
+                            hideNextStepButton,
+                            hidePreviousStepButton,
+                            hideStepButtons,
                         }}
                     />
                 </div>

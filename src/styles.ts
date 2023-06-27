@@ -20,8 +20,9 @@ const styles = ({
     animationSpeed = 0.5,
     primaryColor = '#f2c14e',
     dotBackgroundColor = 'inherit',
-    dotBorderColor = '#757575',
+    dotBorder = '1px solid #757575',
     dotHoverBackgroundColor = '#757575',
+    dotHoverBorder = '',
     chevronButtonColor = '#757575',
     chevronButtonHoverColor = '#212121',
     chevronButtonDisabledColor = '#e0e0e0',
@@ -67,13 +68,14 @@ const styles = ({
                     width: '10px',
                     height: '10px',
                     'background-color': dotBackgroundColor,
-                    border: `1px solid ${dotBorderColor}`,
+                    border: dotBorder,
                     'border-radius': '50%',
                     'margin-right': '7px',
                     overflow: 'hidden',
                 },
                 ':hover div': {
                     'background-color': dotHoverBackgroundColor,
+                    border: dotHoverBorder,
                 },
                 '-selected': {
                     ' div': {
