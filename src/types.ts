@@ -163,6 +163,11 @@ export type ReactGrandTourStep = ComponentVisibility & {
      * Default: auto
      */
     preferredModalPosition?: 'auto' | 'top' | 'right' | 'bottom' | 'left';
+
+    /**
+     * Hide the see through highlight box which focuses on the current step element
+     */
+    hideStepElementHighlight?: boolean;
 };
 
 export type ModalPosition = {

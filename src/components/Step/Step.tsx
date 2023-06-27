@@ -43,6 +43,8 @@ const Step = React.memo(
         trackFrequency = 10,
         preferredModalPosition = 'auto',
 
+        hideStepElementHighlight = false,
+
         hideCloseButton,
         hideCurrentStepLabel,
         hideNextStepButton,
@@ -97,6 +99,7 @@ const Step = React.memo(
                     anchorBoundaries={anchorBoundaries}
                     differentAnchor={anchorElement != null}
                     preferredPosition={preferredModalPosition}
+                    hideStepElementHighlight={hideStepElementHighlight}
                 />
                 <Highlight track={track} anchorHighlight={anchorElement != null} />
                 <Modal
