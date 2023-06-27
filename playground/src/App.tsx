@@ -32,11 +32,11 @@ const App = () => (
                     <Route path={Routes.custom}>
                         <CustomExample />
                     </Route>
-                    <Route path={Routes.home}>
-                        <Home />
-                    </Route>
                     <Route path={Routes.hiddenComponents}>
                         <HiddenComponents />
+                    </Route>
+                    <Route path={Routes.home}>
+                        <Home />
                     </Route>
                 </Switch>
             </BrowserRouter>

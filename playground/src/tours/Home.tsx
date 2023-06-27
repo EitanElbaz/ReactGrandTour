@@ -164,20 +164,24 @@ export const HiddenComponentsTour: ReactGrandTourStep[] = [
     // },
     {
         selector: `#${HomeStepIds.one}`,
-        content: 'Welcome to React Grand Tour!',
+        content: "Welcome to React Grand Tour! I'm hiding the current step label on this step.",
         preferredModalPosition: 'bottom',
         hideCurrentStepLabel: true,
     },
     {
         selector: `#${HomeStepIds.two}`,
         content:
-            "And this is a cool logo. Try scrolling down the page. You'll see an arrow appear. You can click anywhere in this modal to be taken back to the highlighted area.",
+            "And this is a cool logo. Try scrolling down the page. You'll see an arrow appear. You can click anywhere in this modal to be taken back to the highlighted area.\n\n I'm hiding the next & previous step buttons, but you can still use the arrow keys.",
+        hideNextStepButton: true,
+        hidePreviousStepButton: true,
     },
     {
         selector: `#${HomeStepIds.three}`,
-        content: 'The highlighted area will track moving objects',
+        content:
+            "The highlighted area will track moving objects. I'm hiding the step buttons here for fun",
         track: true,
         preferredModalPosition: 'right',
+        hideStepButtons: true,
     },
     {
         selector: `#${HomeStepIds.four}`,

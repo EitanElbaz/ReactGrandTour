@@ -6,10 +6,7 @@ import Hero from 'components/Hero';
 import { HiddenComponentsTour } from 'tours';
 
 const HiddenComponents = () => (
-    <ReactGrandTour
-        steps={HiddenComponentsTour}
-        componentVisibility={{ hideCurrentStepLabel: true }}
-    >
+    <ReactGrandTour steps={HiddenComponentsTour}>
         <Box
             display="flex"
             alignItems="center"
