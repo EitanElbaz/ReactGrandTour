@@ -177,6 +177,11 @@ export type ComponentVisibility = {
             selector: '#my-step-id',
             anchorSelector: '#my-step-id-parent',
             content: 'Some Content',
+          
+            // this can only be set on a step
+            // hide the see through window which wraps around your step's focused html element
+            // setting this to true will display a backdrop covering your entire screen
+            hideStepElementHighlight: false,
         },
     ]}
 >

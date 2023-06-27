@@ -163,10 +163,11 @@ export const HiddenComponentsTour: ReactGrandTourStep[] = [
     //     component: Hello,
     // },
     {
-        selector: `#${HomeStepIds.one}`,
-        content: "Welcome to React Grand Tour! I'm hiding the current step label on this step.",
-        preferredModalPosition: 'bottom',
-        hideCurrentStepLabel: true,
+        selector: `#middle`,
+        content:
+            "Welcome to React Grand Tour! I'm hiding the current step label on this step. This is an example of how to show the backdrop instead of focusing on an element.",
+        preferredModalPosition: 'auto',
+        hideStepElementHighlight: true,
     },
     {
         selector: `#${HomeStepIds.two}`,

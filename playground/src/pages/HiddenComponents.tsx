@@ -15,6 +15,15 @@ const HiddenComponents = () => (
             pt={2}
             pb={8}
         >
+            <Box
+                id="middle"
+                position="absolute"
+                top="50%"
+                left="50%"
+                height={0}
+                width={0}
+                bgcolor="red"
+            />
             <Hero />
             <KitchenSink />
         </Box>
