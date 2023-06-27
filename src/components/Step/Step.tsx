@@ -64,7 +64,7 @@ const Step = React.memo(
             setAnchorBoundaries((anchorElement ?? element).getBoundingClientRect());
         }, [element, anchorElement]);
         const scrollToElement = useCallback(() => {
-            element.scrollIntoView(scrollIntoViewOptions);
+            element?.scrollIntoView?.(scrollIntoViewOptions);
             adjustBoundaries();
         }, [adjustBoundaries, element, scrollIntoViewOptions]);
         useEffect(() => {
