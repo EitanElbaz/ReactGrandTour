@@ -191,8 +191,8 @@ const ReactGrandTour: React.FC<Props> = ({
                     <style>{styles(stylingOverrides)}</style>{' '}
                     <div className="__react-grand-tour__overlay" onClick={onBackdropClosed} />
                     <Step
-                        {...steps[currentIndex]}
                         {...componentVisibility}
+                        {...steps[currentIndex]}
                         content={steps[currentIndex].content}
                         component={steps[currentIndex].component}
                         selector={steps[currentIndex].selector}
