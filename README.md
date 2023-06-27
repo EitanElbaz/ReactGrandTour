@@ -14,6 +14,7 @@
 - [Advanced Usage](#advanced-usage)
   - [Fast Moving Objects](#fast-moving-objects)
   - [Modal Anchoring](#modal-anchoring)
+  - [Component Visibility](#component-visibility)
   - [Style Overrides](#style-overrides)
   - [Overriding With Custom Components](#overriding-with-custom-components)
 
@@ -141,6 +142,38 @@ Want to highlight an element while anchoring the modal to its parent? No problem
 <ReactGrandTour
     steps={[
         {
+            selector: '#my-step-id',
+            anchorSelector: '#my-step-id-parent',
+            content: 'Some Content',
+        },
+    ]}
+>
+    <App />
+</ReactGrandTour>
+```
+
+### Component Visibility
+
+You can force components to be hidden on a per step or per tour basis.
+
+The visibility prop on a step takes precedence over the hidden prop on the `ReactGrandTour` component.
+
+```jsx
+export type ComponentVisibility = {
+  hideCloseButton?: boolean;
+  hideCurrentStepLabel?: boolean;
+  hideNextStepButton?: boolean;
+  hidePreviousStepButton?: boolean;
+  hideStepButtons?: boolean;
+}
+
+<ReactGrandTour
+    // hides the close button for every step on the tour
+    hideCloseButton
+    steps={[
+        {
+            // hide the current step label for this particular step
+            hideCurrentStepLabel: true,
             selector: '#my-step-id',
             anchorSelector: '#my-step-id-parent',
             content: 'Some Content',
