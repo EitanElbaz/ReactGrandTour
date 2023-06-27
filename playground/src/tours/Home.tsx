@@ -155,3 +155,102 @@ export const HomeSteps: ReactGrandTourStep[] = [
         component: Bye,
     },
 ];
+
+export const HiddenComponentsTour: ReactGrandTourStep[] = [
+    // {
+    //     selector: `#${HomeStepIds.one}`,
+    //     content: 'Welcome to React Grand Tour!',
+    //     component: Hello,
+    // },
+    {
+        selector: `#${HomeStepIds.one}`,
+        content: 'Welcome to React Grand Tour!',
+        preferredModalPosition: 'bottom',
+        hideCurrentStepLabel: true,
+    },
+    {
+        selector: `#${HomeStepIds.two}`,
+        content:
+            "And this is a cool logo. Try scrolling down the page. You'll see an arrow appear. You can click anywhere in this modal to be taken back to the highlighted area.",
+    },
+    {
+        selector: `#${HomeStepIds.three}`,
+        content: 'The highlighted area will track moving objects',
+        track: true,
+        preferredModalPosition: 'right',
+    },
+    {
+        selector: `#${HomeStepIds.four}`,
+        anchorSelector: `#${HomeStepIds.fourContainer}`,
+        content:
+            'The highlighted area will track moving objects, but the modal stays anchored to its container.',
+        track: true,
+    },
+    {
+        selector: `#${HomeStepIds.verticalOne}`,
+        content: 'The highlighted area will track the size of objects which change shape.',
+        track: true,
+    },
+    {
+        selector: `#${HomeStepIds.horizontalOne}`,
+        content:
+            "The highlighted area will track the size of objects which change shape. Even when it's their width!",
+        track: true,
+    },
+    {
+        selector: `#${HomeStepIds.horVertOne}`,
+        content: 'And when they change in both directions.',
+        track: true,
+    },
+    {
+        selector: `#${HomeStepIds.verticalTwo}`,
+        anchorSelector: `#${HomeStepIds.expandCollapseContainerTwo}`,
+        content: 'The highlighted area will track the size of objects which change shape.',
+        track: true,
+    },
+    {
+        selector: `#${HomeStepIds.horizontalTwo}`,
+        anchorSelector: `#${HomeStepIds.expandCollapseContainerTwo}`,
+        content:
+            "The highlighted area will track the size of objects which change shape. Even when it's their width!",
+        track: true,
+    },
+    {
+        selector: `#${HomeStepIds.horVertTwo}`,
+        anchorSelector: `#${HomeStepIds.expandCollapseContainerTwo}`,
+        content: 'And when they change in both directions.',
+        track: true,
+    },
+    {
+        selector: `#row-1-col-1`,
+        content: 'I can even handle really wide scrolling content.',
+    },
+    {
+        selector: `#row-4-col-20`,
+        content: 'Just like that 😏',
+    },
+    {
+        selector: `#row-1-col-1`,
+        content: 'And that 😱',
+    },
+    {
+        selector: `#${HomeStepIds.prefRight}`,
+        content: 'I prefer to position this modal on the right',
+        preferredModalPosition: 'right',
+    },
+    {
+        selector: `#${HomeStepIds.prefLeft}`,
+        content: "I prefer to position this modal on the left, but there isn't enough space 😞",
+        preferredModalPosition: 'left',
+    },
+    {
+        selector: `#${HomeStepIds.prefTop}`,
+        content: 'I prefer to position this modal on top',
+        preferredModalPosition: 'top',
+    },
+    {
+        selector: `#${HomeStepIds.bye}`,
+        content: '',
+        component: Bye,
+    },
+];
