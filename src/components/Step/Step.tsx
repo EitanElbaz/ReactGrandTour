@@ -1,12 +1,18 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import { useCallback } from 'react';
-import { ComponentOverrides, ReactGrandTourProps, ReactGrandTourStep } from '../../types';
+import {
+    ComponentOverrides,
+    ComponentVisibility,
+    ReactGrandTourProps,
+    ReactGrandTourStep,
+} from '../../types';
 import Highlight from '../Highlight';
 import Modal from '../Modal';
 import { getArrowDirection } from '../../lib';
 import StepPositioner from './StepPostioner';
 
 type Props = Partial<ReactGrandTourStep> &
+    ComponentVisibility &
     ComponentOverrides & {
         stepIndex: number;
         changeStep: (index: number) => void;
@@ -36,6 +42,12 @@ const Step = React.memo(
         track = false,
         trackFrequency = 10,
         preferredModalPosition = 'auto',
+
+        hideCloseButton,
+        hideCurrentStepLabel,
+        hideNextStepButton,
+        hidePreviousStepButton,
+        hideStepButtons,
     }: Omit<Props, 'contentWrapper'> & {
         element: Element;
         anchorElement?: Element;
@@ -105,6 +117,12 @@ const Step = React.memo(
                         stepButtonWrapper,
                         arrow,
                         dialogWrapper,
+
+                        hideCloseButton,
+                        hideCurrentStepLabel,
+                        hideNextStepButton,
+                        hidePreviousStepButton,
+                        hideStepButtons,
                     }}
                 />
             </>

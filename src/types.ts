@@ -14,6 +14,16 @@ export type ReactGrandTourProps = {
     disableCloseOnBackdropClick?: boolean;
     stylingOverrides?: ReactGrandTourStylingOverrides;
     keyboardShortcuts?: ReactGrandTourShortcuts;
+
+    componentVisibility?: ComponentVisibility;
+};
+
+export type ComponentVisibility = {
+    hideCloseButton?: boolean;
+    hideCurrentStepLabel?: boolean;
+    hideNextStepButton?: boolean;
+    hidePreviousStepButton?: boolean;
+    hideStepButtons?: boolean;
 };
 
 export type ReactGrandTourStylingOverrides = {
@@ -197,7 +207,7 @@ export type StepButtonWrapperProps = {
     skipTo: (step: number) => void;
 };
 export type ArrowProps = { direction: ArrowDirection };
-export type DialogWrapperProps = {
+export type DialogWrapperProps = ComponentVisibility & {
     [key in keyof Omit<
         ComponentOverrides,
         'dialogWrapper' | 'stepButton' | 'contentWrapper'

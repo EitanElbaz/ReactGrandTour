@@ -2,6 +2,7 @@ import React, { useMemo, useCallback, useState, PropsWithChildren, useEffect } f
 import styles from './styles';
 import {
     ComponentOverrides,
+    ComponentVisibility,
     ReactGrandTourCloseReason,
     ReactGrandTourProps,
     ReactGrandTourStep,
@@ -28,6 +29,9 @@ const defaultShortcuts = {
     prevStep: ['ArrowLeft'],
 };
 
+const emptyStyles = {};
+const emptyVisibility = {};
+
 const ReactGrandTour: React.FC<Props> = ({
     children,
     open: defaultOpen = false,
@@ -49,8 +53,9 @@ const ReactGrandTour: React.FC<Props> = ({
     disableCloseOnEscape = false,
     disableCloseBtn = false,
     disableCloseOnBackdropClick = false,
-    stylingOverrides = {},
+    stylingOverrides = emptyStyles,
     keyboardShortcuts,
+    componentVisibility = emptyVisibility,
 }) => {
     const [open, setOpen] = useState(defaultOpen);
     const [currentIndex, setCurrentIndex] = useState(openAt);
@@ -187,6 +192,7 @@ const ReactGrandTour: React.FC<Props> = ({
                     <div className="__react-grand-tour__overlay" onClick={onBackdropClosed} />
                     <Step
                         {...steps[currentIndex]}
+                        {...componentVisibility}
                         content={steps[currentIndex].content}
                         component={steps[currentIndex].component}
                         selector={steps[currentIndex].selector}
