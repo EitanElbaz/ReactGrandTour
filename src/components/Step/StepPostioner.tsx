@@ -9,7 +9,14 @@ const StepPositioner: React.FC<{
     anchorBoundaries: DOMRect;
     differentAnchor: boolean;
     preferredPosition: ReactGrandTourStep['preferredModalPosition'];
-}> = ({ boundaries, anchorBoundaries, differentAnchor, preferredPosition }) => {
+    hideStepElementHighlight: boolean;
+}> = ({
+    boundaries,
+    anchorBoundaries,
+    differentAnchor,
+    preferredPosition,
+    hideStepElementHighlight,
+}) => {
     const modalContainer = document.querySelector('.__react-grand-tour__modal-container');
     const modalPos = getModalPosition(
         anchorBoundaries,
@@ -42,8 +49,8 @@ const StepPositioner: React.FC<{
                     },
                     highlight: {
                         transform: `translate(${boundaries.left - 10}px, ${boundaries.top - 10}px)`,
-                        height: `${boundaries.height + 20}px`,
-                        width: `${boundaries.width + 20}px`,
+                        height: `${!hideStepElementHighlight ? boundaries.height + 20 : 0}px`,
+                        width: `${!hideStepElementHighlight ? boundaries.width + 20 : 0}px`,
                         'box-shadow': `0 0 0 calc(200vh + 200vw) rgba(0, 0, 0, ${
                             differentAnchor ? '.58' : '.7'
                         })`,
