@@ -1,6 +1,6 @@
 import React, { PropsWithChildren, ReactNode } from 'react';
 
-export type ReactGrandTourProps = {
+export type ReactGrandTourProps = ComponentVisibility & {
     open?: boolean;
     onOpen?: () => void;
     onClose?: (reason: ReactGrandTourCloseReason) => void;
@@ -14,8 +14,6 @@ export type ReactGrandTourProps = {
     disableCloseOnBackdropClick?: boolean;
     stylingOverrides?: ReactGrandTourStylingOverrides;
     keyboardShortcuts?: ReactGrandTourShortcuts;
-
-    componentVisibility?: ComponentVisibility;
 };
 
 export type ComponentVisibility = {
@@ -113,7 +111,7 @@ export type ReactGrandTourContextType = {
     goBack: () => void;
 };
 
-export type ReactGrandTourStep = {
+export type ReactGrandTourStep = ComponentVisibility & {
     content: ReactNode;
     /**
      * Use the `component` prop if you want to customise the content of the step.

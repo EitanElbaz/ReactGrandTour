@@ -55,7 +55,11 @@ const ReactGrandTour: React.FC<Props> = ({
     disableCloseOnBackdropClick = false,
     stylingOverrides = emptyStyles,
     keyboardShortcuts,
-    componentVisibility = emptyVisibility,
+    hideCloseButton,
+    hideCurrentStepLabel,
+    hideNextStepButton,
+    hidePreviousStepButton,
+    hideStepButtons,
 }) => {
     const [open, setOpen] = useState(defaultOpen);
     const [currentIndex, setCurrentIndex] = useState(openAt);
@@ -172,6 +176,7 @@ const ReactGrandTour: React.FC<Props> = ({
         };
     }, [onKeyUp]);
 
+    console.log(steps[currentIndex]);
     return (
         <ReactGrandTourContext.Provider
             value={{
@@ -191,7 +196,11 @@ const ReactGrandTour: React.FC<Props> = ({
                     <style>{styles(stylingOverrides)}</style>{' '}
                     <div className="__react-grand-tour__overlay" onClick={onBackdropClosed} />
                     <Step
-                        {...componentVisibility}
+                        hideCloseButton={hideCloseButton}
+                        hideCurrentStepLabel={hideCurrentStepLabel}
+                        hideNextStepButton={hideNextStepButton}
+                        hidePreviousStepButton={hidePreviousStepButton}
+                        hideStepButtons={hideStepButtons}
                         {...steps[currentIndex]}
                         content={steps[currentIndex].content}
                         component={steps[currentIndex].component}
