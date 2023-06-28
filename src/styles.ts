@@ -111,14 +111,16 @@ const styles = ({
                 'flex-wrap': 'wrap',
                 'align-items': 'center',
             },
+            'close-button-position': {
+                position: 'absolute',
+                top: '12px',
+                right: '15px',
+            },
             'close-button': {
                 'background-color': 'transparent',
                 border: 'none',
                 color: closeButtonColor,
                 cursor: 'pointer',
-                position: 'absolute',
-                top: '12px',
-                right: '15px',
                 ':hover': {
                     color: closeButtonHoverColor,
                 },

@@ -30,8 +30,10 @@ const Prev: React.FC<PreviousStepButtonProps> = ({ goBack }) => (
     </Button>
 );
 
-const Close: React.FC<CloseButtonProps> = () => (
-    <Box height={20} width={20} borderRadius="50%" bgcolor="red" />
+const Close: React.FC<CloseButtonProps> = ({ close, PositionalWrapper }) => (
+    <PositionalWrapper>
+        <Box height={20} width={20} borderRadius="50%" bgcolor="red" onClick={() => close()} />
+    </PositionalWrapper>
 );
 
 const ContentOverride: React.FC = ({ children }) => (

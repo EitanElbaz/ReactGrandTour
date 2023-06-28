@@ -10,8 +10,8 @@ import {
     StepButton,
     StepButtonWrapper,
     Step,
-    Close,
     EmptyClose,
+    CloseButton,
 } from './components';
 import ReactGrandTourContext from './Context';
 
@@ -35,7 +35,7 @@ const ReactGrandTour: React.FC<Props> = ({
     steps: defaultSteps = [],
     openAt = 0,
     scrollIntoViewOptions = { behavior: 'smooth', block: 'center' },
-    closeButton = Close,
+    closeButton = CloseButton,
     currentStepLabel = CurrentStepLabel,
     nextStepButton = NextStepButton,
     previousStepButton = PreviousStepButton,
