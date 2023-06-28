@@ -8,6 +8,7 @@ import {
 } from '../types';
 import CloseButton from './CloseButton';
 import { isSafari } from '../lib';
+import CloseButtonPositionalWrapper from './CloseButtonPositionalWrapper';
 
 export type ModalProps = Partial<ComponentOverrides> &
     ComponentVisibility & {
@@ -96,7 +97,10 @@ const Modal = ({
         [allSteps, stepIndex, changeStep, StepButton, StepButtonWrapper],
     );
 
-    const closeButton = useMemo(() => <CloseButton close={close} />, [close, CloseButton]);
+    const closeButton = useMemo(
+        () => <CloseButton close={close} PositionalWrapper={CloseButtonPositionalWrapper} />,
+        [close, CloseButton],
+    );
 
     return (
         <FadeIn>

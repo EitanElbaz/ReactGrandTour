@@ -183,7 +183,11 @@ export type ModalPosition = {
 
 export type ArrowDirection = 'up' | 'left' | 'down' | 'right' | null;
 
-export type CloseButtonProps = { close: ReactGrandTourProps['onClose'] };
+export type CloseButtonProps = {
+    close: ReactGrandTourProps['onClose'];
+    PositionalWrapper: React.FC<PropsWithChildren<any>>;
+};
+
 export type CurrentStepLabelProps = { currentStep: number; totalSteps: number };
 export type NextStepButtonProps = {
     currentStep: number;
