@@ -176,7 +176,6 @@ const ReactGrandTour: React.FC<Props> = ({
         };
     }, [onKeyUp]);
 
-    console.log(steps[currentIndex]);
     return (
         <ReactGrandTourContext.Provider
             value={{
