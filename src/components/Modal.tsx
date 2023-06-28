@@ -30,7 +30,7 @@ const Modal = ({
     renderedContent: content,
     scrollToElement,
     arrow: Arrow,
-    closeButton: CloseButtonOverride,
+    closeButton: CloseButton,
     currentStepLabel: CurrentStepLabel,
     dialogWrapper: DialogWrapper,
     nextStepButton: NextStepButton,
@@ -95,14 +95,8 @@ const Modal = ({
         ),
         [allSteps, stepIndex, changeStep, StepButton, StepButtonWrapper],
     );
-    const closeButton = useMemo(
-        () => (
-            <CloseButton close={close}>
-                <CloseButtonOverride close={close} />
-            </CloseButton>
-        ),
-        [close, CloseButtonOverride],
-    );
+
+    const closeButton = useMemo(() => <CloseButton close={close} />, [close, CloseButton]);
 
     return (
         <FadeIn>

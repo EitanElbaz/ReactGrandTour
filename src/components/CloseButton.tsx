@@ -1,5 +1,6 @@
 import React from 'react';
 import { CloseButtonProps } from '../types';
+import { Close } from '../components/Icons';
 
 const CloseButton: React.FC<CloseButtonProps> = ({ close, children }) => (
     <button
@@ -10,7 +11,7 @@ const CloseButton: React.FC<CloseButtonProps> = ({ close, children }) => (
         }}
         className="__react-grand-tour__close-button"
     >
-        {children}
+        <Close />
     </button>
 );
 
