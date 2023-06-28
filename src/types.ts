@@ -1,20 +1,21 @@
 import React, { PropsWithChildren, ReactNode } from 'react';
 
-export type ReactGrandTourProps = ComponentVisibility & {
-    open?: boolean;
-    onOpen?: () => void;
-    onClose?: (reason?: ReactGrandTourCloseReason) => void;
-    onStepChange?: (props: OnStepChangeProps) => void;
-    openAt?: number;
-    steps?: ReactGrandTourStep[];
-    scrollIntoViewOptions?: ScrollIntoViewOptions;
-    transitionSpeed?: number;
-    disableCloseOnEscape?: boolean;
-    disableCloseBtn?: boolean;
-    disableCloseOnBackdropClick?: boolean;
-    stylingOverrides?: ReactGrandTourStylingOverrides;
-    keyboardShortcuts?: ReactGrandTourShortcuts;
-};
+export type ReactGrandTourProps = ComponentVisibility &
+    Partial<ComponentOverrides> & {
+        open?: boolean;
+        onOpen?: () => void;
+        onClose?: (reason?: ReactGrandTourCloseReason) => void;
+        onStepChange?: (props: OnStepChangeProps) => void;
+        openAt?: number;
+        steps?: ReactGrandTourStep[];
+        scrollIntoViewOptions?: ScrollIntoViewOptions;
+        transitionSpeed?: number;
+        disableCloseOnEscape?: boolean;
+        disableCloseBtn?: boolean;
+        disableCloseOnBackdropClick?: boolean;
+        stylingOverrides?: ReactGrandTourStylingOverrides;
+        keyboardShortcuts?: ReactGrandTourShortcuts;
+    };
 
 export type ComponentVisibility = {
     hideCloseButton?: boolean;

@@ -1,12 +1,6 @@
 import React, { useMemo, useCallback, useState, PropsWithChildren, useEffect } from 'react';
 import styles from './styles';
-import {
-    ComponentOverrides,
-    ComponentVisibility,
-    ReactGrandTourCloseReason,
-    ReactGrandTourProps,
-    ReactGrandTourStep,
-} from './types';
+import { ReactGrandTourCloseReason, ReactGrandTourProps, ReactGrandTourStep } from './types';
 import {
     Arrow,
     CurrentStepLabel,
@@ -21,7 +15,7 @@ import {
 } from './components';
 import ReactGrandTourContext from './Context';
 
-type Props = PropsWithChildren<ReactGrandTourProps & Partial<ComponentOverrides>>;
+type Props = PropsWithChildren<ReactGrandTourProps>;
 
 const defaultShortcuts = {
     closeModal: ['Escape'],
@@ -61,7 +55,7 @@ const ReactGrandTour: React.FC<Props> = ({
     hidePreviousStepButton,
     hideStepButtons,
 }) => {
-    const [open, setOpen] = useState(defaultOpen);
+    const [open, setOpen] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(openAt);
     const [steps, setSteps] = useState(defaultSteps);
     const allSteps = useMemo(() => steps.map((_, i) => i), [steps]);
