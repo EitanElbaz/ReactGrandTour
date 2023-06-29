@@ -85,7 +85,7 @@ const Step = React.memo(
             return () => {
                 clearInterval(interval);
                 clearTimeout(timeout);
-                clearTimeout(trackInterval);
+                clearInterval(trackInterval);
                 window.removeEventListener('resize', adjustBoundaries);
                 window.removeEventListener('scroll', adjustBoundaries);
             };
