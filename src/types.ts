@@ -4,7 +4,8 @@ export type ReactGrandTourProps = ComponentVisibility &
     Partial<ComponentOverrides> & {
         open?: boolean;
         onOpen?: () => void;
-        onClose?: (reason?: ReactGrandTourCloseReason) => void;
+        // returning false will prevent the tour from closing
+        onClose?: (reason?: ReactGrandTourCloseReason) => boolean;
         onStepChange?: (props: OnStepChangeProps) => void;
         openAt?: number;
         steps?: ReactGrandTourStep[];

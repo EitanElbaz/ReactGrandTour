@@ -5,7 +5,7 @@ const ReactGrandTourContext = createContext<ReactGrandTourContextType>({
     open: () => {},
     openWith: () => {},
     steps: [],
-    close: () => {},
+    close: () => true,
     isOpen: false,
     goToStep: () => {},
     goBack: () => {},
