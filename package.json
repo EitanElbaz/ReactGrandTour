@@ -1,6 +1,6 @@
 {
     "name": "react-grand-tour",
-    "version": "0.13.0",
+    "version": "0.14.0",
     "description": "",
     "main": "./dist/main.cjs.js",
     "module": "./dist/main.es.js",
