@@ -79,12 +79,13 @@ const ReactGrandTour: React.FC<Props> = ({
             if (reason === 'escape' && disableCloseOnEscape) return;
             if (reason === 'backdrop' && disableCloseOnBackdropClick) return;
 
-            if (onClose) {
-                onClose(reason);
-            } else {
+            const shouldClose = onClose ? onClose(reason) : true;
+            if (shouldClose) {
                 setOpen(false);
+                setSteps(defaultSteps);
             }
-            setSteps(defaultSteps);
+
+            return true;
         },
         [
             onClose,
