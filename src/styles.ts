@@ -12,7 +12,7 @@ const getProps = (obj: Record<string, any>, selector: string) =>
 export const styleObjectToCssStyleString = (obj: Record<string, any>) =>
     Object.entries(obj).reduce((acc, [key, val]) => {
         const props = getProps(val, key);
-        return `${acc}${key}{${props}${props[props.length - 1] != '}' ? '}' : ''}`;
+        return `${acc}${key}{${props}${props[props.length - 1] !== '}' ? '}' : ''}`;
     }, '');
 
 // https://coolors.co/5fad56-f2c14e-f78154-4d9078-b4436c
