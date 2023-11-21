@@ -6,7 +6,6 @@ import {
     ComponentVisibility,
     ReactGrandTourProps,
 } from '../types';
-import CloseButton from './CloseButton';
 import { isSafari } from '../lib';
 import CloseButtonPositionalWrapper from './CloseButtonPositionalWrapper';
 

@@ -2,9 +2,10 @@ import { defineConfig } from 'vite';
 import typescript from '@rollup/plugin-typescript';
 import path from 'path';
 import { typescriptPaths } from 'rollup-plugin-typescript-paths';
+import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-    plugins: [],
+    plugins: [react()],
     resolve: {
         alias: [
             {
@@ -13,20 +14,23 @@ export default defineConfig({
             },
         ],
     },
-    esbuild: {
-        minify: true,
-    },
     build: {
         manifest: true,
         minify: true,
         reportCompressedSize: true,
         lib: {
-            entry: path.resolve(__dirname, 'src/index.ts'),
-            fileName: 'main',
-            formats: ['es', 'cjs'],
+            name: 'ReactGrandTour',
+            entry: {
+                'react-grand-tour': 'src/index.ts',
+            },
         },
         rollupOptions: {
             external: ['react', 'react-dom'],
+            output: {
+                globals: {
+                    react: 'React',
+                },
+            },
             plugins: [
                 typescriptPaths({
                     preserveExtensions: true,

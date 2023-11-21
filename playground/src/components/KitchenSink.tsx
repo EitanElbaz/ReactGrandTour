@@ -1,10 +1,10 @@
 import React from 'react';
 import { Box, Grid, Typography } from '@material-ui/core';
-import { HomeStepIds } from 'tours';
 import ExpandCollapseStep from './ExpandCollapseStep';
 import MovingSquareStep from './MovingSquareStep';
 import OpenTourAtStep from './OpenTourAtStep';
 import WideTable from './WideTable';
+import { HomeStepIds } from '../tours';
 
 const Section: React.FC<{ title: string; openAtStep: number }> = ({
     title,
