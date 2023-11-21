@@ -1,19 +1,23 @@
 {
     "name": "react-grand-tour",
-    "version": "0.14.0",
+    "version": "0.16.0",
     "type": "module",
     "description": "",
-    "main": "./dist/main.cjs.js",
-    "module": "./dist/main.es.js",
-    "typings": "./dist/index.d.ts",
+    "main": "./dist/react-grand-tour.umd.cjs",
+    "module": "./dist/react-grand-tour.js",
+    "types": "./dist/index.d.ts",
     "exports": {
         ".": {
-            "import": "./dist/main.es.js",
-            "require": "./dist/main.cjs.js"
+            "main": "./dist/react-grand-tour.umd.cjs",
+            "module": "./dist/react-grand-tour.js",
+            "types": "./dist/index.d.ts"
         }
     },
     "files": [
-        "dist"
+        "dist/**/*.js",
+        "dist/**/*.d.ts",
+        "dist/**/*.ts.map",
+        "dist/**/*.cjs"
     ],
     "scripts": {
         "prebuild": "rm -rf dist",
