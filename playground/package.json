@@ -5,21 +5,22 @@
     "private": true,
     "config-overrides-path": "./config-overrides",
     "engines": {
-        "node": ">=14.0.0 <15.0.0"
+        "node": ">=20.0.0"
     },
     "scripts": {
-        "start": "cd .. && yarn && yarn build && cd ./playground && yarn && react-app-rewired start",
-        "build": "react-app-rewired build",
+        "start": "cd .. && yarn && yarn build && cd ./playground && yarn && vite",
+        "build": "vite build",
         "predeploy": "yarn build",
-        "deploy": "gh-pages -d build"
+        "deploy": "gh-pages -d build",
+        "lint": "eslint src/ --ext ts,tsx"
     },
     "dependencies": {
         "@material-ui/core": "^4.12.3",
         "@material-ui/icons": "^4.11.2",
         "gh-pages": "^3.2.3",
-        "react": "^17.0.2",
+        "react": "^18.2.0",
         "react-app-rewire-alias": "^1.0.3",
-        "react-dom": "^17.0.2",
+        "react-dom": "^18.2.0",
         "react-github-btn": "^1.2.1",
         "react-router-dom": "^5.3.0",
         "web-vitals": "^1.0.1"
@@ -33,77 +34,6 @@
         "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
             "prettier --write"
         ]
-    },
-    "eslintConfig": {
-        "extends": [
-            "react-app",
-            "airbnb-typescript",
-            "airbnb/hooks",
-            "plugin:@typescript-eslint/recommended",
-            "plugin:promise/recommended",
-            "prettier",
-            "prettier/react",
-            "prettier/@typescript-eslint"
-        ],
-        "parser": "@typescript-eslint/parser",
-        "parserOptions": {
-            "ecmaVersion": 7,
-            "project": "./tsconfig.json"
-        },
-        "plugins": [
-            "@typescript-eslint",
-            "import",
-            "unused-imports",
-            "prettier",
-            "promise"
-        ],
-        "rules": {
-            "prettier/prettier": [
-                "error",
-                {
-                    "endOfLine": "auto"
-                }
-            ],
-            "import/no-extraneous-dependencies": 0,
-            "react/jsx-props-no-spreading": 0,
-            "react/prop-types": 0,
-            "react/require-default-props": 0,
-            "import/no-duplicates": 0,
-            "import/prefer-default-export": 0,
-            "prefer-destructuring": 0,
-            "react/destructuring-assignment": 0,
-            "@typescript-eslint/no-explicit-any": 0,
-            "@typescript-eslint/no-use-before-define": 0,
-            "eqeqeq": 0,
-            "@typescript-eslint/explicit-function-return-type": 0,
-            "@typescript-eslint/explicit-module-boundary-types": 0,
-            "no-unused-vars": "off",
-            "unused-imports/no-unused-imports": 2,
-            "unused-imports/no-unused-vars": 1,
-            "arrow-parens": [
-                "error",
-                "as-needed",
-                {
-                    "requireForBlockBody": false
-                }
-            ],
-            "import/extensions": [
-                "error",
-                "ignorePackages",
-                {
-                    "js": "never",
-                    "jsx": "never",
-                    "ts": "never",
-                    "tsx": "never"
-                }
-            ]
-        },
-        "settings": {
-            "import/resolver": {
-                "typescript": {},
-                "node": {}
-            }
-        }
     },
     "browserslist": {
         "production": [
@@ -119,6 +49,7 @@
     },
     "devDependencies": {
         "@types/react-router-dom": "^5.1.9",
+        "@vitejs/plugin-react": "^4.2.0",
         "eslint-config-airbnb": "^18.0.1",
         "eslint-config-airbnb-typescript": "^10.0.0",
         "eslint-config-prettier": "^6.10.0",
@@ -136,10 +67,10 @@
         "lint-staged": "^10.5.4",
         "open-in-editor": "^2.2.0",
         "prettier": "^2.2.1",
-        "react-app-rewired": "^2.1.8",
-        "react-scripts": "4.0.3",
+        "rollup-plugin-typescript-paths": "^1.4.0",
         "tsconfig-paths-webpack-plugin": "^3.3.0",
-        "typescript": "^4.2.2",
+        "typescript": "^5.3.2",
+        "vite": "4.5.0",
         "yargs": "^16.2.0"
     },
     "resolutions": {

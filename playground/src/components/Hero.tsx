@@ -1,11 +1,11 @@
 import React from 'react';
 import { Box, Button, Grid, Typography } from '@material-ui/core';
-import { HomeStepIds } from 'tours';
 import DirectionsBusIcon from '@material-ui/icons/DirectionsBus';
 import { Link as RouterLink, Route, Switch } from 'react-router-dom';
-import { Routes } from 'routes';
-import CodeBlock from 'components/CodeBlock';
 import OpenTourButton from './OpenTourButton';
+import { HomeStepIds } from '../tours';
+import { Routes } from '../routes';
+import CodeBlock from './CodeBlock';
 
 const Hero = () => (
     <>
