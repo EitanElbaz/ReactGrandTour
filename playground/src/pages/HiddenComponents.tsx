@@ -1,9 +1,8 @@
 import React from 'react';
 import { Box } from '@material-ui/core';
 import { ReactGrandTour } from 'react-grand-tour';
-import KitchenSink from 'components/KitchenSink';
-import Hero from 'components/Hero';
-import { HiddenComponentsTour } from 'tours';
+import { HiddenComponentsTour } from '../tours';
+import { Hero, KitchenSink } from '../components';
 
 const HiddenComponents = () => (
     <ReactGrandTour steps={HiddenComponentsTour}>

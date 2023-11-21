@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Box, createTheme, CssBaseline, StylesProvider, ThemeProvider } from '@material-ui/core';
-import { Routes } from 'routes';
 import Home from './pages/Home';
 import CustomExample from './pages/CustomExample';
 import GitHubBtn from './components/GitHubBtn';
 import HiddenComponents from './pages/HiddenComponents';
+import { Routes } from './routes';
 
 const App = () => (
     <StylesProvider injectFirst>
