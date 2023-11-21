@@ -2,9 +2,10 @@ import { defineConfig } from 'vite';
 import typescript from '@rollup/plugin-typescript';
 import path from 'path';
 import { typescriptPaths } from 'rollup-plugin-typescript-paths';
+import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-    plugins: [],
+    plugins: [react()],
     resolve: {
         alias: [
             {
@@ -12,9 +13,6 @@ export default defineConfig({
                 replacement: path.resolve(__dirname, './src'),
             },
         ],
-    },
-    esbuild: {
-        minify: true,
     },
     build: {
         manifest: true,
@@ -27,6 +25,11 @@ export default defineConfig({
         },
         rollupOptions: {
             external: ['react', 'react-dom'],
+            output: {
+                globals: {
+                    react: 'React',
+                },
+            },
             plugins: [
                 typescriptPaths({
                     preserveExtensions: true,

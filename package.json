@@ -1,6 +1,7 @@
 {
     "name": "react-grand-tour",
     "version": "0.14.0",
+    "type": "module",
     "description": "",
     "main": "./dist/main.cjs.js",
     "module": "./dist/main.es.js",
@@ -31,11 +32,13 @@
     },
     "homepage": "https://github.com/EitanElbaz/ReactGrandTour",
     "dependencies": {
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
         "react-use": "^17.4.0"
     },
     "peerDependencies": {
-        "react": "^18.0.0",
-        "react-dom": "^18.0.0"
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0"
     },
     "devDependencies": {
         "@rollup/plugin-typescript": "^8.2.1",
@@ -44,6 +47,7 @@
         "@types/react-dom": "^18.2.16",
         "@typescript-eslint/eslint-plugin": "^6.12.0",
         "@typescript-eslint/parser": "^6.12.0",
+        "@vitejs/plugin-react": "^4.2.0",
         "eslint": "^8.54.0",
         "eslint-config-airbnb": "^19.0.4",
         "eslint-config-airbnb-typescript": "^17.1.0",
